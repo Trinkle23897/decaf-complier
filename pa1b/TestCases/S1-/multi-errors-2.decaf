@@ -1,0 +1,15 @@
+class Main {
+    static void main() {
+        int x;
+        int y;
+        string z: ; // error1: extra ':'
+        bool c;
+        c = false;
+        if c Print("OK\n"); // error2: missing '(' and ')' for 'c'
+        if (x == 1) {
+            if (y == 2) {
+                // do nothing
+            else Print("OK\n");  // error 3: missing '}'
+        }
+    }
+}

@@ -1,0 +1,58 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T2 = 8 [ 2 ]
+2	parm _T2
+3	_T3 =  call _Alloc [ 5 7 8 ]
+4	_T4 = 0 [ 5 ]
+5	*(_T3 + 4) = _T4
+6	_T5 = VTBL <_Main> [ 7 ]
+7	*(_T3 + 0) = _T5
+8	END BY RETURN, result = _T3
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+9	_T6 =  call _Main_New [ 12 14 ]
+10	_T7 = 1 [ 11 ]
+11	_T8 = - _T7 [ 13 ]
+12	parm _T6
+13	parm _T8
+14	_T9 = *(_T6 + 0) [ 15 ]
+15	_T10 = *(_T9 + 8) [ 16 ]
+16	call _T10
+17	END BY RETURN, void result
+
+FUNCTION _Main.create : 
+BASIC BLOCK 0 : 
+18	_T11 = *(_T0 + 4) [ ]
+19	_T12 = 0 [ 20 ]
+20	_T13 = (_T1 < _T12) [ 21 ]
+21	END BY BEQZ, if _T13 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+22	_T14 = "Decaf runtime error: Cannot create negative-sized array\n" [ 23 ]
+23	parm _T14
+24	call _PrintString
+25	call _Halt
+26	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+27	_T15 = 4 [ 28 29 36 38 ]
+28	_T16 = (_T15 * _T1) [ 29 ]
+29	_T17 = (_T15 + _T16) [ 30 34 36 ]
+30	parm _T17
+31	_T18 =  call _Alloc [ 32 34 ]
+32	*(_T18 + 0) = _T1
+33	_T19 = 0 [ 39 ]
+34	_T18 = (_T18 + _T17) [ 38 41 ]
+35	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+36	_T17 = (_T17 - _T15) [ 36 37 ]
+37	END BY BEQZ, if _T17 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+38	_T18 = (_T18 - _T15) [ 38 39 41 ]
+39	*(_T18 + 0) = _T19
+40	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+41	*(_T0 + 4) = _T18
+42	END BY RETURN, void result
+

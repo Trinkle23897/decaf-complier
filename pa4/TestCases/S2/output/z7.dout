@@ -1,0 +1,119 @@
+FUNCTION _Father_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T3 _T4 _T5 _T6 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T3 = 8 [ _T3 ]
+    parm _T3 [ ]
+    _T4 =  call _Alloc [ _T4 ]
+    _T5 = 0 [ _T4 _T5 ]
+    *(_T4 + 4) = _T5 [ _T4 ]
+    _T6 = VTBL <_Father> [ _T4 _T6 ]
+    *(_T4 + 0) = _T6 [ _T4 ]
+END BY RETURN, result = _T4
+
+FUNCTION _Child_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T7 _T8 _T9 _T10 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T7 = 8 [ _T7 ]
+    parm _T7 [ ]
+    _T8 =  call _Alloc [ _T8 ]
+    _T9 = 0 [ _T8 _T9 ]
+    *(_T8 + 4) = _T9 [ _T8 ]
+    _T10 = VTBL <_Child> [ _T8 _T10 ]
+    *(_T8 + 0) = _T10 [ _T8 ]
+END BY RETURN, result = _T8
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T11 _T12 _T13 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T11 = 4 [ _T11 ]
+    parm _T11 [ ]
+    _T12 =  call _Alloc [ _T12 ]
+    _T13 = VTBL <_Main> [ _T12 _T13 ]
+    *(_T12 + 0) = _T13 [ _T12 ]
+END BY RETURN, result = _T12
+
+FUNCTION _Father.method : 
+BASIC BLOCK 0 : 
+  Def     = [ _T14 _T15 _T16 _T17 _T18 ]
+  liveUse = [ _T1 ]
+  liveIn  = [ _T0 _T1 ]
+  liveOut = [ _T0 _T1 ]
+    _T14 = 0 [ _T0 _T1 _T14 ]
+    _T15 = (_T1 > _T14) [ _T0 _T1 _T15 ]
+    _T16 = 10 [ _T0 _T16 _T1 _T15 ]
+    _T17 = (_T1 < _T16) [ _T0 _T1 _T17 _T15 ]
+    _T18 = (_T15 && _T17) [ _T0 _T1 _T18 ]
+END BY BEQZ, if _T18 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T19 _T20 _T21 _T22 _T23 ]
+  liveUse = [ _T0 _T1 ]
+  liveIn  = [ _T0 _T1 ]
+  liveOut = [ ]
+    _T19 = 3 [ _T0 _T1 _T19 ]
+    _T20 = (_T1 - _T19) [ _T0 _T20 ]
+    _T1 = _T20 [ _T0 _T1 ]
+    parm _T0 [ _T0 _T1 ]
+    parm _T1 [ _T0 ]
+    _T21 = *(_T0 + 0) [ _T21 ]
+    _T22 = *(_T21 + 8) [ _T22 ]
+    _T23 =  call _T22 [ _T23 ]
+END BY RETURN, result = _T23
+BASIC BLOCK 2 : 
+  Def     = [ ]
+  liveUse = [ _T1 ]
+  liveIn  = [ _T1 ]
+  liveOut = [ ]
+END BY RETURN, result = _T1
+
+FUNCTION _Child.start : 
+BASIC BLOCK 0 : 
+  Def     = [ _T24 _T25 _T26 _T27 _T28 ]
+  liveUse = [ _T2 ]
+  liveIn  = [ _T2 ]
+  liveOut = [ _T2 ]
+    _T24 = _T2 [ _T2 _T24 ]
+    _T25 = *(_T24 + 4) [ _T2 _T24 ]
+    _T26 = 5 [ _T2 _T24 _T26 ]
+    *(_T24 + 4) = _T26 [ _T2 ]
+    _T27 = 0 [ _T2 _T27 ]
+    _T24 = _T27 [ _T2 ]
+    _T28 = *(_T2 + 4) [ _T2 _T28 ]
+    parm _T28 [ _T2 ]
+    call _PrintInt [ _T2 ]
+END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T29 _T30 _T31 _T32 _T33 _T34 _T35 _T36 _T37 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T30 =  call _Child_New [ _T30 ]
+    _T29 = _T30 [ _T29 ]
+    _T31 = 5 [ _T29 _T31 ]
+    parm _T29 [ _T29 _T31 ]
+    parm _T31 [ _T29 ]
+    _T32 = *(_T29 + 0) [ _T32 _T29 ]
+    _T33 = *(_T32 + 8) [ _T33 _T29 ]
+    _T34 =  call _T33 [ _T34 _T29 ]
+    parm _T34 [ _T29 ]
+    call _PrintInt [ _T29 ]
+    _T35 = "\n" [ _T35 _T29 ]
+    parm _T35 [ _T29 ]
+    call _PrintString [ _T29 ]
+    parm _T29 [ _T29 ]
+    _T36 = *(_T29 + 0) [ _T36 ]
+    _T37 = *(_T36 + 12) [ _T37 ]
+    call _T37 [ ]
+END BY RETURN, void result
+

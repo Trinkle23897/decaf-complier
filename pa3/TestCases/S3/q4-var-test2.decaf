@@ -1,0 +1,50 @@
+class A {
+    int a;
+    void seta(int a){
+    	this.a = a;
+    }
+    int getA(){
+    	return a;
+    }
+}
+class Father {
+    int field;
+    class A a;
+    void init(int f) {
+        this.field = f;
+        this.a = new A();
+    }
+    void setfield(int x){
+        this.field = x;
+    }
+    void printfield(){
+        Print(field);
+    }
+    void seta(int a) {
+        this.a.seta(a);
+    }
+    int getA() {
+        this.a.getA();
+    }
+}
+
+class Main {
+	static void main() {
+		class Father b;
+		b = new Father();
+		b.init(10);
+		b.seta(10);
+        var a = b;
+		Print(b.getA()); 
+		Print(a.getA());
+        b.printfield();
+        a.printfield();
+        b.setfield(5);
+		b.seta(5);
+
+		Print(b.getA());
+		Print(a.getA());
+        b.printfield();
+        a.printfield();
+	}
+}

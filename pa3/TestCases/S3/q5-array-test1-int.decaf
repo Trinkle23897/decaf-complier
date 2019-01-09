@@ -1,0 +1,11 @@
+class Main {
+    static void main() {
+    	int [] a;
+    	a = 3 %% 6;
+    	a[1] = a[1] + 1;
+        Print(a[0]);
+        Print("\n");
+        Print(a[1]);
+        Print("\n");
+	}
+}

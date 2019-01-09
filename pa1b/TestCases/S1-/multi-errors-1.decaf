@@ -1,0 +1,9 @@
+public class Main { // error 1: program should start with 'class', not identifier 'public'
+    static void main() {
+        int x = 1; // error 2: this grammar is not supported
+        int y;
+        y = 1;
+        int z[]; // error 3: this grammar is not supported, 'int[] z' expected
+        z[] = 2; // error 4: missing index for '[]'
+    }
+}

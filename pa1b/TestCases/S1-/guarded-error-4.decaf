@@ -1,0 +1,8 @@
+// syntax error: missing ';' for statement `a=a+1`
+class Main {
+    static void main(){
+		int a;
+        a = ReadInteger();
+        if{true:a=a+1}
+    }
+}

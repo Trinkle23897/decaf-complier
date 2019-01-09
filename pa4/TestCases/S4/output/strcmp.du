@@ -1,0 +1,79 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T4 = 4 [ 2 ]
+2	parm _T4
+3	_T5 =  call _Alloc [ 5 6 ]
+4	_T6 = VTBL <_Main> [ 5 ]
+5	*(_T5 + 0) = _T6
+6	END BY RETURN, result = _T5
+
+FUNCTION _Main.compareString : 
+BASIC BLOCK 0 : 
+7	parm _T0
+8	parm _T1
+9	_T7 =  call _StringEqual [ 10 ]
+10	END BY BEQZ, if _T7 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+11	_T8 = "Equal" [ 12 ]
+12	END BY RETURN, result = _T8
+BASIC BLOCK 2 : 
+13	parm _T0
+14	parm _T1
+15	_T9 =  call _StringEqual [ 16 ]
+16	_T10 = ! _T9 [ 17 ]
+17	END BY BEQZ, if _T10 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+18	_T11 = "Unequal" [ 19 ]
+19	END BY RETURN, result = _T11
+BASIC BLOCK 4 : 
+20	_T12 = "The impossible happens!" [ 21 ]
+21	END BY RETURN, result = _T12
+BASIC BLOCK 5 : 
+22	END BY RETURN, void result
+
+FUNCTION _Main.printCompareString : 
+BASIC BLOCK 0 : 
+23	_T13 = "\"" [ 24 ]
+24	parm _T13
+25	call _PrintString
+26	parm _T2
+27	call _PrintString
+28	_T14 = "\" and \"" [ 29 ]
+29	parm _T14
+30	call _PrintString
+31	parm _T3
+32	call _PrintString
+33	_T15 = "\": " [ 34 ]
+34	parm _T15
+35	call _PrintString
+36	parm _T2
+37	parm _T3
+38	_T16 =  call _Main.compareString [ 39 ]
+39	parm _T16
+40	call _PrintString
+41	_T17 = "\n" [ 42 ]
+42	parm _T17
+43	call _PrintString
+44	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+45	_T18 = "Jobs" [ 47 ]
+46	_T19 = "Gates" [ 48 ]
+47	parm _T18
+48	parm _T19
+49	call _Main.printCompareString
+50	_T20 = "case sensitive" [ 52 ]
+51	_T21 = "CASE SENSITIVE" [ 53 ]
+52	parm _T20
+53	parm _T21
+54	call _Main.printCompareString
+55	_T22 = "Hello" [ 57 ]
+56	_T23 = "Hello" [ 58 ]
+57	parm _T22
+58	parm _T23
+59	call _Main.printCompareString
+60	END BY RETURN, void result
+

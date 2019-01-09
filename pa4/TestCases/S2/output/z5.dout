@@ -1,0 +1,216 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T4 _T5 _T6 _T7 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T4 = 8 [ _T4 ]
+    parm _T4 [ ]
+    _T5 =  call _Alloc [ _T5 ]
+    _T6 = 0 [ _T5 _T6 ]
+    *(_T5 + 4) = _T6 [ _T5 ]
+    _T7 = VTBL <_Main> [ _T5 _T7 ]
+    *(_T5 + 0) = _T7 [ _T5 ]
+END BY RETURN, result = _T5
+
+FUNCTION _Hoo_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T8 _T9 _T10 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T8 = 4 [ _T8 ]
+    parm _T8 [ ]
+    _T9 =  call _Alloc [ _T9 ]
+    _T10 = VTBL <_Hoo> [ _T9 _T10 ]
+    *(_T9 + 0) = _T10 [ _T9 ]
+END BY RETURN, result = _T9
+
+FUNCTION _Goo_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T11 _T12 _T13 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T11 = 4 [ _T11 ]
+    parm _T11 [ ]
+    _T12 =  call _Alloc [ _T12 ]
+    _T13 = VTBL <_Goo> [ _T12 _T13 ]
+    *(_T12 + 0) = _T13 [ _T12 ]
+END BY RETURN, result = _T12
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T14 _T15 _T16 _T17 _T18 _T19 _T20 _T21 _T22 _T23 _T25 _T26 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T14 _T15 _T25 _T26 ]
+    _T16 =  call _Main_New [ _T16 ]
+    _T15 = _T16 [ _T15 ]
+    _T17 = *(_T15 + 4) [ _T15 ]
+    _T18 = 4 [ _T18 _T15 ]
+    *(_T15 + 4) = _T18 [ _T15 ]
+    _T19 =  call _Goo_New [ _T19 _T15 ]
+    _T14 = _T19 [ _T14 _T15 ]
+    _T20 = *(_T15 + 4) [ _T20 _T14 _T15 ]
+    parm _T14 [ _T20 _T14 _T15 ]
+    parm _T20 [ _T14 _T15 ]
+    _T21 = *(_T14 + 0) [ _T21 _T14 _T15 ]
+    _T22 = *(_T21 + 8) [ _T22 _T14 _T15 ]
+    _T23 =  call _T22 [ _T14 _T15 ]
+    _T25 = VTBL <_Goo> [ _T25 _T14 _T15 ]
+    _T26 = *(_T14 + 0) [ _T25 _T26 _T14 _T15 ]
+END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T24 ]
+  liveUse = [ _T25 _T26 ]
+  liveIn  = [ _T14 _T15 _T25 _T26 ]
+  liveOut = [ _T14 _T15 _T24 _T25 _T26 ]
+    _T24 = (_T25 == _T26) [ _T24 _T25 _T26 _T14 _T15 ]
+END BY BGTZ, if _T24 = 
+    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+  Def     = [ ]
+  liveUse = [ _T26 ]
+  liveIn  = [ _T14 _T15 _T25 _T26 ]
+  liveOut = [ _T14 _T15 _T25 _T26 ]
+    _T26 = *(_T26 + 0) [ _T25 _T26 _T14 _T15 ]
+END BY BGTZ, if _T26 = 
+    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T24 ]
+  liveUse = [ ]
+  liveIn  = [ _T14 _T15 ]
+  liveOut = [ _T14 _T15 _T24 ]
+    _T24 = 0 [ _T24 _T14 _T15 ]
+END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+  Def     = [ _T29 _T30 ]
+  liveUse = [ _T14 _T24 ]
+  liveIn  = [ _T14 _T15 _T24 ]
+  liveOut = [ _T14 _T15 _T29 _T30 ]
+    parm _T24 [ _T14 _T15 ]
+    call _PrintBool [ _T14 _T15 ]
+    _T29 = VTBL <_Goo> [ _T29 _T14 _T15 ]
+    _T30 = *(_T14 + 0) [ _T29 _T14 _T30 _T15 ]
+END BY BRANCH, goto 5
+BASIC BLOCK 5 : 
+  Def     = [ _T28 ]
+  liveUse = [ _T29 _T30 ]
+  liveIn  = [ _T14 _T15 _T29 _T30 ]
+  liveOut = [ _T14 _T15 _T29 _T30 ]
+    _T28 = (_T29 == _T30) [ _T28 _T29 _T14 _T30 _T15 ]
+END BY BGTZ, if _T28 = 
+    1 : goto 8; 0 : goto 6
+BASIC BLOCK 6 : 
+  Def     = [ ]
+  liveUse = [ _T30 ]
+  liveIn  = [ _T14 _T15 _T29 _T30 ]
+  liveOut = [ _T14 _T15 _T29 _T30 ]
+    _T30 = *(_T30 + 0) [ _T29 _T14 _T30 _T15 ]
+END BY BGTZ, if _T30 = 
+    1 : goto 5; 0 : goto 7
+BASIC BLOCK 7 : 
+  Def     = [ _T31 _T32 _T33 _T34 _T35 _T36 _T37 ]
+  liveUse = [ _T14 ]
+  liveIn  = [ _T14 _T15 ]
+  liveOut = [ _T14 _T15 ]
+    _T31 = "Decaf runtime error: " [ _T14 _T15 _T31 ]
+    parm _T31 [ _T14 _T15 ]
+    call _PrintString [ _T14 _T15 ]
+    _T32 = *(_T14 + 0) [ _T32 _T14 _T15 ]
+    _T33 = *(_T32 + 4) [ _T33 _T14 _T15 ]
+    parm _T33 [ _T14 _T15 ]
+    call _PrintString [ _T14 _T15 ]
+    _T34 = " cannot be cast to " [ _T34 _T14 _T15 ]
+    parm _T34 [ _T14 _T15 ]
+    call _PrintString [ _T14 _T15 ]
+    _T35 = VTBL <_Goo> [ _T35 _T14 _T15 ]
+    _T36 = *(_T35 + 4) [ _T36 _T14 _T15 ]
+    parm _T36 [ _T14 _T15 ]
+    call _PrintString [ _T14 _T15 ]
+    _T37 = "\n" [ _T37 _T14 _T15 ]
+    parm _T37 [ _T14 _T15 ]
+    call _PrintString [ _T14 _T15 ]
+    call _Halt [ _T14 _T15 ]
+END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+  Def     = [ _T27 _T38 _T39 _T40 _T41 ]
+  liveUse = [ _T14 _T15 ]
+  liveIn  = [ _T14 _T15 ]
+  liveOut = [ ]
+    _T27 = _T14 [ _T27 _T15 ]
+    _T38 = *(_T15 + 4) [ _T38 _T27 ]
+    parm _T27 [ _T38 _T27 ]
+    parm _T38 [ _T27 ]
+    _T39 = *(_T27 + 0) [ _T39 ]
+    _T40 = *(_T39 + 8) [ _T40 ]
+    _T41 =  call _T40 [ ]
+END BY RETURN, void result
+
+FUNCTION _Hoo.printNumbers : 
+BASIC BLOCK 0 : 
+  Def     = [ _T43 _T44 ]
+  liveUse = [ _T1 ]
+  liveIn  = [ _T1 ]
+  liveOut = [ _T1 ]
+    _T43 = 10 [ _T1 _T43 ]
+    _T44 = (_T43 < _T1) [ _T1 _T44 ]
+END BY BEQZ, if _T44 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T1 _T45 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T1 ]
+    _T45 = 10 [ _T45 ]
+    _T1 = _T45 [ _T1 ]
+END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+  Def     = [ _T42 _T46 ]
+  liveUse = [ ]
+  liveIn  = [ _T1 ]
+  liveOut = [ _T1 _T42 ]
+    _T46 = 0 [ _T1 _T46 ]
+    _T42 = _T46 [ _T1 _T42 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T47 ]
+  liveUse = [ _T1 _T42 ]
+  liveIn  = [ _T1 _T42 ]
+  liveOut = [ _T1 _T42 ]
+    _T47 = (_T42 < _T1) [ _T1 _T42 _T47 ]
+END BY BEQZ, if _T47 = 
+    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+  Def     = [ _T48 _T49 ]
+  liveUse = [ _T42 ]
+  liveIn  = [ _T1 _T42 ]
+  liveOut = [ _T1 _T42 ]
+    parm _T42 [ _T1 _T42 ]
+    call _PrintInt [ _T1 _T42 ]
+    _T48 = 2 [ _T48 _T1 _T42 ]
+    _T49 = (_T42 * _T48) [ _T1 _T49 ]
+    _T42 = _T49 [ _T1 _T42 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+  Def     = [ _T50 ]
+  liveUse = [ _T42 ]
+  liveIn  = [ _T42 ]
+  liveOut = [ ]
+    _T50 = "\n" [ _T50 _T42 ]
+    parm _T50 [ _T42 ]
+    call _PrintString [ _T42 ]
+END BY RETURN, result = _T42
+
+FUNCTION _Goo.printNumbers : 
+BASIC BLOCK 0 : 
+  Def     = [ _T51 ]
+  liveUse = [ _T3 ]
+  liveIn  = [ _T3 ]
+  liveOut = [ ]
+    parm _T3 [ ]
+    call _PrintInt [ ]
+    _T51 = 1 [ _T51 ]
+END BY RETURN, result = _T51
+

@@ -1,0 +1,7 @@
+// error 2: missing '}' at the end
+
+class Main {
+    static void main() {
+        int x;
+        x = 2 // error 1: missing ';'
+    }

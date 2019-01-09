@@ -1,0 +1,111 @@
+\documentclass[a4paper]{article}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{ctex,hyperref,graphicx,wrapfig,fancybox,listings}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+\graphicspath{{pic/}}
+\title{\bf Decaf PA1-B}
+\date{2018.11}
+\author{翁家翌~2016011446}
+\begin{document}
+\kaishu
+\ttfamily
+\maketitle
+%\tableofcontents
+%\newpage
+\section{}
+本阶段工作主要如下：
+\begin{itemize}
+	\item 在\uline{Parser.java}的\uline{parse}函数中添加错误处理方法，按照实验指导的方法进行添加。具体为添加两个新的集合“beginA”和“endA”，然后在开始的时候先判断是否要抛异常，如果是则跳过一些字符，剩下代码与原来一致。此外由于递归分析某条分支上报错，那么整个祖先分支都要报错，因此定义了一个全局变量\uline{hasError}来更方便地处理这件事情。
+	\item 在\uline{Parser.spec}中加入LL(1)文法，除\uline{\%\%}、\uline{++}、取子数组、Default和Foreach任务之外剩下与PA1-A基本一致。在通读\uline{Parser.spec}代码之后发现优先级能够通过逐层递归分析得到解决，很受启发。
+	\item 在\uline{Tree.java}中加入生成相关文法的AST的类与函数，与PA1-A类似。我现在来看之前写的代码有很多冗余，因此做了一定程度上的修改。
+\end{itemize}
+\section{}
+由于else语句可以为空，因此在文法G[S]:
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+S -> if C then S E
+E -> else S | <empty>
+\end{lstlisting}
+有
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+PS(E -> else S) & PS(E -> <empty>) = {else}
+\end{lstlisting}
+因此Decaf不是严格的LL(1)语言。但是可以对不同的产生式赋予不同的优先级，比如优先产生else，这样一来PS集合的交即为空，能够处理成LL(1)语言。
+
+比如\uline{test2.decaf}中第21-23行：
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+if (10 < n) {
+    n = 10;
+}
+\end{lstlisting}
+此时{PS(E -> else S) = \{else\}}，然而{else $\not\in$ PS(E -> <empty>)}，因此匹配后面那条规则，冲突得以解决。
+\section{}
+原始编译结果如下所示：
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+1 table generation:
+     [java] Warning: conflict productions at line 964:
+     [java] ElseClause -> ELSE Stmt
+     [java] ElseClause -> <empty>
+     [java] Parser is successfully generated and written to "Table.java"
+\end{lstlisting}
+将\uline{[|}和\uline{|]}改成\uline{[}和\uline{]}之后，编译结果如下所示：
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+1 table generation:
+     [java] Warning: conflict productions at line 777:
+     [java] Expr9 -> Constant
+     [java] Expr9 -> READ_INTEGER '(' ')'
+     [java] Expr9 -> READ_LINE '(' ')'
+     [java] Expr9 -> THIS
+     [java] Expr9 -> NEW AfterNewExpr
+     [java] Expr9 -> INSTANCEOF '(' Expr ',' IDENTIFIER ')'
+     [java] Expr9 -> '(' AfterParenExpr
+     [java] Expr9 -> IDENTIFIER AfterIdentExpr
+     [java] Expr9 -> '[' Expr FOR IDENTIFIER IN Expr IfBoolExpr ']'
+     [java] Warning: conflict productions at line 964:
+     [java] ElseClause -> ELSE Stmt
+     [java] ElseClause -> <empty>
+     [java] Warning: unreachable production:
+     [java] Expr9 -> '[' Expr FOR IDENTIFIER IN Expr IfBoolExpr ']'
+     [java] predictive set is empty
+     [java] Parser is successfully generated and written to "Table.java"
+\end{lstlisting}
+可以看到它和众多产生式冲突，并且预测集为空。具体而言，与数组常量的形式一致，都是\uline{[}开头，有左公因子，无法直接转化为LL(1)文法。
+\section{}
+将\uline{S1+/test1.decaf}的代码第六行int改成in：
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+class Main {
+    bool field;
+
+    class Main another;
+
+    in[] foo(int y) {
+        int[] q;
+        int i;
+
+        q = new int[y];
+        i = 0;
+        while (i < y) {
+            q[i] = i;
+            i = i + 1;
+        }
+
+        return q;
+    }
+
+    static int main() {
+        return this.foo(5).length();    
+    }
+}
+\end{lstlisting}
+报错如下：
+\begin{lstlisting}[basicstyle=\ttfamily\small, numbers=left, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20},extendedchars=true,breaklines=true]
+*** Error at (6,5): syntax error
+*** Error at (6,19): syntax error
+*** Error at (10,9): syntax error
+*** Error at (10,21): syntax error
+*** Error at (10,22): syntax error
+*** Error at (11,9): syntax error
+*** Error at (17,9): syntax error
+\end{lstlisting}
+理论上只要报第六行的error，实际上它报了其他错。因为并没有文法以\uline{in}开头，\uline{in}都是跟在\uline{identifier}之后。根据提供的错误处理方法，在处理到\uline{FieldList}的时候会报错，跳过第六行，7和8当做类中变量声明，10理应是函数实际上却是\uline{Expr}所以报错，之后同理。
+\end{document}

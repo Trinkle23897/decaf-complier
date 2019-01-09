@@ -1,0 +1,27 @@
+class Father {
+	int d;
+	int foo(){
+		return d;
+	}
+}
+class Child extends Father{
+	int b;
+}
+class Main {
+    static void main() {
+
+		int[] a;
+		int c;
+		c = 3;
+		a = c%%10;	
+		foreach(int i in a while c>2){
+			c = c+i;
+			Print(i);
+			Print(c);
+			Print("\n");
+			if (c>20)
+				break;
+		}
+		
+	}
+}

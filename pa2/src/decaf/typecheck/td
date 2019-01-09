@@ -1,0 +1,136 @@
+13,15d12
+< import decaf.error.BadArrIndexError;
+< import decaf.error.BadArrOperArgError;
+< import decaf.error.BadDefError;
+27d21
+< import decaf.error.DeclConflictError;
+43d36
+< import decaf.scope.LocalScope;
+489,492d441
+< 		if (assign.left.type.equal(BaseType.UNKNOWN)) { // var
+< 			assign.left.type = assign.expr.type;
+< 			assign.left.symbol.setType(assign.left.type);
+< 		}
+583,636d531
+< 	@Override
+< 	public void visitExDef(Tree.ExDef exdef) {
+< 		Symbol v = table.lookupBeforeLocation(exdef.name, exdef.getLocation());
+< 		if (exdef.typel == null) {
+< 			if (v != null && exdef.getLocation().compareTo(v.getLocation()) > 0) {
+< 				issueError(new DeclConflictError(exdef.getLocation(), exdef.name, v.getLocation()));
+< 			}
+< 			exdef.type = BaseType.UNKNOWN;
+< 		}
+< 		else {
+< 			exdef.typel.accept(this);
+< 			exdef.type = exdef.typel.type;
+< 		}
+< 	}
+< 	
+< 	@Override
+< 	public void visitForEach(Tree.ForEach foreach) {
+< 		table.open(foreach.associatedScope);
+< 		foreach.exdef.accept(this);
+< 		foreach.expr1.accept(this);
+< 		boolean iserr = false;
+< 		if (foreach.exdef.type.equal(BaseType.UNKNOWN)) { // var
+< 			if (foreach.expr1.type.isArrayType()) {
+< 				foreach.exdef.type = ((ArrayType)foreach.expr1.type).getElementType();
+< 				foreach.exdef.symbol.setType(foreach.exdef.type);
+< 			}
+< 			else {
+< 				iserr = true;
+< 				if (foreach.expr1.type != BaseType.ERROR) {
+< 					foreach.exdef.type = BaseType.ERROR;
+< 					issueError(new BadArrOperArgError(foreach.expr1.getLocation()));
+< 				}
+< 			}
+< 		}
+< 		else {
+< 			if (!foreach.expr1.type.isArrayType() && foreach.exdef.type != BaseType.ERROR) {
+< 				iserr = true;
+< 				issueError(new BadArrOperArgError(foreach.expr1.getLocation()));
+< 			}
+< 		}
+< 		checkTestExpr(foreach.expr2);
+< 		foreach.expr2.accept(this);
+< 		if (!iserr) {
+< 			breaks.add(foreach);
+< 			foreach.stmt.accept(this);
+< 			breaks.pop();
+< 		}
+< 		table.close();
+< 	}
+< 	
+656,669d550
+< 	public void visitVarIdent(Tree.VarIdent varIdent) {
+< 		varIdent.type = BaseType.UNKNOWN;
+< 	}
+< 	
+< 	@Override
+694,731d574
+< 	@Override
+< 	public void visitArrayConst(Tree.ArrayConst arrayConst) {
+< 		for (Tree.Expr i: arrayConst.arrayconst)
+< 			i.accept(this);
+< 		arrayConst.type = arrayConst.arrayconst.get(0).type;
+< 		for (Tree.Expr i: arrayConst.arrayconst) {
+< 			if (!arrayConst.type.equal(i.type)) {
+< 				arrayConst.type = BaseType.ERROR;
+< 				return;
+< 			}
+< 		}
+< 		arrayConst.type = new ArrayType(arrayConst.type);
+< 	}
+< 	
+< 	@Override
+< 	public void visitDefault(Tree.Default deft) {
+< 		deft.array.accept(this);
+< 		deft.index.accept(this);
+< 		deft.deft.accept(this);
+< 		deft.type = BaseType.ERROR;
+< 		if (!deft.index.type.equal(BaseType.INT))
+< 			issueError(new BadArrIndexError(deft.index.getLocation()));
+< 		if (deft.array.type.isArrayType()) {
+< 			Type ele = ((ArrayType)deft.array.type).getElementType();
+< 			deft.type = ele;
+< 			if (!ele.equal(deft.deft.type))
+< 				issueError(new BadDefError(deft.index.getLocation(), ele.toString(), deft.deft.type.toString()));
+< 		}
+< 		else {
+< 			issueError(new BadArrOperArgError(deft.array.getLocation()));
+< 			if (checkBeArr(deft.deft.type))
+< 				deft.type = deft.deft.type;
+< 		}
+< 	}
+< 	
+756d597
+< 		boolean isVar = left.type.equal(BaseType.UNKNOWN) || right.type.equal(BaseType.UNKNOWN);
+758,761d598
+< 		if (op == Tree.MOMO && left.type.equal(BaseType.UNKNOWN)) {
+< 			issueError(new BadArrElementError(location));
+< 			return returnType;
+< 		}
+796,804d632
+< 		case Tree.MOMO:
+< 			compatible = checkBeArr(left.type) && right.type.equal(BaseType.INT);
+< 			returnType = new ArrayType(left.type);
+< 			break;
+< 		case Tree.PLPL:
+< 			compatible = left.type.isArrayType()
+< 					&& right.type.isArrayType()
+< 					&& left.type.equal(right.type);
+< 			returnType = left.type;
+808,810c636,637
+< 		if (isVar)
+< 			returnType = BaseType.ERROR;
+< 		if (!compatible || isVar) {
+---
+> 
+> 		if (!compatible) {
+819,823d643
+< 	private boolean checkBeArr(Type type) {
+< 		return (type.equal(BaseType.INT) || type.equal(BaseType.STRING)
+< 				|| type.equal(BaseType.BOOL) || type.isArrayType());
+< 	}
+< 	

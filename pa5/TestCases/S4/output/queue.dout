@@ -1,0 +1,407 @@
+FUNCTION _QueueItem_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T15 _T16 _T17 _T18 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T15 = 16 [ _T15 ]
+    parm _T15 [ ]
+    _T16 =  call _Alloc [ _T16 ]
+    _T17 = 0 [ _T16 _T17 ]
+    *(_T16 + 4) = _T17 [ _T16 _T17 ]
+    *(_T16 + 8) = _T17 [ _T16 _T17 ]
+    *(_T16 + 12) = _T17 [ _T16 ]
+    _T18 = VTBL <_QueueItem> [ _T16 _T18 ]
+    *(_T16 + 0) = _T18 [ _T16 ]
+END BY RETURN, result = _T16
+
+FUNCTION _Queue_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T19 _T20 _T21 _T22 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T19 = 12 [ _T19 ]
+    parm _T19 [ ]
+    _T20 =  call _Alloc [ _T20 ]
+    _T21 = 0 [ _T20 _T21 ]
+    *(_T20 + 4) = _T21 [ _T20 _T21 ]
+    *(_T20 + 8) = _T21 [ _T20 ]
+    _T22 = VTBL <_Queue> [ _T20 _T22 ]
+    *(_T20 + 0) = _T22 [ _T20 ]
+END BY RETURN, result = _T20
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T23 _T24 _T25 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T23 = 4 [ _T23 ]
+    parm _T23 [ ]
+    _T24 =  call _Alloc [ _T24 ]
+    _T25 = VTBL <_Main> [ _T24 _T25 ]
+    *(_T24 + 0) = _T25 [ _T24 ]
+END BY RETURN, result = _T24
+
+FUNCTION _QueueItem.Init : 
+BASIC BLOCK 0 : 
+  Def     = [ _T26 _T27 _T28 _T29 _T30 ]
+  liveUse = [ _T0 _T1 _T2 _T3 ]
+  liveIn  = [ _T0 _T1 _T2 _T3 ]
+  liveOut = [ _T0 _T1 _T2 _T3 ]
+    _T26 = *(_T0 + 4) [ _T0 _T1 _T2 _T3 ]
+    *(_T0 + 4) = _T1 [ _T0 _T1 _T2 _T3 ]
+    _T27 = *(_T0 + 8) [ _T0 _T1 _T2 _T3 ]
+    *(_T0 + 8) = _T2 [ _T0 _T1 _T2 _T3 ]
+    _T28 = *(_T2 + 12) [ _T0 _T1 _T2 _T3 ]
+    *(_T2 + 12) = _T0 [ _T0 _T1 _T2 _T3 ]
+    _T29 = *(_T0 + 12) [ _T0 _T1 _T2 _T3 ]
+    *(_T0 + 12) = _T3 [ _T0 _T1 _T2 _T3 ]
+    _T30 = *(_T3 + 8) [ _T0 _T1 _T2 _T3 ]
+    *(_T3 + 8) = _T0 [ _T0 _T1 _T2 _T3 ]
+END BY RETURN, void result
+
+FUNCTION _QueueItem.GetData : 
+BASIC BLOCK 0 : 
+  Def     = [ _T31 ]
+  liveUse = [ _T4 ]
+  liveIn  = [ _T4 ]
+  liveOut = [ _T4 ]
+    _T31 = *(_T4 + 4) [ _T4 _T31 ]
+END BY RETURN, result = _T31
+
+FUNCTION _QueueItem.GetNext : 
+BASIC BLOCK 0 : 
+  Def     = [ _T32 ]
+  liveUse = [ _T5 ]
+  liveIn  = [ _T5 ]
+  liveOut = [ _T5 ]
+    _T32 = *(_T5 + 8) [ _T32 _T5 ]
+END BY RETURN, result = _T32
+
+FUNCTION _QueueItem.GetPrev : 
+BASIC BLOCK 0 : 
+  Def     = [ _T33 ]
+  liveUse = [ _T6 ]
+  liveIn  = [ _T6 ]
+  liveOut = [ _T6 ]
+    _T33 = *(_T6 + 12) [ _T33 _T6 ]
+END BY RETURN, result = _T33
+
+FUNCTION _QueueItem.SetNext : 
+BASIC BLOCK 0 : 
+  Def     = [ _T34 ]
+  liveUse = [ _T7 _T8 ]
+  liveIn  = [ _T7 _T8 ]
+  liveOut = [ _T7 _T8 ]
+    _T34 = *(_T7 + 8) [ _T7 _T8 ]
+    *(_T7 + 8) = _T8 [ _T7 _T8 ]
+END BY RETURN, void result
+
+FUNCTION _QueueItem.SetPrev : 
+BASIC BLOCK 0 : 
+  Def     = [ _T35 ]
+  liveUse = [ _T9 _T10 ]
+  liveIn  = [ _T9 _T10 ]
+  liveOut = [ _T9 _T10 ]
+    _T35 = *(_T9 + 12) [ _T9 _T10 ]
+    *(_T9 + 12) = _T10 [ _T9 _T10 ]
+END BY RETURN, void result
+
+FUNCTION _Queue.Init : 
+BASIC BLOCK 0 : 
+  Def     = [ _T36 _T37 _T38 _T39 _T40 _T41 _T42 _T43 ]
+  liveUse = [ _T11 ]
+  liveIn  = [ _T11 ]
+  liveOut = [ _T11 ]
+    _T36 = *(_T11 + 8) [ _T11 ]
+    _T37 =  call _QueueItem_New [ _T37 _T11 ]
+    *(_T11 + 8) = _T37 [ _T11 ]
+    _T38 = *(_T11 + 8) [ _T38 _T11 ]
+    _T39 = 0 [ _T38 _T39 _T11 ]
+    _T40 = *(_T11 + 8) [ _T38 _T39 _T40 _T11 ]
+    _T41 = *(_T11 + 8) [ _T38 _T39 _T40 _T41 _T11 ]
+    parm _T38 [ _T38 _T39 _T40 _T41 _T11 ]
+    parm _T39 [ _T38 _T40 _T41 _T11 ]
+    parm _T40 [ _T38 _T41 _T11 ]
+    parm _T41 [ _T38 _T11 ]
+    _T42 = *(_T38 + 0) [ _T42 _T11 ]
+    _T43 = *(_T42 + 8) [ _T11 _T43 ]
+    icall _T43 [ _T11 ]
+END BY RETURN, void result
+
+FUNCTION _Queue.EnQueue : 
+BASIC BLOCK 0 : 
+  Def     = [ _T44 _T45 _T46 _T47 _T48 _T49 _T50 _T51 _T52 ]
+  liveUse = [ _T12 _T13 ]
+  liveIn  = [ _T12 _T13 ]
+  liveOut = [ _T12 _T13 ]
+    _T45 =  call _QueueItem_New [ _T12 _T13 _T45 ]
+    _T44 = _T45 [ _T12 _T44 _T13 ]
+    _T46 = *(_T12 + 8) [ _T12 _T44 _T13 _T46 ]
+    parm _T46 [ _T12 _T44 _T13 _T46 ]
+    _T47 = *(_T46 + 0) [ _T12 _T44 _T13 _T47 ]
+    _T48 = *(_T47 + 16) [ _T48 _T12 _T44 _T13 ]
+    _T49 =  icall _T48 [ _T49 _T12 _T44 _T13 ]
+    _T50 = *(_T12 + 8) [ _T49 _T50 _T12 _T44 _T13 ]
+    parm _T44 [ _T49 _T50 _T12 _T44 _T13 ]
+    parm _T13 [ _T49 _T50 _T12 _T44 _T13 ]
+    parm _T49 [ _T50 _T12 _T44 _T13 ]
+    parm _T50 [ _T12 _T44 _T13 ]
+    _T51 = *(_T44 + 0) [ _T51 _T12 _T13 ]
+    _T52 = *(_T51 + 8) [ _T52 _T12 _T13 ]
+    icall _T52 [ _T12 _T13 ]
+END BY RETURN, void result
+
+FUNCTION _Queue.DeQueue : 
+BASIC BLOCK 0 : 
+  Def     = [ _T54 _T55 _T56 _T57 _T58 _T59 ]
+  liveUse = [ _T14 ]
+  liveIn  = [ _T14 ]
+  liveOut = [ _T14 ]
+    _T54 = *(_T14 + 8) [ _T54 _T14 ]
+    parm _T54 [ _T54 _T14 ]
+    _T55 = *(_T54 + 0) [ _T55 _T14 ]
+    _T56 = *(_T55 + 20) [ _T56 _T14 ]
+    _T57 =  icall _T56 [ _T57 _T14 ]
+    _T58 = *(_T14 + 8) [ _T57 _T58 _T14 ]
+    _T59 = (_T57 == _T58) [ _T59 _T14 ]
+END BY BEQZ, if _T59 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T60 _T61 ]
+  liveUse = [ ]
+  liveIn  = [ _T14 ]
+  liveOut = [ _T14 ]
+    _T60 = "Queue Is Empty" [ _T60 _T14 ]
+    parm _T60 [ _T14 ]
+    call _PrintString [ _T14 ]
+    _T61 = 0 [ _T61 _T14 ]
+END BY RETURN, result = _T61
+BASIC BLOCK 2 : 
+  Def     = [ _T53 _T62 _T63 _T64 _T65 _T66 _T67 _T68 _T69 _T70 _T71 _T72 _T73 _T74 _T75 _T76 _T77 _T78 _T79 _T80 _T81 _T82 _T83 _T84 _T85 ]
+  liveUse = [ _T14 ]
+  liveIn  = [ _T14 ]
+  liveOut = [ _T14 _T53 ]
+    _T63 = *(_T14 + 8) [ _T14 _T63 ]
+    parm _T63 [ _T14 _T63 ]
+    _T64 = *(_T63 + 0) [ _T64 _T14 ]
+    _T65 = *(_T64 + 20) [ _T65 _T14 ]
+    _T66 =  icall _T65 [ _T66 _T14 ]
+    _T62 = _T66 [ _T14 _T62 ]
+    parm _T62 [ _T14 _T62 ]
+    _T67 = *(_T62 + 0) [ _T67 _T14 _T62 ]
+    _T68 = *(_T67 + 12) [ _T68 _T14 _T62 ]
+    _T69 =  icall _T68 [ _T69 _T14 _T62 ]
+    _T53 = _T69 [ _T53 _T14 _T62 ]
+    parm _T62 [ _T53 _T14 _T62 ]
+    _T70 = *(_T62 + 0) [ _T53 _T70 _T14 _T62 ]
+    _T71 = *(_T70 + 20) [ _T53 _T71 _T14 _T62 ]
+    _T72 =  icall _T71 [ _T53 _T72 _T14 _T62 ]
+    parm _T62 [ _T53 _T72 _T14 _T62 ]
+    _T73 = *(_T62 + 0) [ _T53 _T72 _T73 _T14 _T62 ]
+    _T74 = *(_T73 + 16) [ _T53 _T72 _T74 _T14 _T62 ]
+    _T75 =  icall _T74 [ _T53 _T72 _T75 _T14 _T62 ]
+    parm _T72 [ _T53 _T72 _T75 _T14 _T62 ]
+    parm _T75 [ _T53 _T72 _T14 _T62 ]
+    _T76 = *(_T72 + 0) [ _T53 _T76 _T14 _T62 ]
+    _T77 = *(_T76 + 24) [ _T53 _T77 _T14 _T62 ]
+    icall _T77 [ _T53 _T14 _T62 ]
+    parm _T62 [ _T53 _T14 _T62 ]
+    _T78 = *(_T62 + 0) [ _T53 _T14 _T62 _T78 ]
+    _T79 = *(_T78 + 16) [ _T53 _T14 _T62 _T79 ]
+    _T80 =  icall _T79 [ _T80 _T53 _T14 _T62 ]
+    parm _T62 [ _T80 _T53 _T14 _T62 ]
+    _T81 = *(_T62 + 0) [ _T80 _T81 _T53 _T14 ]
+    _T82 = *(_T81 + 20) [ _T80 _T82 _T53 _T14 ]
+    _T83 =  icall _T82 [ _T80 _T83 _T53 _T14 ]
+    parm _T80 [ _T80 _T83 _T53 _T14 ]
+    parm _T83 [ _T80 _T53 _T14 ]
+    _T84 = *(_T80 + 0) [ _T84 _T53 _T14 ]
+    _T85 = *(_T84 + 28) [ _T53 _T85 _T14 ]
+    icall _T85 [ _T53 _T14 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+  Def     = [ ]
+  liveUse = [ _T53 ]
+  liveIn  = [ _T14 _T53 ]
+  liveOut = [ _T14 ]
+END BY RETURN, result = _T53
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T86 _T87 _T88 _T89 _T90 _T91 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T86 _T87 ]
+    _T88 =  call _Queue_New [ _T88 ]
+    _T86 = _T88 [ _T86 ]
+    parm _T86 [ _T86 ]
+    _T89 = *(_T86 + 0) [ _T86 _T89 ]
+    _T90 = *(_T89 + 8) [ _T86 _T90 ]
+    icall _T90 [ _T86 ]
+    _T91 = 0 [ _T86 _T91 ]
+    _T87 = _T91 [ _T86 _T87 ]
+END BY BRANCH, goto 2
+BASIC BLOCK 1 : 
+  Def     = [ _T92 _T93 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T92 = 1 [ _T86 _T87 _T92 ]
+    _T93 = (_T87 + _T92) [ _T86 _T93 ]
+    _T87 = _T93 [ _T86 _T87 ]
+END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+  Def     = [ _T94 _T95 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T94 = 10 [ _T86 _T87 _T94 ]
+    _T95 = (_T87 < _T94) [ _T86 _T87 _T95 ]
+END BY BEQZ, if _T95 = 
+    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T96 _T97 ]
+  liveUse = [ _T86 _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    parm _T86 [ _T86 _T87 ]
+    parm _T87 [ _T86 _T87 ]
+    _T96 = *(_T86 + 0) [ _T96 _T86 _T87 ]
+    _T97 = *(_T96 + 12) [ _T97 _T86 _T87 ]
+    icall _T97 [ _T86 _T87 ]
+END BY BRANCH, goto 1
+BASIC BLOCK 4 : 
+  Def     = [ _T87 _T98 ]
+  liveUse = [ ]
+  liveIn  = [ _T86 ]
+  liveOut = [ _T86 _T87 ]
+    _T98 = 0 [ _T98 _T86 ]
+    _T87 = _T98 [ _T86 _T87 ]
+END BY BRANCH, goto 6
+BASIC BLOCK 5 : 
+  Def     = [ _T99 _T100 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T99 = 1 [ _T99 _T86 _T87 ]
+    _T100 = (_T87 + _T99) [ _T100 _T86 ]
+    _T87 = _T100 [ _T86 _T87 ]
+END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+  Def     = [ _T101 _T102 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T101 = 4 [ _T101 _T86 _T87 ]
+    _T102 = (_T87 < _T101) [ _T86 _T102 _T87 ]
+END BY BEQZ, if _T102 = 
+    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+  Def     = [ _T103 _T104 _T105 _T106 ]
+  liveUse = [ _T86 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    parm _T86 [ _T86 _T87 ]
+    _T103 = *(_T86 + 0) [ _T86 _T87 _T103 ]
+    _T104 = *(_T103 + 16) [ _T86 _T87 _T104 ]
+    _T105 =  icall _T104 [ _T86 _T87 _T105 ]
+    parm _T105 [ _T86 _T87 ]
+    call _PrintInt [ _T86 _T87 ]
+    _T106 = " " [ _T86 _T87 _T106 ]
+    parm _T106 [ _T86 _T87 ]
+    call _PrintString [ _T86 _T87 ]
+END BY BRANCH, goto 5
+BASIC BLOCK 8 : 
+  Def     = [ _T87 _T107 _T108 ]
+  liveUse = [ ]
+  liveIn  = [ _T86 ]
+  liveOut = [ _T86 _T87 ]
+    _T107 = "\n" [ _T86 _T107 ]
+    parm _T107 [ _T86 ]
+    call _PrintString [ _T86 ]
+    _T108 = 0 [ _T86 _T108 ]
+    _T87 = _T108 [ _T86 _T87 ]
+END BY BRANCH, goto 10
+BASIC BLOCK 9 : 
+  Def     = [ _T109 _T110 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T109 = 1 [ _T86 _T87 _T109 ]
+    _T110 = (_T87 + _T109) [ _T86 _T110 ]
+    _T87 = _T110 [ _T86 _T87 ]
+END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+  Def     = [ _T111 _T112 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T111 = 10 [ _T86 _T87 _T111 ]
+    _T112 = (_T87 < _T111) [ _T112 _T86 _T87 ]
+END BY BEQZ, if _T112 = 
+    0 : goto 12; 1 : goto 11
+BASIC BLOCK 11 : 
+  Def     = [ _T113 _T114 ]
+  liveUse = [ _T86 _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    parm _T86 [ _T86 _T87 ]
+    parm _T87 [ _T86 _T87 ]
+    _T113 = *(_T86 + 0) [ _T113 _T86 _T87 ]
+    _T114 = *(_T113 + 12) [ _T114 _T86 _T87 ]
+    icall _T114 [ _T86 _T87 ]
+END BY BRANCH, goto 9
+BASIC BLOCK 12 : 
+  Def     = [ _T87 _T115 ]
+  liveUse = [ ]
+  liveIn  = [ _T86 ]
+  liveOut = [ _T86 _T87 ]
+    _T115 = 0 [ _T115 _T86 ]
+    _T87 = _T115 [ _T86 _T87 ]
+END BY BRANCH, goto 14
+BASIC BLOCK 13 : 
+  Def     = [ _T116 _T117 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T116 = 1 [ _T116 _T86 _T87 ]
+    _T117 = (_T87 + _T116) [ _T117 _T86 ]
+    _T87 = _T117 [ _T86 _T87 ]
+END BY BRANCH, goto 14
+BASIC BLOCK 14 : 
+  Def     = [ _T118 _T119 ]
+  liveUse = [ _T87 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    _T118 = 17 [ _T86 _T118 _T87 ]
+    _T119 = (_T87 < _T118) [ _T86 _T87 _T119 ]
+END BY BEQZ, if _T119 = 
+    0 : goto 16; 1 : goto 15
+BASIC BLOCK 15 : 
+  Def     = [ _T120 _T121 _T122 _T123 ]
+  liveUse = [ _T86 ]
+  liveIn  = [ _T86 _T87 ]
+  liveOut = [ _T86 _T87 ]
+    parm _T86 [ _T86 _T87 ]
+    _T120 = *(_T86 + 0) [ _T86 _T87 _T120 ]
+    _T121 = *(_T120 + 16) [ _T86 _T87 _T121 ]
+    _T122 =  icall _T121 [ _T86 _T87 _T122 ]
+    parm _T122 [ _T86 _T87 ]
+    call _PrintInt [ _T86 _T87 ]
+    _T123 = " " [ _T86 _T87 _T123 ]
+    parm _T123 [ _T86 _T87 ]
+    call _PrintString [ _T86 _T87 ]
+END BY BRANCH, goto 13
+BASIC BLOCK 16 : 
+  Def     = [ _T124 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T124 = "\n" [ _T124 ]
+    parm _T124 [ ]
+    call _PrintString [ ]
+END BY RETURN, void result
+

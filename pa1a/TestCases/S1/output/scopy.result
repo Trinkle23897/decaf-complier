@@ -1,0 +1,54 @@
+program
+    class Point <empty>
+        vardef x inttype
+        vardef y inttype
+        func setX voidtype
+            formals
+                vardef x inttype
+            stmtblock
+                assign
+                    varref x
+                        this
+                    varref x
+        func setY voidtype
+            formals
+                vardef y inttype
+            stmtblock
+                assign
+                    varref y
+                        this
+                    varref y
+        func toString stringtype
+            formals
+            stmtblock
+                return
+                    add
+                        add
+                            add
+                                add
+                                    stringconst "("
+                                    varref x
+                                stringconst ","
+                            varref y
+                        stringconst ")"
+    class Main <empty>
+        static func main voidtype
+            formals
+            stmtblock
+                vardef p classtype Point
+                assign
+                    varref p
+                    newobj Point
+                call setX
+                    varref p
+                    intconst 1
+                call setY
+                    varref p
+                    intconst 1
+                vardef p1 classtype Point
+                scopy
+                    p1
+                    varref p
+                print
+                    call toString
+                        varref p1

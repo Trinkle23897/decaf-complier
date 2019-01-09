@@ -1,0 +1,57 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T0 = 4 [ 2 ]
+2	parm _T0
+3	_T1 =  call _Alloc [ 5 6 ]
+4	_T2 = VTBL <_Main> [ 5 ]
+5	*(_T1 + 0) = _T2
+6	END BY RETURN, result = _T1
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+7	call _Main.f
+8	END BY RETURN, void result
+
+FUNCTION _Main.f : 
+BASIC BLOCK 0 : 
+9	_T7 = 0 [ 10 ]
+10	_T5 = _T7 [ ]
+11	_T8 = 1 [ 12 ]
+12	_T6 = _T8 [ ]
+13	_T10 = 0 [ 14 ]
+14	_T9 = _T10 [ 21 24 30 ]
+15	_T11 = 2 [ 16 ]
+16	_T3 = _T11 [ 18 ]
+17	_T12 = 1 [ 18 ]
+18	_T13 = (_T3 + _T12) [ 19 ]
+19	_T4 = _T13 [ 28 ]
+20	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+21	END BY BEQZ, if _T9 = 
+	    0 : goto 7; 1 : goto 2
+BASIC BLOCK 2 : 
+22	_T14 = 1 [ 23 ]
+23	_T3 = _T14 [ 35 ]
+24	END BY BEQZ, if _T9 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+25	call _Main.f
+26	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+27	_T15 = 1 [ 28 ]
+28	_T16 = (_T4 + _T15) [ 29 ]
+29	_T4 = _T16 [ 28 32 36 ]
+30	END BY BEQZ, if _T9 = 
+	    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+31	_T17 = 4 [ 32 ]
+32	_T18 = (_T4 - _T17) [ 33 ]
+33	_T4 = _T18 [ 28 36 ]
+34	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+35	_T5 = _T3 [ ]
+36	_T6 = _T4 [ ]
+37	END BY BRANCH, goto 1
+BASIC BLOCK 7 : 
+38	END BY RETURN, void result
+

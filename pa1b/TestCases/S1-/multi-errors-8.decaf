@@ -1,0 +1,10 @@
+class Main {
+    static void main() {
+        int x,y; // error 1: this grammar is not supported
+        x = 0xf;
+        y = 0xff;
+        ;
+        PrintComp(z,); // error 2: missing parameter after ','
+        return 0;
+    }
+}

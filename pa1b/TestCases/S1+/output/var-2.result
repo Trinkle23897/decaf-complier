@@ -1,0 +1,37 @@
+program
+    class Main <empty>
+        static func foo inttype
+            formals
+            stmtblock
+                assign
+                    var cnt
+                    intconst 1
+                for
+                    assign
+                        var i
+                        intconst 0
+                    les
+                        varref i
+                        intconst 100
+                    assign
+                        varref i
+                        add
+                            varref i
+                            intconst 2
+                    stmtblock
+                        assign
+                            varref cnt
+                            mul
+                                varref cnt
+                                varref i
+                return
+                    varref cnt
+        static func main voidtype
+            formals
+            stmtblock
+                assign
+                    var k
+                    call foo
+                        <empty>
+                print
+                    varref k

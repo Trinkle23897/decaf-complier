@@ -1,0 +1,18 @@
+class Main {
+    void foo() {
+        if { true: if { false: Print("unreachable"); } }
+    }
+
+    void bar() {
+        int x;
+        x = ReadInteger();
+        if { true: if (x > 0) if { x == 1: Print("x=1"); ||| x == 2: Print("x=2"); }
+                   else if {} }
+    }
+
+    static void main() {
+        if {}
+        foo();
+        bar();
+    }
+}

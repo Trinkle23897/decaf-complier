@@ -1,0 +1,8 @@
+// Unterminated `}` for `if`.
+
+class Main {
+    static void main() {
+        if { true: if { false: if { } }
+        while (false) {}
+    }
+}

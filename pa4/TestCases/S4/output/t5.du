@@ -1,0 +1,63 @@
+FUNCTION _Cow_New : 
+BASIC BLOCK 0 : 
+1	_T4 = 12 [ 2 ]
+2	parm _T4
+3	_T5 =  call _Alloc [ 5 6 8 9 ]
+4	_T6 = 0 [ 5 6 ]
+5	*(_T5 + 4) = _T6
+6	*(_T5 + 8) = _T6
+7	_T7 = VTBL <_Cow> [ 8 ]
+8	*(_T5 + 0) = _T7
+9	END BY RETURN, result = _T5
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+10	_T8 = 4 [ 11 ]
+11	parm _T8
+12	_T9 =  call _Alloc [ 14 15 ]
+13	_T10 = VTBL <_Main> [ 14 ]
+14	*(_T9 + 0) = _T10
+15	END BY RETURN, result = _T9
+
+FUNCTION _Cow.Init : 
+BASIC BLOCK 0 : 
+16	_T11 = *(_T0 + 8) [ ]
+17	*(_T0 + 8) = _T1
+18	_T12 = *(_T0 + 4) [ ]
+19	*(_T0 + 4) = _T2
+20	END BY RETURN, void result
+
+FUNCTION _Cow.Moo : 
+BASIC BLOCK 0 : 
+21	_T13 = *(_T3 + 4) [ 22 ]
+22	parm _T13
+23	call _PrintInt
+24	_T14 = " " [ 25 ]
+25	parm _T14
+26	call _PrintString
+27	_T15 = *(_T3 + 8) [ 28 ]
+28	parm _T15
+29	call _PrintInt
+30	_T16 = "\n" [ 31 ]
+31	parm _T16
+32	call _PrintString
+33	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+34	_T18 =  call _Cow_New [ 35 ]
+35	_T17 = _T18 [ 38 41 44 45 ]
+36	_T19 = 100 [ 39 ]
+37	_T20 = 122 [ 40 ]
+38	parm _T17
+39	parm _T19
+40	parm _T20
+41	_T21 = *(_T17 + 0) [ 42 ]
+42	_T22 = *(_T21 + 8) [ 43 ]
+43	call _T22
+44	parm _T17
+45	_T23 = *(_T17 + 0) [ 46 ]
+46	_T24 = *(_T23 + 12) [ 47 ]
+47	call _T24
+48	END BY RETURN, void result
+

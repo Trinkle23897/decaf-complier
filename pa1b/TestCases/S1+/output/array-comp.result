@@ -1,0 +1,56 @@
+program
+    class Main <empty>
+        static func main voidtype
+            formals
+            stmtblock
+                vardef xs arrtype inttype
+                assign
+                    varref xs
+                    newarray inttype
+                        intconst 10
+                vardef plus1 arrtype inttype
+                assign
+                    varref plus1
+                    array comp
+                        varbind x
+                        varref xs
+                        boolconst true
+                        add
+                            varref x
+                            intconst 1
+                vardef is_positive arrtype booltype
+                assign
+                    varref is_positive
+                    array comp
+                        varbind x
+                        varref xs
+                        boolconst true
+                        gtr
+                            varref x
+                            intconst 0
+                vardef positive arrtype inttype
+                assign
+                    varref positive
+                    array comp
+                        varbind x
+                        varref xs
+                        gtr
+                            varref x
+                            intconst 0
+                        varref x
+                vardef y inttype
+                assign
+                    varref y
+                    intconst 3
+                vardef times_y_ge_5 arrtype inttype
+                assign
+                    varref times_y
+                    array comp
+                        varbind x
+                        varref xs
+                        geq
+                            varref x
+                            intconst 5
+                        mul
+                            varref x
+                            varref y

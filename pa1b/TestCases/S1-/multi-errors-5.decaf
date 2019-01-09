@@ -1,0 +1,7 @@
+class Base {}
+
+class A : Base {} // error 1: 'extends' expected but ':' found
+
+class B extends {} // error 2: missing base class name
+
+class C extends Base {}

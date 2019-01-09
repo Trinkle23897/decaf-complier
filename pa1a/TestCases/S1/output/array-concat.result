@@ -1,0 +1,42 @@
+program
+    class Main <empty>
+        static func empty arrtype inttype
+            formals
+            stmtblock
+                vardef nil arrtype inttype
+                assign
+                    varref nil
+                    newarray inttype
+                        intconst 0
+                return
+                    varref nil
+        static func main voidtype
+            formals
+            stmtblock
+                vardef ws arrtype inttype
+                vardef xs arrtype inttype
+                vardef ys arrtype booltype
+                vardef zs arrtype stringtype
+                vardef arr arrtype inttype
+                assign
+                    varref arr
+                    array concat
+                        varref ws
+                        varref xs
+                vardef err arrtype inttype
+                assign
+                    varref err
+                    array concat
+                        varref ws
+                        array concat
+                            varref xs
+                            varref ys
+                vardef arr1 arrtype inttype
+                assign
+                    varref arr1
+                    array concat
+                        varref ws
+                        array concat
+                            varref xs
+                            call empty
+                                <empty>

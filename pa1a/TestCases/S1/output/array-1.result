@@ -1,0 +1,54 @@
+program
+    class Main <empty>
+        static func bar arrtype stringtype
+            formals
+                vardef opt inttype
+            stmtblock
+                guarded
+                    guard
+                        equ
+                            varref opt
+                            intconst 1
+                        return
+                            array const
+                                stringconst "Bye"
+                    guard
+                        equ
+                            varref opt
+                            intconst 2
+                        stmtblock
+                            assign
+                                var arr1
+                                array const
+                                    stringconst "Hello"
+                            assign
+                                var arr2
+                                array const
+                                    stringconst "World"
+                            return
+                                array concat
+                                    array repeat
+                                        varref arr1
+                                        intconst 2
+                                    varref arr2
+        static func main voidtype
+            formals
+            stmtblock
+                foreach
+                    varbind s var
+                    call bar
+                        <empty>
+                        intconst 2
+                    boolconst true
+                    stmtblock
+                        print
+                            varref s
+                foreach
+                    varbind s var
+                    call bar
+                        <empty>
+                        intconst 1
+                    boolconst true
+                    stmtblock
+                        print
+                            varref s

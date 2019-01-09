@@ -1,0 +1,205 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T3 = 12 [ 2 ]
+2	parm _T3
+3	_T4 =  call _Alloc [ 5 6 8 9 ]
+4	_T5 = 0 [ 5 6 ]
+5	*(_T4 + 4) = _T5
+6	*(_T4 + 8) = _T5
+7	_T6 = VTBL <_Main> [ 8 ]
+8	*(_T4 + 0) = _T6
+9	END BY RETURN, result = _T4
+
+FUNCTION _Main.tester : 
+BASIC BLOCK 0 : 
+10	_T7 = *(_T0 + 8) [ ]
+11	_T8 = 1 [ 13 21 25 ]
+12	_T9 = 0 [ 13 ]
+13	_T10 = (_T8 < _T9) [ 14 ]
+14	END BY BEQZ, if _T10 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+15	_T11 = "Decaf runtime error: Cannot create negative-sized array\n" [ 16 ]
+16	parm _T11
+17	call _PrintString
+18	call _Halt
+19	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+20	_T12 = 4 [ 21 22 29 31 ]
+21	_T13 = (_T12 * _T8) [ 22 ]
+22	_T14 = (_T12 + _T13) [ 23 27 29 ]
+23	parm _T14
+24	_T15 =  call _Alloc [ 25 27 ]
+25	*(_T15 + 0) = _T8
+26	_T16 = 0 [ 32 ]
+27	_T15 = (_T15 + _T14) [ 31 34 ]
+28	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+29	_T14 = (_T14 - _T12) [ 29 30 ]
+30	END BY BEQZ, if _T14 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+31	_T15 = (_T15 - _T12) [ 31 32 34 ]
+32	*(_T15 + 0) = _T16
+33	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+34	*(_T0 + 8) = _T15
+35	_T17 = 0 [ 36 ]
+36	_T18 = (_T1 < _T17) [ 37 ]
+37	END BY BEQZ, if _T18 = 
+	    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+38	_T19 = "Decaf runtime error: Cannot create negative-sized array\n" [ 39 ]
+39	parm _T19
+40	call _PrintString
+41	call _Halt
+42	END BY BRANCH, goto 7
+BASIC BLOCK 7 : 
+43	_T20 = 4 [ 44 45 52 54 ]
+44	_T21 = (_T20 * _T1) [ 45 ]
+45	_T22 = (_T20 + _T21) [ 46 50 52 ]
+46	parm _T22
+47	_T23 =  call _Alloc [ 48 50 ]
+48	*(_T23 + 0) = _T1
+49	_T24 = 0 [ 55 ]
+50	_T23 = (_T23 + _T22) [ 54 57 ]
+51	END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+52	_T22 = (_T22 - _T20) [ 52 53 ]
+53	END BY BEQZ, if _T22 = 
+	    0 : goto 10; 1 : goto 9
+BASIC BLOCK 9 : 
+54	_T23 = (_T23 - _T20) [ 54 55 57 ]
+55	*(_T23 + 0) = _T24
+56	END BY BRANCH, goto 8
+BASIC BLOCK 10 : 
+57	END BY RETURN, result = _T23
+
+FUNCTION _Main.start : 
+BASIC BLOCK 0 : 
+58	_T28 = 1 [ 59 ]
+59	_T25 = _T28 [ 62 65 70 79 85 ]
+60	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+61	_T29 = 5 [ 62 ]
+62	_T30 = (_T25 < _T29) [ 63 ]
+63	END BY BEQZ, if _T30 = 
+	    0 : goto 5; 1 : goto 2
+BASIC BLOCK 2 : 
+64	_T31 = 2 [ 65 ]
+65	_T32 = (_T25 % _T31) [ 67 ]
+66	_T33 = 0 [ 67 ]
+67	_T34 = (_T32 == _T33) [ 68 ]
+68	END BY BEQZ, if _T34 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+69	parm _T2
+70	parm _T25
+71	_T35 = *(_T2 + 0) [ 72 ]
+72	_T36 = *(_T35 + 8) [ 73 ]
+73	_T37 =  call _T36 [ 74 ]
+74	_T27 = _T37 [ 89 102 107 110 123 125 138 145 ]
+75	END BY BRANCH, goto 5
+BASIC BLOCK 4 : 
+76	_T38 = "Loop " [ 77 ]
+77	parm _T38
+78	call _PrintString
+79	parm _T25
+80	call _PrintInt
+81	_T39 = "\n" [ 82 ]
+82	parm _T39
+83	call _PrintString
+84	_T40 = 1 [ 85 ]
+85	_T41 = (_T25 + _T40) [ 86 ]
+86	_T25 = _T41 [ 62 65 70 79 85 ]
+87	END BY BRANCH, goto 1
+BASIC BLOCK 5 : 
+88	_T42 = 0 [ 90 93 101 106 ]
+89	_T43 = *(_T27 - 4) [ 90 ]
+90	_T44 = (_T42 < _T43) [ 91 ]
+91	END BY BEQZ, if _T44 = 
+	    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+92	_T45 = 0 [ 93 ]
+93	_T46 = (_T42 < _T45) [ 94 ]
+94	END BY BEQZ, if _T46 = 
+	    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+95	_T47 = "Decaf runtime error: Array subscript out of bounds\n" [ 96 ]
+96	parm _T47
+97	call _PrintString
+98	call _Halt
+99	END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+100	_T48 = 4 [ 101 ]
+101	_T49 = (_T42 * _T48) [ 102 ]
+102	_T50 = (_T27 + _T49) [ 103 ]
+103	_T51 = *(_T50 + 0) [ ]
+104	_T52 = 0 [ 108 ]
+105	_T53 = 4 [ 106 ]
+106	_T54 = (_T42 * _T53) [ 107 ]
+107	_T55 = (_T27 + _T54) [ 108 ]
+108	*(_T55 + 0) = _T52
+109	_T56 = 0 [ 111 114 122 ]
+110	_T57 = *(_T27 - 4) [ 111 ]
+111	_T58 = (_T56 < _T57) [ 112 ]
+112	END BY BEQZ, if _T58 = 
+	    0 : goto 10; 1 : goto 9
+BASIC BLOCK 9 : 
+113	_T59 = 0 [ 114 ]
+114	_T60 = (_T56 < _T59) [ 115 ]
+115	END BY BEQZ, if _T60 = 
+	    0 : goto 11; 1 : goto 10
+BASIC BLOCK 10 : 
+116	_T61 = "Decaf runtime error: Array subscript out of bounds\n" [ 117 ]
+117	parm _T61
+118	call _PrintString
+119	call _Halt
+120	END BY BRANCH, goto 11
+BASIC BLOCK 11 : 
+121	_T62 = 4 [ 122 ]
+122	_T63 = (_T56 * _T62) [ 123 ]
+123	_T64 = (_T27 + _T63) [ 124 ]
+124	_T65 = *(_T64 + 0) [ 126 129 137 ]
+125	_T66 = *(_T27 - 4) [ 126 ]
+126	_T67 = (_T65 < _T66) [ 127 ]
+127	END BY BEQZ, if _T67 = 
+	    0 : goto 13; 1 : goto 12
+BASIC BLOCK 12 : 
+128	_T68 = 0 [ 129 ]
+129	_T69 = (_T65 < _T68) [ 130 ]
+130	END BY BEQZ, if _T69 = 
+	    0 : goto 14; 1 : goto 13
+BASIC BLOCK 13 : 
+131	_T70 = "Decaf runtime error: Array subscript out of bounds\n" [ 132 ]
+132	parm _T70
+133	call _PrintString
+134	call _Halt
+135	END BY BRANCH, goto 14
+BASIC BLOCK 14 : 
+136	_T71 = 4 [ 137 ]
+137	_T72 = (_T65 * _T71) [ 138 ]
+138	_T73 = (_T27 + _T72) [ 139 ]
+139	_T74 = *(_T73 + 0) [ 140 ]
+140	parm _T74
+141	call _PrintInt
+142	_T75 = "\n" [ 143 ]
+143	parm _T75
+144	call _PrintString
+145	_T76 = *(_T27 - 4) [ 146 ]
+146	parm _T76
+147	call _PrintInt
+148	_T77 = "\n" [ 149 ]
+149	parm _T77
+150	call _PrintString
+151	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+152	_T78 =  call _Main_New [ 153 154 ]
+153	parm _T78
+154	_T79 = *(_T78 + 0) [ 155 ]
+155	_T80 = *(_T79 + 12) [ 156 ]
+156	call _T80
+157	END BY RETURN, void result
+

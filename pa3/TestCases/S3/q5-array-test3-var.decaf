@@ -1,0 +1,40 @@
+class Main {
+    static void main() {
+        int[] ss;
+        ss = new int[5];
+        ss[0] = 123;
+        ss[1] = 132;
+        ss[2] = 213;
+        ss[3] = 231;
+        ss[4] = 312;
+        foreach (var s in ss) {
+            Print(s);
+            Print("\n");
+        }
+
+        foreach (var s in ss) {
+            if (s > 200) {
+                    Print(s);
+                    Print("\n");
+            }
+        }
+        int a;
+        a = 0;
+        foreach (var s in ss while s < 140) {
+
+            a = a+1;
+        }
+        Print(a);
+        Print("\n");
+
+        int cnt;
+        cnt = 0;
+        foreach (int s in ss while s < 300 && s > 200) {
+            Print(s);
+            Print("\n");
+            cnt = cnt + 1;
+        }
+        Print(cnt);
+        Print("\n");
+    }
+}

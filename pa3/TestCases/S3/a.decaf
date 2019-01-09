@@ -1,0 +1,9 @@
+class Main {
+	static void main() {
+		bool[] arr;
+		arr = new bool[0];
+		foreach (bool b in arr) {
+			Print(b);
+		}
+	}
+}

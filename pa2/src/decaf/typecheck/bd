@@ -1,0 +1,70 @@
+113,169d105
+< 	public void visitExDef(Tree.ExDef exdef) {
+< 		if (exdef.typel == null) {
+< 			exdef.type = BaseType.UNKNOWN;
+< 		}
+< 		else {
+< 			exdef.typel.accept(this);
+< 			exdef.type = exdef.typel.type;
+< 		}
+< 	}
+< 	
+< 	@Override
+< 	public void visitForEach(Tree.ForEach foreach) {
+< 		foreach.block = (Tree.Block) foreach.stmt;
+< 		foreach.block.isforeach = true;
+< 		foreach.associatedScope = new LocalScope(foreach.block);
+< 		foreach.exdef.accept(this);
+< 		table.open(foreach.associatedScope);
+< 		Variable v = new Variable(foreach.exdef.name, foreach.exdef.type, foreach.exdef.getLocation());
+< 		table.declare(v);
+< 		foreach.exdef.symbol = v;
+< 		foreach.expr1.accept(this);
+< 		foreach.expr2.accept(this);
+< 		foreach.stmt.accept(this);
+< 		table.close();
+< 	}
+< 	
+< 	@Override
+< 	public void visitVarIdent(Tree.VarIdent varIdent) {
+< 		Variable v = new Variable(varIdent.name, BaseType.UNKNOWN, varIdent.getLocation());
+< 		Symbol sym = table.lookup(varIdent.name, true);
+< 		if (sym != null) {
+< 			if (table.getCurrentScope().equals(sym.getScope())) {
+< 				issueError(new DeclConflictError(v.getLocation(), v.getName(),
+< 						sym.getLocation()));
+< 			} else if ((sym.getScope().isFormalScope() && table.getCurrentScope().isLocalScope() && ((LocalScope)table.getCurrentScope()).isCombinedtoFormal() )) {
+< 				issueError(new DeclConflictError(v.getLocation(), v.getName(),
+< 						sym.getLocation()));
+< 			} else {
+< 				table.declare(v);
+< 			}
+< 		}
+< 		else {
+< 			table.declare(v);
+< 		}
+< 		varIdent.symbol = v;
+< 	}
+< 
+< 	@Override
+273,278d206
+< 	@Override
+< 	public void visitAssign(Tree.Assign assign) {
+< 		assign.left.accept(this);
+< 		assign.expr.accept(this);
+< 	}
+< 
+317,329d241
+< 	@Override
+< 	public void visitGuardedES(Tree.GuardedES guardedES) {
+< 		if (guardedES.stmt != null)
+< 			guardedES.stmt.accept(this);
+< 	}
+< 	
+< 	@Override
+< 	public void visitGuardStmt(Tree.GuardStmt guardStmt) {
+< 		for (Tree.GuardedES i: guardStmt.guardedES) {
+< 			i.accept(this);
+< 		}
+< 	}
+< 

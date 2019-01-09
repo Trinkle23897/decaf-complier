@@ -1,0 +1,73 @@
+FUNCTION _Computer_New : 
+BASIC BLOCK 0 : 
+1	_T4 = 8 [ 2 ]
+2	parm _T4
+3	_T5 =  call _Alloc [ 5 7 8 ]
+4	_T6 = 0 [ 5 ]
+5	*(_T5 + 4) = _T6
+6	_T7 = VTBL <_Computer> [ 7 ]
+7	*(_T5 + 0) = _T7
+8	END BY RETURN, result = _T5
+
+FUNCTION _Mac_New : 
+BASIC BLOCK 0 : 
+9	_T8 = 12 [ 10 ]
+10	parm _T8
+11	_T9 =  call _Alloc [ 13 14 16 17 ]
+12	_T10 = 0 [ 13 14 ]
+13	*(_T9 + 4) = _T10
+14	*(_T9 + 8) = _T10
+15	_T11 = VTBL <_Mac> [ 16 ]
+16	*(_T9 + 0) = _T11
+17	END BY RETURN, result = _T9
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+18	_T12 = 4 [ 19 ]
+19	parm _T12
+20	_T13 =  call _Alloc [ 22 23 ]
+21	_T14 = VTBL <_Main> [ 22 ]
+22	*(_T13 + 0) = _T14
+23	END BY RETURN, result = _T13
+
+FUNCTION _Computer.Crash : 
+BASIC BLOCK 0 : 
+24	_T16 = 0 [ 25 ]
+25	_T15 = _T16 [ 28 31 ]
+26	END BY BRANCH, goto 2
+BASIC BLOCK 1 : 
+27	_T17 = 1 [ 28 ]
+28	_T18 = (_T15 + _T17) [ 29 ]
+29	_T15 = _T18 [ 28 31 ]
+30	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+31	_T19 = (_T15 < _T1) [ 32 ]
+32	END BY BEQZ, if _T19 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+33	_T20 = "sad\n" [ 34 ]
+34	parm _T20
+35	call _PrintString
+36	END BY BRANCH, goto 1
+BASIC BLOCK 4 : 
+37	END BY RETURN, void result
+
+FUNCTION _Mac.Crash : 
+BASIC BLOCK 0 : 
+38	_T21 = "ack!" [ 39 ]
+39	parm _T21
+40	call _PrintString
+41	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+42	_T23 =  call _Mac_New [ 43 ]
+43	_T22 = _T23 [ 45 47 ]
+44	_T24 = 2 [ 46 ]
+45	parm _T22
+46	parm _T24
+47	_T25 = *(_T22 + 0) [ 48 ]
+48	_T26 = *(_T25 + 8) [ 49 ]
+49	call _T26
+50	END BY RETURN, void result
+

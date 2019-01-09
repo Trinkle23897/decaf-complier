@@ -1,0 +1,160 @@
+FUNCTION _Math_New : 
+BASIC BLOCK 0 : 
+1	_T8 = 4 [ 2 ]
+2	parm _T8
+3	_T9 =  call _Alloc [ 5 6 ]
+4	_T10 = VTBL <_Math> [ 5 ]
+5	*(_T9 + 0) = _T10
+6	END BY RETURN, result = _T9
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+7	_T11 = 4 [ 8 ]
+8	parm _T11
+9	_T12 =  call _Alloc [ 11 12 ]
+10	_T13 = VTBL <_Main> [ 11 ]
+11	*(_T12 + 0) = _T13
+12	END BY RETURN, result = _T12
+
+FUNCTION _Math.abs : 
+BASIC BLOCK 0 : 
+13	_T14 = 0 [ 14 ]
+14	_T15 = (_T0 >= _T14) [ 15 ]
+15	END BY BEQZ, if _T15 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+16	END BY RETURN, result = _T0
+BASIC BLOCK 2 : 
+17	_T16 = - _T0 [ 18 ]
+18	END BY RETURN, result = _T16
+BASIC BLOCK 3 : 
+19	END BY RETURN, void result
+
+FUNCTION _Math.pow : 
+BASIC BLOCK 0 : 
+20	_T19 = 1 [ 21 ]
+21	_T18 = _T19 [ 31 34 ]
+22	_T20 = 0 [ 23 ]
+23	_T17 = _T20 [ 26 29 ]
+24	END BY BRANCH, goto 2
+BASIC BLOCK 1 : 
+25	_T21 = 1 [ 26 ]
+26	_T22 = (_T17 + _T21) [ 27 ]
+27	_T17 = _T22 [ 26 29 ]
+28	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+29	_T23 = (_T17 < _T2) [ 30 ]
+30	END BY BEQZ, if _T23 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+31	_T24 = (_T18 * _T1) [ 32 ]
+32	_T18 = _T24 [ 31 34 ]
+33	END BY BRANCH, goto 1
+BASIC BLOCK 4 : 
+34	END BY RETURN, result = _T18
+
+FUNCTION _Math.log : 
+BASIC BLOCK 0 : 
+35	_T25 = 1 [ 36 ]
+36	_T26 = (_T3 < _T25) [ 37 ]
+37	END BY BEQZ, if _T26 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+38	_T27 = 1 [ 39 ]
+39	_T28 = - _T27 [ 40 ]
+40	END BY RETURN, result = _T28
+BASIC BLOCK 2 : 
+41	_T30 = 0 [ 42 ]
+42	_T29 = _T30 [ 48 54 ]
+43	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+44	_T31 = 1 [ 45 ]
+45	_T32 = (_T3 > _T31) [ 46 ]
+46	END BY BEQZ, if _T32 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+47	_T33 = 1 [ 48 ]
+48	_T34 = (_T29 + _T33) [ 49 ]
+49	_T29 = _T34 [ 48 54 ]
+50	_T35 = 2 [ 51 ]
+51	_T36 = (_T3 / _T35) [ 52 ]
+52	_T3 = _T36 [ 45 51 ]
+53	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+54	END BY RETURN, result = _T29
+
+FUNCTION _Math.max : 
+BASIC BLOCK 0 : 
+55	_T37 = (_T4 > _T5) [ 56 ]
+56	END BY BEQZ, if _T37 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+57	END BY RETURN, result = _T4
+BASIC BLOCK 2 : 
+58	END BY RETURN, result = _T5
+BASIC BLOCK 3 : 
+59	END BY RETURN, void result
+
+FUNCTION _Math.min : 
+BASIC BLOCK 0 : 
+60	_T38 = (_T6 < _T7) [ 61 ]
+61	END BY BEQZ, if _T38 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+62	END BY RETURN, result = _T6
+BASIC BLOCK 2 : 
+63	END BY RETURN, result = _T7
+BASIC BLOCK 3 : 
+64	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+65	_T39 = 1 [ 66 ]
+66	_T40 = - _T39 [ 67 ]
+67	parm _T40
+68	_T41 =  call _Math.abs [ 69 ]
+69	parm _T41
+70	call _PrintInt
+71	_T42 = "\n" [ 72 ]
+72	parm _T42
+73	call _PrintString
+74	_T43 = 2 [ 76 ]
+75	_T44 = 3 [ 77 ]
+76	parm _T43
+77	parm _T44
+78	_T45 =  call _Math.pow [ 79 ]
+79	parm _T45
+80	call _PrintInt
+81	_T46 = "\n" [ 82 ]
+82	parm _T46
+83	call _PrintString
+84	_T47 = 16 [ 85 ]
+85	parm _T47
+86	_T48 =  call _Math.log [ 87 ]
+87	parm _T48
+88	call _PrintInt
+89	_T49 = "\n" [ 90 ]
+90	parm _T49
+91	call _PrintString
+92	_T50 = 1 [ 94 ]
+93	_T51 = 2 [ 95 ]
+94	parm _T50
+95	parm _T51
+96	_T52 =  call _Math.max [ 97 ]
+97	parm _T52
+98	call _PrintInt
+99	_T53 = "\n" [ 100 ]
+100	parm _T53
+101	call _PrintString
+102	_T54 = 1 [ 104 ]
+103	_T55 = 2 [ 105 ]
+104	parm _T54
+105	parm _T55
+106	_T56 =  call _Math.min [ 107 ]
+107	parm _T56
+108	call _PrintInt
+109	_T57 = "\n" [ 110 ]
+110	parm _T57
+111	call _PrintString
+112	END BY RETURN, void result
+

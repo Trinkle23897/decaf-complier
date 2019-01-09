@@ -1,0 +1,97 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T0 _T1 _T2 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T0 = 4 [ _T0 ]
+    parm _T0 [ ]
+    _T1 =  call _Alloc [ _T1 ]
+    _T2 = VTBL <_Main> [ _T1 _T2 ]
+    *(_T1 + 0) = _T2 [ _T1 ]
+END BY RETURN, result = _T1
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    call _Main.f [ ]
+END BY RETURN, void result
+
+FUNCTION _Main.f : 
+BASIC BLOCK 0 : 
+  Def     = [ _T3 _T4 _T5 _T6 _T7 _T8 _T9 _T10 _T11 _T12 _T13 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T4 _T9 ]
+    _T7 = 0 [ _T7 ]
+    _T5 = _T7 [ ]
+    _T8 = 1 [ _T8 ]
+    _T6 = _T8 [ ]
+    _T10 = 0 [ _T10 ]
+    _T9 = _T10 [ _T9 ]
+    _T11 = 2 [ _T9 _T11 ]
+    _T3 = _T11 [ _T3 _T9 ]
+    _T12 = 1 [ _T3 _T9 _T12 ]
+    _T13 = (_T3 + _T12) [ _T9 _T13 ]
+    _T4 = _T13 [ _T4 _T9 ]
+END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+  Def     = [ ]
+  liveUse = [ _T9 ]
+  liveIn  = [ _T4 _T9 ]
+  liveOut = [ _T4 _T9 ]
+END BY BEQZ, if _T9 = 
+    0 : goto 7; 1 : goto 2
+BASIC BLOCK 2 : 
+  Def     = [ _T3 _T14 ]
+  liveUse = [ _T9 ]
+  liveIn  = [ _T4 _T9 ]
+  liveOut = [ _T3 _T4 _T9 ]
+    _T14 = 1 [ _T4 _T9 _T14 ]
+    _T3 = _T14 [ _T3 _T4 _T9 ]
+END BY BEQZ, if _T9 = 
+    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+  Def     = [ ]
+  liveUse = [ ]
+  liveIn  = [ _T3 _T4 _T9 ]
+  liveOut = [ _T3 _T4 _T9 ]
+    call _Main.f [ _T3 _T4 _T9 ]
+END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+  Def     = [ _T15 _T16 ]
+  liveUse = [ _T4 _T9 ]
+  liveIn  = [ _T3 _T4 _T9 ]
+  liveOut = [ _T3 _T4 _T9 ]
+    _T15 = 1 [ _T3 _T4 _T9 _T15 ]
+    _T16 = (_T4 + _T15) [ _T16 _T3 _T9 ]
+    _T4 = _T16 [ _T3 _T4 _T9 ]
+END BY BEQZ, if _T9 = 
+    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+  Def     = [ _T17 _T18 ]
+  liveUse = [ _T4 ]
+  liveIn  = [ _T3 _T4 _T9 ]
+  liveOut = [ _T3 _T4 _T9 ]
+    _T17 = 4 [ _T17 _T3 _T4 _T9 ]
+    _T18 = (_T4 - _T17) [ _T18 _T3 _T9 ]
+    _T4 = _T18 [ _T3 _T4 _T9 ]
+END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+  Def     = [ _T5 _T6 ]
+  liveUse = [ _T3 _T4 ]
+  liveIn  = [ _T3 _T4 _T9 ]
+  liveOut = [ _T4 _T9 ]
+    _T5 = _T3 [ _T4 _T9 ]
+    _T6 = _T4 [ _T4 _T9 ]
+END BY BRANCH, goto 1
+BASIC BLOCK 7 : 
+  Def     = [ ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+END BY RETURN, void result
+

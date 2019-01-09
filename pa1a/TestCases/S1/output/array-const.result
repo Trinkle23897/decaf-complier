@@ -1,0 +1,43 @@
+program
+    class Main <empty>
+        static func main voidtype
+            formals
+            stmtblock
+                vardef xs arrtype inttype
+                assign
+                    varref xs
+                    array const
+                        intconst 1
+                        intconst 2
+                        intconst 3
+                vardef ys arrtype booltype
+                assign
+                    varref ys
+                    array const
+                        boolconst true
+                        boolconst false
+                        stringconst "false"
+                vardef zs arrtype stringtype
+                assign
+                    varref zs
+                    array const
+                        stringconst "one"
+                vardef nil arrtype inttype
+                assign
+                    varref nil
+                    array const
+                        <empty>
+                vardef manyOnes arrtype inttype
+                assign
+                    varref manyOnes
+                    array repeat
+                        intconst 1
+                        intconst 10
+                vardef manyzs arrtype arrtype stringtype
+                assign
+                    varref manyzs
+                    array repeat
+                        varref zs
+                        mul
+                            intconst 5
+                            intconst 6

@@ -1,0 +1,11 @@
+class Main {
+    static void main() {
+    	bool [] a;
+    	a = true %% 3;
+    	a[1] = false;
+        Print(a[0]);
+        Print("\n");
+        Print(a[1]);
+        Print("\n");
+	}
+}

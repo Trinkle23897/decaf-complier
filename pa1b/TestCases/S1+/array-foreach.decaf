@@ -1,0 +1,24 @@
+class Main {
+    static void main() {
+        string[] ss;
+        ss = new string[10];
+        foreach (var s in ss) {
+            Print(s);
+        }
+
+        foreach (var s in ss) {
+            if (s.length() > 2) Print(s);
+        }
+
+        foreach (var s in ss while s.length() < 10) {
+            Print(s);
+        }
+
+        int cnt;
+        cnt = 0;
+        foreach (string s in ss while s.length() < 10 && s.length() > 1) {
+            Print(s);
+            cnt = cnt + 1;
+        }
+    }
+}

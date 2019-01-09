@@ -1,0 +1,11 @@
+class Main {
+    static void main() {  
+        var arr = [1,2,3,4];
+        var foo = arr[5] default; // error 1: missing expr after `default`
+        var bar = [|x * 2 for x in arr if|]; // error 2: missing expr after `if`
+        foreach (var x in arr while) { // error 3: missing expr after `while`
+            Print(x);
+        }
+        var x = [1,2,3,]; // error 4: extra `,`
+    }
+}

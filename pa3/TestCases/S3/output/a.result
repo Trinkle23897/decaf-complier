@@ -1,0 +1,7 @@
+decaf.tacvm.exec.ExecuteException: memory access base = 4 out of bounds
+	at decaf.tacvm.exec.Memory.checkHeapAccess(Unknown Source)
+	at decaf.tacvm.exec.Memory.load(Unknown Source)
+	at decaf.tacvm.exec.Executor.exec(Unknown Source)
+	at decaf.tacvm.TacVM.run(Unknown Source)
+	at decaf.tacvm.TacVM.main(Unknown Source)
+***Error at (47,10), tac = _T16 = *(_T3 - 4): memory access base = 4 out of bounds

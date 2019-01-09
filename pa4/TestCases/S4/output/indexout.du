@@ -1,0 +1,70 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T0 = 4 [ 2 ]
+2	parm _T0
+3	_T1 =  call _Alloc [ 5 6 ]
+4	_T2 = VTBL <_Main> [ 5 ]
+5	*(_T1 + 0) = _T2
+6	END BY RETURN, result = _T1
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+7	_T4 = 2 [ 9 17 21 ]
+8	_T5 = 0 [ 9 ]
+9	_T6 = (_T4 < _T5) [ 10 ]
+10	END BY BEQZ, if _T6 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+11	_T7 = "Decaf runtime error: Cannot create negative-sized array\n" [ 12 ]
+12	parm _T7
+13	call _PrintString
+14	call _Halt
+15	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+16	_T8 = 4 [ 17 18 25 27 ]
+17	_T9 = (_T8 * _T4) [ 18 ]
+18	_T10 = (_T8 + _T9) [ 19 23 25 ]
+19	parm _T10
+20	_T11 =  call _Alloc [ 21 23 ]
+21	*(_T11 + 0) = _T4
+22	_T12 = 0 [ 28 ]
+23	_T11 = (_T11 + _T10) [ 27 30 ]
+24	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+25	_T10 = (_T10 - _T8) [ 25 26 ]
+26	END BY BEQZ, if _T10 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+27	_T11 = (_T11 - _T8) [ 27 28 30 ]
+28	*(_T11 + 0) = _T12
+29	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+30	_T3 = _T11 [ 32 45 50 ]
+31	_T13 = 2 [ 33 36 44 49 ]
+32	_T14 = *(_T3 - 4) [ 33 ]
+33	_T15 = (_T13 < _T14) [ 34 ]
+34	END BY BEQZ, if _T15 = 
+	    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+35	_T16 = 0 [ 36 ]
+36	_T17 = (_T13 < _T16) [ 37 ]
+37	END BY BEQZ, if _T17 = 
+	    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+38	_T18 = "Decaf runtime error: Array subscript out of bounds\n" [ 39 ]
+39	parm _T18
+40	call _PrintString
+41	call _Halt
+42	END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+43	_T19 = 4 [ 44 ]
+44	_T20 = (_T13 * _T19) [ 45 ]
+45	_T21 = (_T3 + _T20) [ 46 ]
+46	_T22 = *(_T21 + 0) [ ]
+47	_T23 = 0 [ 51 ]
+48	_T24 = 4 [ 49 ]
+49	_T25 = (_T13 * _T24) [ 50 ]
+50	_T26 = (_T3 + _T25) [ 51 ]
+51	*(_T26 + 0) = _T23
+52	END BY RETURN, void result
+

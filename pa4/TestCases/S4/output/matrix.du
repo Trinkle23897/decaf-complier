@@ -1,0 +1,785 @@
+FUNCTION _Matrix_New : 
+BASIC BLOCK 0 : 
+1	_T38 = 4 [ 2 ]
+2	parm _T38
+3	_T39 =  call _Alloc [ 5 6 ]
+4	_T40 = VTBL <_Matrix> [ 5 ]
+5	*(_T39 + 0) = _T40
+6	END BY RETURN, result = _T39
+
+FUNCTION _DenseMatrix_New : 
+BASIC BLOCK 0 : 
+7	_T41 = 8 [ 8 ]
+8	parm _T41
+9	_T42 =  call _Alloc [ 11 13 14 ]
+10	_T43 = 0 [ 11 ]
+11	*(_T42 + 4) = _T43
+12	_T44 = VTBL <_DenseMatrix> [ 13 ]
+13	*(_T42 + 0) = _T44
+14	END BY RETURN, result = _T42
+
+FUNCTION _SparseItem_New : 
+BASIC BLOCK 0 : 
+15	_T45 = 16 [ 16 ]
+16	parm _T45
+17	_T46 =  call _Alloc [ 19 20 21 23 24 ]
+18	_T47 = 0 [ 19 20 21 ]
+19	*(_T46 + 4) = _T47
+20	*(_T46 + 8) = _T47
+21	*(_T46 + 12) = _T47
+22	_T48 = VTBL <_SparseItem> [ 23 ]
+23	*(_T46 + 0) = _T48
+24	END BY RETURN, result = _T46
+
+FUNCTION _SparseMatrix_New : 
+BASIC BLOCK 0 : 
+25	_T49 = 8 [ 26 ]
+26	parm _T49
+27	_T50 =  call _Alloc [ 29 31 32 ]
+28	_T51 = 0 [ 29 ]
+29	*(_T50 + 4) = _T51
+30	_T52 = VTBL <_SparseMatrix> [ 31 ]
+31	*(_T50 + 0) = _T52
+32	END BY RETURN, result = _T50
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+33	_T53 = 4 [ 34 ]
+34	parm _T53
+35	_T54 =  call _Alloc [ 37 38 ]
+36	_T55 = VTBL <_Main> [ 37 ]
+37	*(_T54 + 0) = _T55
+38	END BY RETURN, result = _T54
+
+FUNCTION _Matrix.Init : 
+BASIC BLOCK 0 : 
+39	END BY RETURN, void result
+
+FUNCTION _Matrix.Set : 
+BASIC BLOCK 0 : 
+40	END BY RETURN, void result
+
+FUNCTION _Matrix.Get : 
+BASIC BLOCK 0 : 
+41	END BY RETURN, void result
+
+FUNCTION _Matrix.PrintMatrix : 
+BASIC BLOCK 0 : 
+42	_T58 = 0 [ 43 ]
+43	_T56 = _T58 [ 46 55 70 ]
+44	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+45	_T59 = 10 [ 46 ]
+46	_T60 = (_T56 < _T59) [ 47 ]
+47	END BY BEQZ, if _T60 = 
+	    0 : goto 6; 1 : goto 2
+BASIC BLOCK 2 : 
+48	_T61 = 0 [ 49 ]
+49	_T57 = _T61 [ 52 56 66 ]
+50	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+51	_T62 = 10 [ 52 ]
+52	_T63 = (_T57 < _T62) [ 53 ]
+53	END BY BEQZ, if _T63 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+54	parm _T8
+55	parm _T56
+56	parm _T57
+57	_T64 = *(_T8 + 0) [ 58 ]
+58	_T65 = *(_T64 + 16) [ 59 ]
+59	_T66 =  call _T65 [ 60 ]
+60	parm _T66
+61	call _PrintInt
+62	_T67 = "\t" [ 63 ]
+63	parm _T67
+64	call _PrintString
+65	_T68 = 1 [ 66 ]
+66	_T69 = (_T57 + _T68) [ 67 ]
+67	_T57 = _T69 [ 52 56 66 ]
+68	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+69	_T70 = 1 [ 70 ]
+70	_T71 = (_T56 + _T70) [ 71 ]
+71	_T56 = _T71 [ 46 55 70 ]
+72	_T72 = "\n" [ 73 ]
+73	parm _T72
+74	call _PrintString
+75	END BY BRANCH, goto 1
+BASIC BLOCK 6 : 
+76	END BY RETURN, void result
+
+FUNCTION _Matrix.SeedMatrix : 
+BASIC BLOCK 0 : 
+77	_T75 = 0 [ 78 ]
+78	_T73 = _T75 [ 81 89 91 102 ]
+79	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+80	_T76 = 5 [ 81 ]
+81	_T77 = (_T73 < _T76) [ 82 ]
+82	END BY BEQZ, if _T77 = 
+	    0 : goto 6; 1 : goto 2
+BASIC BLOCK 2 : 
+83	_T78 = 0 [ 84 ]
+84	_T74 = _T78 [ 87 89 92 98 ]
+85	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+86	_T79 = 5 [ 87 ]
+87	_T80 = (_T74 < _T79) [ 88 ]
+88	END BY BEQZ, if _T80 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+89	_T81 = (_T73 + _T74) [ 93 ]
+90	parm _T9
+91	parm _T73
+92	parm _T74
+93	parm _T81
+94	_T82 = *(_T9 + 0) [ 95 ]
+95	_T83 = *(_T82 + 12) [ 96 ]
+96	call _T83
+97	_T84 = 1 [ 98 ]
+98	_T85 = (_T74 + _T84) [ 99 ]
+99	_T74 = _T85 [ 87 89 92 98 ]
+100	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+101	_T86 = 1 [ 102 ]
+102	_T87 = (_T73 + _T86) [ 103 ]
+103	_T73 = _T87 [ 81 89 91 102 ]
+104	END BY BRANCH, goto 1
+BASIC BLOCK 6 : 
+105	_T88 = 2 [ 109 ]
+106	_T89 = 3 [ 110 ]
+107	_T90 = 4 [ 111 ]
+108	parm _T9
+109	parm _T88
+110	parm _T89
+111	parm _T90
+112	_T91 = *(_T9 + 0) [ 113 ]
+113	_T92 = *(_T91 + 12) [ 114 ]
+114	call _T92
+115	_T93 = 4 [ 119 ]
+116	_T94 = 6 [ 120 ]
+117	_T95 = 2 [ 121 ]
+118	parm _T9
+119	parm _T93
+120	parm _T94
+121	parm _T95
+122	_T96 = *(_T9 + 0) [ 123 ]
+123	_T97 = *(_T96 + 12) [ 124 ]
+124	call _T97
+125	_T98 = 2 [ 129 ]
+126	_T99 = 3 [ 130 ]
+127	_T100 = 5 [ 131 ]
+128	parm _T9
+129	parm _T98
+130	parm _T99
+131	parm _T100
+132	_T101 = *(_T9 + 0) [ 133 ]
+133	_T102 = *(_T101 + 12) [ 134 ]
+134	call _T102
+135	_T103 = 0 [ 139 ]
+136	_T104 = 0 [ 140 ]
+137	_T105 = 1 [ 141 ]
+138	parm _T9
+139	parm _T103
+140	parm _T104
+141	parm _T105
+142	_T106 = *(_T9 + 0) [ 143 ]
+143	_T107 = *(_T106 + 12) [ 144 ]
+144	call _T107
+145	_T108 = 1 [ 149 ]
+146	_T109 = 6 [ 150 ]
+147	_T110 = 3 [ 151 ]
+148	parm _T9
+149	parm _T108
+150	parm _T109
+151	parm _T110
+152	_T111 = *(_T9 + 0) [ 153 ]
+153	_T112 = *(_T111 + 12) [ 154 ]
+154	call _T112
+155	_T113 = 7 [ 159 ]
+156	_T114 = 7 [ 160 ]
+157	_T115 = 7 [ 161 ]
+158	parm _T9
+159	parm _T113
+160	parm _T114
+161	parm _T115
+162	_T116 = *(_T9 + 0) [ 163 ]
+163	_T117 = *(_T116 + 12) [ 164 ]
+164	call _T117
+165	END BY RETURN, void result
+
+FUNCTION _DenseMatrix.Init : 
+BASIC BLOCK 0 : 
+166	_T120 = 0 [ 167 ]
+167	_T118 = _T120 [ 195 199 202 210 237 241 ]
+168	_T121 = *(_T10 + 4) [ ]
+169	_T122 = 10 [ 171 179 183 ]
+170	_T123 = 0 [ 171 ]
+171	_T124 = (_T122 < _T123) [ 172 ]
+172	END BY BEQZ, if _T124 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+173	_T125 = "Decaf runtime error: Cannot create negative-sized array\n" [ 174 ]
+174	parm _T125
+175	call _PrintString
+176	call _Halt
+177	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+178	_T126 = 4 [ 179 180 187 189 ]
+179	_T127 = (_T126 * _T122) [ 180 ]
+180	_T128 = (_T126 + _T127) [ 181 185 187 ]
+181	parm _T128
+182	_T129 =  call _Alloc [ 183 185 ]
+183	*(_T129 + 0) = _T122
+184	_T130 = 0 [ 190 ]
+185	_T129 = (_T129 + _T128) [ 189 192 ]
+186	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+187	_T128 = (_T128 - _T126) [ 187 188 ]
+188	END BY BEQZ, if _T128 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+189	_T129 = (_T129 - _T126) [ 189 190 192 ]
+190	*(_T129 + 0) = _T130
+191	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+192	*(_T10 + 4) = _T129
+193	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+194	_T131 = 10 [ 195 ]
+195	_T132 = (_T118 < _T131) [ 196 ]
+196	END BY BEQZ, if _T132 = 
+	    0 : goto 16; 1 : goto 7
+BASIC BLOCK 7 : 
+197	_T133 = *(_T10 + 4) [ 198 211 238 ]
+198	_T134 = *(_T133 - 4) [ 199 ]
+199	_T135 = (_T118 < _T134) [ 200 ]
+200	END BY BEQZ, if _T135 = 
+	    0 : goto 9; 1 : goto 8
+BASIC BLOCK 8 : 
+201	_T136 = 0 [ 202 ]
+202	_T137 = (_T118 < _T136) [ 203 ]
+203	END BY BEQZ, if _T137 = 
+	    0 : goto 10; 1 : goto 9
+BASIC BLOCK 9 : 
+204	_T138 = "Decaf runtime error: Array subscript out of bounds\n" [ 205 ]
+205	parm _T138
+206	call _PrintString
+207	call _Halt
+208	END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+209	_T139 = 4 [ 210 ]
+210	_T140 = (_T118 * _T139) [ 211 ]
+211	_T141 = (_T133 + _T140) [ 212 ]
+212	_T142 = *(_T141 + 0) [ ]
+213	_T143 = 10 [ 215 223 227 ]
+214	_T144 = 0 [ 215 ]
+215	_T145 = (_T143 < _T144) [ 216 ]
+216	END BY BEQZ, if _T145 = 
+	    0 : goto 12; 1 : goto 11
+BASIC BLOCK 11 : 
+217	_T146 = "Decaf runtime error: Cannot create negative-sized array\n" [ 218 ]
+218	parm _T146
+219	call _PrintString
+220	call _Halt
+221	END BY BRANCH, goto 12
+BASIC BLOCK 12 : 
+222	_T147 = 4 [ 223 224 231 233 ]
+223	_T148 = (_T147 * _T143) [ 224 ]
+224	_T149 = (_T147 + _T148) [ 225 229 231 ]
+225	parm _T149
+226	_T150 =  call _Alloc [ 227 229 ]
+227	*(_T150 + 0) = _T143
+228	_T151 = 0 [ 234 ]
+229	_T150 = (_T150 + _T149) [ 233 239 ]
+230	END BY BRANCH, goto 13
+BASIC BLOCK 13 : 
+231	_T149 = (_T149 - _T147) [ 231 232 ]
+232	END BY BEQZ, if _T149 = 
+	    0 : goto 15; 1 : goto 14
+BASIC BLOCK 14 : 
+233	_T150 = (_T150 - _T147) [ 233 234 239 ]
+234	*(_T150 + 0) = _T151
+235	END BY BRANCH, goto 13
+BASIC BLOCK 15 : 
+236	_T152 = 4 [ 237 ]
+237	_T153 = (_T118 * _T152) [ 238 ]
+238	_T154 = (_T133 + _T153) [ 239 ]
+239	*(_T154 + 0) = _T150
+240	_T155 = 1 [ 241 ]
+241	_T156 = (_T118 + _T155) [ 242 ]
+242	_T118 = _T156 [ 195 199 202 210 237 241 ]
+243	END BY BRANCH, goto 6
+BASIC BLOCK 16 : 
+244	_T157 = 0 [ 245 ]
+245	_T118 = _T157 [ 248 258 261 269 297 ]
+246	END BY BRANCH, goto 17
+BASIC BLOCK 17 : 
+247	_T158 = 10 [ 248 ]
+248	_T159 = (_T118 < _T158) [ 249 ]
+249	END BY BEQZ, if _T159 = 
+	    0 : goto 28; 1 : goto 18
+BASIC BLOCK 18 : 
+250	_T160 = 0 [ 251 ]
+251	_T119 = _T160 [ 254 273 276 284 289 293 ]
+252	END BY BRANCH, goto 19
+BASIC BLOCK 19 : 
+253	_T161 = 10 [ 254 ]
+254	_T162 = (_T119 < _T161) [ 255 ]
+255	END BY BEQZ, if _T162 = 
+	    0 : goto 27; 1 : goto 20
+BASIC BLOCK 20 : 
+256	_T163 = *(_T10 + 4) [ 257 270 ]
+257	_T164 = *(_T163 - 4) [ 258 ]
+258	_T165 = (_T118 < _T164) [ 259 ]
+259	END BY BEQZ, if _T165 = 
+	    0 : goto 22; 1 : goto 21
+BASIC BLOCK 21 : 
+260	_T166 = 0 [ 261 ]
+261	_T167 = (_T118 < _T166) [ 262 ]
+262	END BY BEQZ, if _T167 = 
+	    0 : goto 23; 1 : goto 22
+BASIC BLOCK 22 : 
+263	_T168 = "Decaf runtime error: Array subscript out of bounds\n" [ 264 ]
+264	parm _T168
+265	call _PrintString
+266	call _Halt
+267	END BY BRANCH, goto 23
+BASIC BLOCK 23 : 
+268	_T169 = 4 [ 269 ]
+269	_T170 = (_T118 * _T169) [ 270 ]
+270	_T171 = (_T163 + _T170) [ 271 ]
+271	_T172 = *(_T171 + 0) [ 272 285 290 ]
+272	_T173 = *(_T172 - 4) [ 273 ]
+273	_T174 = (_T119 < _T173) [ 274 ]
+274	END BY BEQZ, if _T174 = 
+	    0 : goto 25; 1 : goto 24
+BASIC BLOCK 24 : 
+275	_T175 = 0 [ 276 ]
+276	_T176 = (_T119 < _T175) [ 277 ]
+277	END BY BEQZ, if _T176 = 
+	    0 : goto 26; 1 : goto 25
+BASIC BLOCK 25 : 
+278	_T177 = "Decaf runtime error: Array subscript out of bounds\n" [ 279 ]
+279	parm _T177
+280	call _PrintString
+281	call _Halt
+282	END BY BRANCH, goto 26
+BASIC BLOCK 26 : 
+283	_T178 = 4 [ 284 ]
+284	_T179 = (_T119 * _T178) [ 285 ]
+285	_T180 = (_T172 + _T179) [ 286 ]
+286	_T181 = *(_T180 + 0) [ ]
+287	_T182 = 0 [ 291 ]
+288	_T183 = 4 [ 289 ]
+289	_T184 = (_T119 * _T183) [ 290 ]
+290	_T185 = (_T172 + _T184) [ 291 ]
+291	*(_T185 + 0) = _T182
+292	_T186 = 1 [ 293 ]
+293	_T187 = (_T119 + _T186) [ 294 ]
+294	_T119 = _T187 [ 254 273 276 284 289 293 ]
+295	END BY BRANCH, goto 19
+BASIC BLOCK 27 : 
+296	_T188 = 1 [ 297 ]
+297	_T189 = (_T118 + _T188) [ 298 ]
+298	_T118 = _T189 [ 248 258 261 269 297 ]
+299	END BY BRANCH, goto 17
+BASIC BLOCK 28 : 
+300	END BY RETURN, void result
+
+FUNCTION _DenseMatrix.Set : 
+BASIC BLOCK 0 : 
+301	_T190 = *(_T11 + 4) [ 302 315 ]
+302	_T191 = *(_T190 - 4) [ 303 ]
+303	_T192 = (_T12 < _T191) [ 304 ]
+304	END BY BEQZ, if _T192 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+305	_T193 = 0 [ 306 ]
+306	_T194 = (_T12 < _T193) [ 307 ]
+307	END BY BEQZ, if _T194 = 
+	    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+308	_T195 = "Decaf runtime error: Array subscript out of bounds\n" [ 309 ]
+309	parm _T195
+310	call _PrintString
+311	call _Halt
+312	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+313	_T196 = 4 [ 314 ]
+314	_T197 = (_T12 * _T196) [ 315 ]
+315	_T198 = (_T190 + _T197) [ 316 ]
+316	_T199 = *(_T198 + 0) [ 317 330 334 ]
+317	_T200 = *(_T199 - 4) [ 318 ]
+318	_T201 = (_T13 < _T200) [ 319 ]
+319	END BY BEQZ, if _T201 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+320	_T202 = 0 [ 321 ]
+321	_T203 = (_T13 < _T202) [ 322 ]
+322	END BY BEQZ, if _T203 = 
+	    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+323	_T204 = "Decaf runtime error: Array subscript out of bounds\n" [ 324 ]
+324	parm _T204
+325	call _PrintString
+326	call _Halt
+327	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+328	_T205 = 4 [ 329 ]
+329	_T206 = (_T13 * _T205) [ 330 ]
+330	_T207 = (_T199 + _T206) [ 331 ]
+331	_T208 = *(_T207 + 0) [ ]
+332	_T209 = 4 [ 333 ]
+333	_T210 = (_T13 * _T209) [ 334 ]
+334	_T211 = (_T199 + _T210) [ 335 ]
+335	*(_T211 + 0) = _T14
+336	END BY RETURN, void result
+
+FUNCTION _DenseMatrix.Get : 
+BASIC BLOCK 0 : 
+337	_T212 = *(_T15 + 4) [ 338 351 ]
+338	_T213 = *(_T212 - 4) [ 339 ]
+339	_T214 = (_T16 < _T213) [ 340 ]
+340	END BY BEQZ, if _T214 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+341	_T215 = 0 [ 342 ]
+342	_T216 = (_T16 < _T215) [ 343 ]
+343	END BY BEQZ, if _T216 = 
+	    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+344	_T217 = "Decaf runtime error: Array subscript out of bounds\n" [ 345 ]
+345	parm _T217
+346	call _PrintString
+347	call _Halt
+348	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+349	_T218 = 4 [ 350 ]
+350	_T219 = (_T16 * _T218) [ 351 ]
+351	_T220 = (_T212 + _T219) [ 352 ]
+352	_T221 = *(_T220 + 0) [ 353 366 ]
+353	_T222 = *(_T221 - 4) [ 354 ]
+354	_T223 = (_T17 < _T222) [ 355 ]
+355	END BY BEQZ, if _T223 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+356	_T224 = 0 [ 357 ]
+357	_T225 = (_T17 < _T224) [ 358 ]
+358	END BY BEQZ, if _T225 = 
+	    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+359	_T226 = "Decaf runtime error: Array subscript out of bounds\n" [ 360 ]
+360	parm _T226
+361	call _PrintString
+362	call _Halt
+363	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+364	_T227 = 4 [ 365 ]
+365	_T228 = (_T17 * _T227) [ 366 ]
+366	_T229 = (_T221 + _T228) [ 367 ]
+367	_T230 = *(_T229 + 0) [ 368 ]
+368	END BY RETURN, result = _T230
+
+FUNCTION _SparseItem.Init : 
+BASIC BLOCK 0 : 
+369	_T231 = *(_T18 + 4) [ ]
+370	*(_T18 + 4) = _T19
+371	_T232 = *(_T18 + 8) [ ]
+372	*(_T18 + 8) = _T20
+373	_T233 = *(_T18 + 12) [ ]
+374	*(_T18 + 12) = _T21
+375	END BY RETURN, void result
+
+FUNCTION _SparseItem.GetNext : 
+BASIC BLOCK 0 : 
+376	_T234 = *(_T22 + 12) [ 377 ]
+377	END BY RETURN, result = _T234
+
+FUNCTION _SparseItem.GetY : 
+BASIC BLOCK 0 : 
+378	_T235 = *(_T23 + 8) [ 379 ]
+379	END BY RETURN, result = _T235
+
+FUNCTION _SparseItem.GetData : 
+BASIC BLOCK 0 : 
+380	_T236 = *(_T24 + 4) [ 381 ]
+381	END BY RETURN, result = _T236
+
+FUNCTION _SparseItem.SetData : 
+BASIC BLOCK 0 : 
+382	_T237 = *(_T25 + 4) [ ]
+383	*(_T25 + 4) = _T26
+384	END BY RETURN, void result
+
+FUNCTION _SparseMatrix.Init : 
+BASIC BLOCK 0 : 
+385	_T239 = 0 [ 386 ]
+386	_T238 = _T239 [ 414 418 421 429 434 438 ]
+387	_T240 = *(_T27 + 4) [ ]
+388	_T241 = 10 [ 390 398 402 ]
+389	_T242 = 0 [ 390 ]
+390	_T243 = (_T241 < _T242) [ 391 ]
+391	END BY BEQZ, if _T243 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+392	_T244 = "Decaf runtime error: Cannot create negative-sized array\n" [ 393 ]
+393	parm _T244
+394	call _PrintString
+395	call _Halt
+396	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+397	_T245 = 4 [ 398 399 406 408 ]
+398	_T246 = (_T245 * _T241) [ 399 ]
+399	_T247 = (_T245 + _T246) [ 400 404 406 ]
+400	parm _T247
+401	_T248 =  call _Alloc [ 402 404 ]
+402	*(_T248 + 0) = _T241
+403	_T249 = 0 [ 409 ]
+404	_T248 = (_T248 + _T247) [ 408 411 ]
+405	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+406	_T247 = (_T247 - _T245) [ 406 407 ]
+407	END BY BEQZ, if _T247 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+408	_T248 = (_T248 - _T245) [ 408 409 411 ]
+409	*(_T248 + 0) = _T249
+410	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+411	*(_T27 + 4) = _T248
+412	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+413	_T250 = 10 [ 414 ]
+414	_T251 = (_T238 < _T250) [ 415 ]
+415	END BY BEQZ, if _T251 = 
+	    0 : goto 11; 1 : goto 7
+BASIC BLOCK 7 : 
+416	_T252 = *(_T27 + 4) [ 417 430 435 ]
+417	_T253 = *(_T252 - 4) [ 418 ]
+418	_T254 = (_T238 < _T253) [ 419 ]
+419	END BY BEQZ, if _T254 = 
+	    0 : goto 9; 1 : goto 8
+BASIC BLOCK 8 : 
+420	_T255 = 0 [ 421 ]
+421	_T256 = (_T238 < _T255) [ 422 ]
+422	END BY BEQZ, if _T256 = 
+	    0 : goto 10; 1 : goto 9
+BASIC BLOCK 9 : 
+423	_T257 = "Decaf runtime error: Array subscript out of bounds\n" [ 424 ]
+424	parm _T257
+425	call _PrintString
+426	call _Halt
+427	END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+428	_T258 = 4 [ 429 ]
+429	_T259 = (_T238 * _T258) [ 430 ]
+430	_T260 = (_T252 + _T259) [ 431 ]
+431	_T261 = *(_T260 + 0) [ ]
+432	_T262 = 0 [ 436 ]
+433	_T263 = 4 [ 434 ]
+434	_T264 = (_T238 * _T263) [ 435 ]
+435	_T265 = (_T252 + _T264) [ 436 ]
+436	*(_T265 + 0) = _T262
+437	_T266 = 1 [ 438 ]
+438	_T267 = (_T238 + _T266) [ 439 ]
+439	_T238 = _T267 [ 414 418 421 429 434 438 ]
+440	END BY BRANCH, goto 6
+BASIC BLOCK 11 : 
+441	END BY RETURN, void result
+
+FUNCTION _SparseMatrix.Find : 
+BASIC BLOCK 0 : 
+442	_T269 = *(_T28 + 4) [ 443 456 ]
+443	_T270 = *(_T269 - 4) [ 444 ]
+444	_T271 = (_T29 < _T270) [ 445 ]
+445	END BY BEQZ, if _T271 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+446	_T272 = 0 [ 447 ]
+447	_T273 = (_T29 < _T272) [ 448 ]
+448	END BY BEQZ, if _T273 = 
+	    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+449	_T274 = "Decaf runtime error: Array subscript out of bounds\n" [ 450 ]
+450	parm _T274
+451	call _PrintString
+452	call _Halt
+453	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+454	_T275 = 4 [ 455 ]
+455	_T276 = (_T29 * _T275) [ 456 ]
+456	_T277 = (_T269 + _T276) [ 457 ]
+457	_T278 = *(_T277 + 0) [ 458 ]
+458	_T268 = _T278 [ 461 463 464 469 470 471 ]
+459	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+460	_T279 = 0 [ 461 ]
+461	_T280 = (_T268 != _T279) [ 462 ]
+462	END BY BEQZ, if _T280 = 
+	    0 : goto 8; 1 : goto 5
+BASIC BLOCK 5 : 
+463	parm _T268
+464	_T281 = *(_T268 + 0) [ 465 ]
+465	_T282 = *(_T281 + 16) [ 466 ]
+466	_T283 =  call _T282 [ 467 ]
+467	_T284 = (_T283 == _T30) [ 468 ]
+468	END BY BEQZ, if _T284 = 
+	    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+469	END BY RETURN, result = _T268
+BASIC BLOCK 7 : 
+470	parm _T268
+471	_T285 = *(_T268 + 0) [ 472 ]
+472	_T286 = *(_T285 + 12) [ 473 ]
+473	_T287 =  call _T286 [ 474 ]
+474	_T268 = _T287 [ 461 463 464 469 470 471 ]
+475	END BY BRANCH, goto 4
+BASIC BLOCK 8 : 
+476	_T288 = 0 [ 477 ]
+477	END BY RETURN, result = _T288
+
+FUNCTION _SparseMatrix.Set : 
+BASIC BLOCK 0 : 
+478	parm _T31
+479	parm _T32
+480	parm _T33
+481	_T290 = *(_T31 + 0) [ 482 ]
+482	_T291 = *(_T290 + 28) [ 483 ]
+483	_T292 =  call _T291 [ 484 ]
+484	_T289 = _T292 [ 486 488 490 ]
+485	_T293 = 0 [ 486 ]
+486	_T294 = (_T289 != _T293) [ 487 ]
+487	END BY BEQZ, if _T294 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+488	parm _T289
+489	parm _T34
+490	_T295 = *(_T289 + 0) [ 491 ]
+491	_T296 = *(_T295 + 24) [ 492 ]
+492	call _T296
+493	END BY BRANCH, goto 9
+BASIC BLOCK 2 : 
+494	_T297 =  call _SparseItem_New [ 495 ]
+495	_T289 = _T297 [ 512 516 538 ]
+496	_T298 = *(_T31 + 4) [ 497 510 ]
+497	_T299 = *(_T298 - 4) [ 498 ]
+498	_T300 = (_T32 < _T299) [ 499 ]
+499	END BY BEQZ, if _T300 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+500	_T301 = 0 [ 501 ]
+501	_T302 = (_T32 < _T301) [ 502 ]
+502	END BY BEQZ, if _T302 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+503	_T303 = "Decaf runtime error: Array subscript out of bounds\n" [ 504 ]
+504	parm _T303
+505	call _PrintString
+506	call _Halt
+507	END BY BRANCH, goto 5
+BASIC BLOCK 5 : 
+508	_T304 = 4 [ 509 ]
+509	_T305 = (_T32 * _T304) [ 510 ]
+510	_T306 = (_T298 + _T305) [ 511 ]
+511	_T307 = *(_T306 + 0) [ 515 ]
+512	parm _T289
+513	parm _T34
+514	parm _T33
+515	parm _T307
+516	_T308 = *(_T289 + 0) [ 517 ]
+517	_T309 = *(_T308 + 8) [ 518 ]
+518	call _T309
+519	_T310 = *(_T31 + 4) [ 520 533 537 ]
+520	_T311 = *(_T310 - 4) [ 521 ]
+521	_T312 = (_T32 < _T311) [ 522 ]
+522	END BY BEQZ, if _T312 = 
+	    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+523	_T313 = 0 [ 524 ]
+524	_T314 = (_T32 < _T313) [ 525 ]
+525	END BY BEQZ, if _T314 = 
+	    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+526	_T315 = "Decaf runtime error: Array subscript out of bounds\n" [ 527 ]
+527	parm _T315
+528	call _PrintString
+529	call _Halt
+530	END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+531	_T316 = 4 [ 532 ]
+532	_T317 = (_T32 * _T316) [ 533 ]
+533	_T318 = (_T310 + _T317) [ 534 ]
+534	_T319 = *(_T318 + 0) [ ]
+535	_T320 = 4 [ 536 ]
+536	_T321 = (_T32 * _T320) [ 537 ]
+537	_T322 = (_T310 + _T321) [ 538 ]
+538	*(_T322 + 0) = _T289
+539	END BY BRANCH, goto 9
+BASIC BLOCK 9 : 
+540	END BY RETURN, void result
+
+FUNCTION _SparseMatrix.Get : 
+BASIC BLOCK 0 : 
+541	parm _T35
+542	parm _T36
+543	parm _T37
+544	_T324 = *(_T35 + 0) [ 545 ]
+545	_T325 = *(_T324 + 28) [ 546 ]
+546	_T326 =  call _T325 [ 547 ]
+547	_T323 = _T326 [ 549 551 552 ]
+548	_T327 = 0 [ 549 ]
+549	_T328 = (_T323 != _T327) [ 550 ]
+550	END BY BEQZ, if _T328 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+551	parm _T323
+552	_T329 = *(_T323 + 0) [ 553 ]
+553	_T330 = *(_T329 + 20) [ 554 ]
+554	_T331 =  call _T330 [ 555 ]
+555	END BY RETURN, result = _T331
+BASIC BLOCK 2 : 
+556	_T332 = 0 [ 557 ]
+557	END BY RETURN, result = _T332
+BASIC BLOCK 3 : 
+558	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+559	_T334 = "Dense Rep \n" [ 560 ]
+560	parm _T334
+561	call _PrintString
+562	_T335 =  call _DenseMatrix_New [ 563 ]
+563	_T333 = _T335 [ 564 565 568 569 572 573 ]
+564	parm _T333
+565	_T336 = *(_T333 + 0) [ 566 ]
+566	_T337 = *(_T336 + 8) [ 567 ]
+567	call _T337
+568	parm _T333
+569	_T338 = *(_T333 + 0) [ 570 ]
+570	_T339 = *(_T338 + 24) [ 571 ]
+571	call _T339
+572	parm _T333
+573	_T340 = *(_T333 + 0) [ 574 ]
+574	_T341 = *(_T340 + 20) [ 575 ]
+575	call _T341
+576	_T342 = "Sparse Rep \n" [ 577 ]
+577	parm _T342
+578	call _PrintString
+579	_T343 =  call _SparseMatrix_New [ 580 ]
+580	_T333 = _T343 [ 581 582 585 586 589 590 ]
+581	parm _T333
+582	_T344 = *(_T333 + 0) [ 583 ]
+583	_T345 = *(_T344 + 8) [ 584 ]
+584	call _T345
+585	parm _T333
+586	_T346 = *(_T333 + 0) [ 587 ]
+587	_T347 = *(_T346 + 24) [ 588 ]
+588	call _T347
+589	parm _T333
+590	_T348 = *(_T333 + 0) [ 591 ]
+591	_T349 = *(_T348 + 20) [ 592 ]
+592	call _T349
+593	END BY RETURN, void result
+

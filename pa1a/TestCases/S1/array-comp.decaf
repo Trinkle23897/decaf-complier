@@ -1,0 +1,20 @@
+class Main {
+    static void main() {
+        int[] xs;
+        xs = new int[10];
+
+        int[] plus1;
+        plus1 = [x+1 for x in xs];
+
+        bool[] is_positive;
+        is_positive = [x > 0 for x in xs];
+
+        int[] positive;
+        positive = [x for x in xs if x > 0];
+
+        int y;
+        y = 3;
+        int[] times_y_ge_5;
+        times_y = [x*y for x in xs if x >= 5];
+    }
+}

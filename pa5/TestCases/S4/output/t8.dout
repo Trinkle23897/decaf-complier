@@ -1,0 +1,144 @@
+FUNCTION _Animal_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T10 _T11 _T12 _T13 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T10 = 12 [ _T10 ]
+    parm _T10 [ ]
+    _T11 =  call _Alloc [ _T11 ]
+    _T12 = 0 [ _T11 _T12 ]
+    *(_T11 + 4) = _T12 [ _T11 _T12 ]
+    *(_T11 + 8) = _T12 [ _T11 ]
+    _T13 = VTBL <_Animal> [ _T11 _T13 ]
+    *(_T11 + 0) = _T13 [ _T11 ]
+END BY RETURN, result = _T11
+
+FUNCTION _Cow_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T14 _T15 _T16 _T17 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T14 = 16 [ _T14 ]
+    parm _T14 [ ]
+    _T15 =  call _Alloc [ _T15 ]
+    _T16 = 0 [ _T16 _T15 ]
+    *(_T15 + 4) = _T16 [ _T16 _T15 ]
+    *(_T15 + 8) = _T16 [ _T16 _T15 ]
+    *(_T15 + 12) = _T16 [ _T15 ]
+    _T17 = VTBL <_Cow> [ _T17 _T15 ]
+    *(_T15 + 0) = _T17 [ _T15 ]
+END BY RETURN, result = _T15
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T18 _T19 _T20 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T18 = 4 [ _T18 ]
+    parm _T18 [ ]
+    _T19 =  call _Alloc [ _T19 ]
+    _T20 = VTBL <_Main> [ _T19 _T20 ]
+    *(_T19 + 0) = _T20 [ _T19 ]
+END BY RETURN, result = _T19
+
+FUNCTION _Animal.InitAnimal : 
+BASIC BLOCK 0 : 
+  Def     = [ _T21 _T22 ]
+  liveUse = [ _T0 _T1 _T2 ]
+  liveIn  = [ _T0 _T1 _T2 ]
+  liveOut = [ _T0 _T1 _T2 ]
+    _T21 = *(_T0 + 4) [ _T0 _T1 _T2 ]
+    *(_T0 + 4) = _T1 [ _T0 _T1 _T2 ]
+    _T22 = *(_T0 + 8) [ _T0 _T1 _T2 ]
+    *(_T0 + 8) = _T2 [ _T0 _T1 _T2 ]
+END BY RETURN, void result
+
+FUNCTION _Animal.GetHeight : 
+BASIC BLOCK 0 : 
+  Def     = [ _T23 ]
+  liveUse = [ _T3 ]
+  liveIn  = [ _T3 ]
+  liveOut = [ _T3 ]
+    _T23 = *(_T3 + 4) [ _T3 _T23 ]
+END BY RETURN, result = _T23
+
+FUNCTION _Animal.GetMom : 
+BASIC BLOCK 0 : 
+  Def     = [ _T24 ]
+  liveUse = [ _T4 ]
+  liveIn  = [ _T4 ]
+  liveOut = [ _T4 ]
+    _T24 = *(_T4 + 8) [ _T4 _T24 ]
+END BY RETURN, result = _T24
+
+FUNCTION _Cow.InitCow : 
+BASIC BLOCK 0 : 
+  Def     = [ _T25 _T26 _T27 ]
+  liveUse = [ _T5 _T6 _T7 _T8 ]
+  liveIn  = [ _T5 _T6 _T7 _T8 ]
+  liveOut = [ _T5 _T6 _T7 _T8 ]
+    _T25 = *(_T5 + 12) [ _T5 _T6 _T7 _T8 ]
+    *(_T5 + 12) = _T8 [ _T5 _T6 _T7 _T8 ]
+    parm _T5 [ _T5 _T6 _T7 _T8 ]
+    parm _T6 [ _T5 _T6 _T7 _T8 ]
+    parm _T7 [ _T5 _T6 _T7 _T8 ]
+    _T26 = *(_T5 + 0) [ _T5 _T6 _T7 _T8 _T26 ]
+    _T27 = *(_T26 + 8) [ _T5 _T6 _T7 _T8 _T27 ]
+    icall _T27 [ _T5 _T6 _T7 _T8 ]
+END BY RETURN, void result
+
+FUNCTION _Cow.IsSpottedCow : 
+BASIC BLOCK 0 : 
+  Def     = [ _T28 ]
+  liveUse = [ _T9 ]
+  liveIn  = [ _T9 ]
+  liveOut = [ _T9 ]
+    _T28 = *(_T9 + 12) [ _T9 _T28 ]
+END BY RETURN, result = _T28
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T29 _T30 _T31 _T32 _T33 _T34 _T35 _T36 _T37 _T38 _T39 _T40 _T41 _T42 _T43 _T44 _T45 _T46 _T47 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T31 =  call _Cow_New [ _T31 ]
+    _T29 = _T31 [ _T29 ]
+    _T32 = 5 [ _T32 _T29 ]
+    _T33 = 0 [ _T32 _T33 _T29 ]
+    _T34 = 1 [ _T32 _T33 _T34 _T29 ]
+    parm _T29 [ _T32 _T33 _T34 _T29 ]
+    parm _T32 [ _T33 _T34 _T29 ]
+    parm _T33 [ _T34 _T29 ]
+    parm _T34 [ _T29 ]
+    _T35 = *(_T29 + 0) [ _T35 _T29 ]
+    _T36 = *(_T35 + 20) [ _T36 _T29 ]
+    icall _T36 [ _T29 ]
+    _T30 = _T29 [ _T29 _T30 ]
+    parm _T30 [ _T29 _T30 ]
+    _T37 = *(_T30 + 0) [ _T37 _T29 _T30 ]
+    _T38 = *(_T37 + 16) [ _T38 _T29 _T30 ]
+    _T39 =  icall _T38 [ _T29 _T30 ]
+    _T40 = "spots: " [ _T40 _T29 _T30 ]
+    parm _T40 [ _T29 _T30 ]
+    call _PrintString [ _T29 _T30 ]
+    parm _T29 [ _T29 _T30 ]
+    _T41 = *(_T29 + 0) [ _T41 _T30 ]
+    _T42 = *(_T41 + 24) [ _T42 _T30 ]
+    _T43 =  icall _T42 [ _T43 _T30 ]
+    parm _T43 [ _T30 ]
+    call _PrintBool [ _T30 ]
+    _T44 = "    height: " [ _T44 _T30 ]
+    parm _T44 [ _T30 ]
+    call _PrintString [ _T30 ]
+    parm _T30 [ _T30 ]
+    _T45 = *(_T30 + 0) [ _T45 ]
+    _T46 = *(_T45 + 12) [ _T46 ]
+    _T47 =  icall _T46 [ _T47 ]
+    parm _T47 [ ]
+    call _PrintInt [ ]
+END BY RETURN, void result
+

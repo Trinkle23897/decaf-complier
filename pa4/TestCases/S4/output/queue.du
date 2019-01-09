@@ -1,0 +1,279 @@
+FUNCTION _QueueItem_New : 
+BASIC BLOCK 0 : 
+1	_T15 = 16 [ 2 ]
+2	parm _T15
+3	_T16 =  call _Alloc [ 5 6 7 9 10 ]
+4	_T17 = 0 [ 5 6 7 ]
+5	*(_T16 + 4) = _T17
+6	*(_T16 + 8) = _T17
+7	*(_T16 + 12) = _T17
+8	_T18 = VTBL <_QueueItem> [ 9 ]
+9	*(_T16 + 0) = _T18
+10	END BY RETURN, result = _T16
+
+FUNCTION _Queue_New : 
+BASIC BLOCK 0 : 
+11	_T19 = 12 [ 12 ]
+12	parm _T19
+13	_T20 =  call _Alloc [ 15 16 18 19 ]
+14	_T21 = 0 [ 15 16 ]
+15	*(_T20 + 4) = _T21
+16	*(_T20 + 8) = _T21
+17	_T22 = VTBL <_Queue> [ 18 ]
+18	*(_T20 + 0) = _T22
+19	END BY RETURN, result = _T20
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+20	_T23 = 4 [ 21 ]
+21	parm _T23
+22	_T24 =  call _Alloc [ 24 25 ]
+23	_T25 = VTBL <_Main> [ 24 ]
+24	*(_T24 + 0) = _T25
+25	END BY RETURN, result = _T24
+
+FUNCTION _QueueItem.Init : 
+BASIC BLOCK 0 : 
+26	_T26 = *(_T0 + 4) [ ]
+27	*(_T0 + 4) = _T1
+28	_T27 = *(_T0 + 8) [ ]
+29	*(_T0 + 8) = _T2
+30	_T28 = *(_T2 + 12) [ ]
+31	*(_T2 + 12) = _T0
+32	_T29 = *(_T0 + 12) [ ]
+33	*(_T0 + 12) = _T3
+34	_T30 = *(_T3 + 8) [ ]
+35	*(_T3 + 8) = _T0
+36	END BY RETURN, void result
+
+FUNCTION _QueueItem.GetData : 
+BASIC BLOCK 0 : 
+37	_T31 = *(_T4 + 4) [ 38 ]
+38	END BY RETURN, result = _T31
+
+FUNCTION _QueueItem.GetNext : 
+BASIC BLOCK 0 : 
+39	_T32 = *(_T5 + 8) [ 40 ]
+40	END BY RETURN, result = _T32
+
+FUNCTION _QueueItem.GetPrev : 
+BASIC BLOCK 0 : 
+41	_T33 = *(_T6 + 12) [ 42 ]
+42	END BY RETURN, result = _T33
+
+FUNCTION _QueueItem.SetNext : 
+BASIC BLOCK 0 : 
+43	_T34 = *(_T7 + 8) [ ]
+44	*(_T7 + 8) = _T8
+45	END BY RETURN, void result
+
+FUNCTION _QueueItem.SetPrev : 
+BASIC BLOCK 0 : 
+46	_T35 = *(_T9 + 12) [ ]
+47	*(_T9 + 12) = _T10
+48	END BY RETURN, void result
+
+FUNCTION _Queue.Init : 
+BASIC BLOCK 0 : 
+49	_T36 = *(_T11 + 8) [ ]
+50	_T37 =  call _QueueItem_New [ 51 ]
+51	*(_T11 + 8) = _T37
+52	_T38 = *(_T11 + 8) [ 56 60 ]
+53	_T39 = 0 [ 57 ]
+54	_T40 = *(_T11 + 8) [ 58 ]
+55	_T41 = *(_T11 + 8) [ 59 ]
+56	parm _T38
+57	parm _T39
+58	parm _T40
+59	parm _T41
+60	_T42 = *(_T38 + 0) [ 61 ]
+61	_T43 = *(_T42 + 8) [ 62 ]
+62	call _T43
+63	END BY RETURN, void result
+
+FUNCTION _Queue.EnQueue : 
+BASIC BLOCK 0 : 
+64	_T45 =  call _QueueItem_New [ 65 ]
+65	_T44 = _T45 [ 72 76 ]
+66	_T46 = *(_T12 + 8) [ 67 68 ]
+67	parm _T46
+68	_T47 = *(_T46 + 0) [ 69 ]
+69	_T48 = *(_T47 + 16) [ 70 ]
+70	_T49 =  call _T48 [ 74 ]
+71	_T50 = *(_T12 + 8) [ 75 ]
+72	parm _T44
+73	parm _T13
+74	parm _T49
+75	parm _T50
+76	_T51 = *(_T44 + 0) [ 77 ]
+77	_T52 = *(_T51 + 8) [ 78 ]
+78	call _T52
+79	END BY RETURN, void result
+
+FUNCTION _Queue.DeQueue : 
+BASIC BLOCK 0 : 
+80	_T54 = *(_T14 + 8) [ 81 82 ]
+81	parm _T54
+82	_T55 = *(_T54 + 0) [ 83 ]
+83	_T56 = *(_T55 + 20) [ 84 ]
+84	_T57 =  call _T56 [ 86 ]
+85	_T58 = *(_T14 + 8) [ 86 ]
+86	_T59 = (_T57 == _T58) [ 87 ]
+87	END BY BEQZ, if _T59 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+88	_T60 = "Queue Is Empty" [ 89 ]
+89	parm _T60
+90	call _PrintString
+91	_T61 = 0 [ 92 ]
+92	END BY RETURN, result = _T61
+BASIC BLOCK 2 : 
+93	_T63 = *(_T14 + 8) [ 94 95 ]
+94	parm _T63
+95	_T64 = *(_T63 + 0) [ 96 ]
+96	_T65 = *(_T64 + 20) [ 97 ]
+97	_T66 =  call _T65 [ 98 ]
+98	_T62 = _T66 [ 99 100 104 105 108 109 117 118 121 122 ]
+99	parm _T62
+100	_T67 = *(_T62 + 0) [ 101 ]
+101	_T68 = *(_T67 + 12) [ 102 ]
+102	_T69 =  call _T68 [ 103 ]
+103	_T53 = _T69 [ 131 ]
+104	parm _T62
+105	_T70 = *(_T62 + 0) [ 106 ]
+106	_T71 = *(_T70 + 20) [ 107 ]
+107	_T72 =  call _T71 [ 112 114 ]
+108	parm _T62
+109	_T73 = *(_T62 + 0) [ 110 ]
+110	_T74 = *(_T73 + 16) [ 111 ]
+111	_T75 =  call _T74 [ 113 ]
+112	parm _T72
+113	parm _T75
+114	_T76 = *(_T72 + 0) [ 115 ]
+115	_T77 = *(_T76 + 24) [ 116 ]
+116	call _T77
+117	parm _T62
+118	_T78 = *(_T62 + 0) [ 119 ]
+119	_T79 = *(_T78 + 16) [ 120 ]
+120	_T80 =  call _T79 [ 125 127 ]
+121	parm _T62
+122	_T81 = *(_T62 + 0) [ 123 ]
+123	_T82 = *(_T81 + 20) [ 124 ]
+124	_T83 =  call _T82 [ 126 ]
+125	parm _T80
+126	parm _T83
+127	_T84 = *(_T80 + 0) [ 128 ]
+128	_T85 = *(_T84 + 28) [ 129 ]
+129	call _T85
+130	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+131	END BY RETURN, result = _T53
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+132	_T88 =  call _Queue_New [ 133 ]
+133	_T86 = _T88 [ 134 135 148 150 164 165 187 189 203 204 ]
+134	parm _T86
+135	_T89 = *(_T86 + 0) [ 136 ]
+136	_T90 = *(_T89 + 8) [ 137 ]
+137	call _T90
+138	_T91 = 0 [ 139 ]
+139	_T87 = _T91 [ 142 146 149 ]
+140	END BY BRANCH, goto 2
+BASIC BLOCK 1 : 
+141	_T92 = 1 [ 142 ]
+142	_T93 = (_T87 + _T92) [ 143 ]
+143	_T87 = _T93 [ 142 146 149 ]
+144	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+145	_T94 = 10 [ 146 ]
+146	_T95 = (_T87 < _T94) [ 147 ]
+147	END BY BEQZ, if _T95 = 
+	    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+148	parm _T86
+149	parm _T87
+150	_T96 = *(_T86 + 0) [ 151 ]
+151	_T97 = *(_T96 + 12) [ 152 ]
+152	call _T97
+153	END BY BRANCH, goto 1
+BASIC BLOCK 4 : 
+154	_T98 = 0 [ 155 ]
+155	_T87 = _T98 [ 158 162 ]
+156	END BY BRANCH, goto 6
+BASIC BLOCK 5 : 
+157	_T99 = 1 [ 158 ]
+158	_T100 = (_T87 + _T99) [ 159 ]
+159	_T87 = _T100 [ 158 162 ]
+160	END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+161	_T101 = 4 [ 162 ]
+162	_T102 = (_T87 < _T101) [ 163 ]
+163	END BY BEQZ, if _T102 = 
+	    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+164	parm _T86
+165	_T103 = *(_T86 + 0) [ 166 ]
+166	_T104 = *(_T103 + 16) [ 167 ]
+167	_T105 =  call _T104 [ 168 ]
+168	parm _T105
+169	call _PrintInt
+170	_T106 = " " [ 171 ]
+171	parm _T106
+172	call _PrintString
+173	END BY BRANCH, goto 5
+BASIC BLOCK 8 : 
+174	_T107 = "\n" [ 175 ]
+175	parm _T107
+176	call _PrintString
+177	_T108 = 0 [ 178 ]
+178	_T87 = _T108 [ 181 185 188 ]
+179	END BY BRANCH, goto 10
+BASIC BLOCK 9 : 
+180	_T109 = 1 [ 181 ]
+181	_T110 = (_T87 + _T109) [ 182 ]
+182	_T87 = _T110 [ 181 185 188 ]
+183	END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+184	_T111 = 10 [ 185 ]
+185	_T112 = (_T87 < _T111) [ 186 ]
+186	END BY BEQZ, if _T112 = 
+	    0 : goto 12; 1 : goto 11
+BASIC BLOCK 11 : 
+187	parm _T86
+188	parm _T87
+189	_T113 = *(_T86 + 0) [ 190 ]
+190	_T114 = *(_T113 + 12) [ 191 ]
+191	call _T114
+192	END BY BRANCH, goto 9
+BASIC BLOCK 12 : 
+193	_T115 = 0 [ 194 ]
+194	_T87 = _T115 [ 197 201 ]
+195	END BY BRANCH, goto 14
+BASIC BLOCK 13 : 
+196	_T116 = 1 [ 197 ]
+197	_T117 = (_T87 + _T116) [ 198 ]
+198	_T87 = _T117 [ 197 201 ]
+199	END BY BRANCH, goto 14
+BASIC BLOCK 14 : 
+200	_T118 = 17 [ 201 ]
+201	_T119 = (_T87 < _T118) [ 202 ]
+202	END BY BEQZ, if _T119 = 
+	    0 : goto 16; 1 : goto 15
+BASIC BLOCK 15 : 
+203	parm _T86
+204	_T120 = *(_T86 + 0) [ 205 ]
+205	_T121 = *(_T120 + 16) [ 206 ]
+206	_T122 =  call _T121 [ 207 ]
+207	parm _T122
+208	call _PrintInt
+209	_T123 = " " [ 210 ]
+210	parm _T123
+211	call _PrintString
+212	END BY BRANCH, goto 13
+BASIC BLOCK 16 : 
+213	_T124 = "\n" [ 214 ]
+214	parm _T124
+215	call _PrintString
+216	END BY RETURN, void result
+

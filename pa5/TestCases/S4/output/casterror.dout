@@ -1,0 +1,85 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T0 _T1 _T2 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T0 = 4 [ _T0 ]
+    parm _T0 [ ]
+    _T1 =  call _Alloc [ _T1 ]
+    _T2 = VTBL <_Main> [ _T1 _T2 ]
+    *(_T1 + 0) = _T2 [ _T1 ]
+END BY RETURN, result = _T1
+
+FUNCTION _A_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T3 _T4 _T5 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T3 = 4 [ _T3 ]
+    parm _T3 [ ]
+    _T4 =  call _Alloc [ _T4 ]
+    _T5 = VTBL <_A> [ _T4 _T5 ]
+    *(_T4 + 0) = _T5 [ _T4 ]
+END BY RETURN, result = _T4
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T6 _T7 _T10 _T11 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T6 _T10 _T11 ]
+    _T7 =  call _Main_New [ _T7 ]
+    _T6 = _T7 [ _T6 ]
+    _T10 = VTBL <_A> [ _T6 _T10 ]
+    _T11 = *(_T6 + 0) [ _T6 _T10 _T11 ]
+END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T9 ]
+  liveUse = [ _T10 _T11 ]
+  liveIn  = [ _T6 _T10 _T11 ]
+  liveOut = [ _T6 _T10 _T11 ]
+    _T9 = (_T10 == _T11) [ _T6 _T9 _T10 _T11 ]
+END BY BGTZ, if _T9 = 
+    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+  Def     = [ ]
+  liveUse = [ _T11 ]
+  liveIn  = [ _T6 _T10 _T11 ]
+  liveOut = [ _T6 _T10 _T11 ]
+    _T11 = *(_T11 + 0) [ _T6 _T10 _T11 ]
+END BY BGTZ, if _T11 = 
+    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T12 _T13 _T14 _T15 _T16 _T17 _T18 ]
+  liveUse = [ _T6 ]
+  liveIn  = [ _T6 ]
+  liveOut = [ _T6 ]
+    _T12 = "Decaf runtime error: " [ _T6 _T12 ]
+    parm _T12 [ _T6 ]
+    call _PrintString [ _T6 ]
+    _T13 = *(_T6 + 0) [ _T6 _T13 ]
+    _T14 = *(_T13 + 4) [ _T6 _T14 ]
+    parm _T14 [ _T6 ]
+    call _PrintString [ _T6 ]
+    _T15 = " cannot be cast to " [ _T6 _T15 ]
+    parm _T15 [ _T6 ]
+    call _PrintString [ _T6 ]
+    _T16 = VTBL <_A> [ _T16 _T6 ]
+    _T17 = *(_T16 + 4) [ _T17 _T6 ]
+    parm _T17 [ _T6 ]
+    call _PrintString [ _T6 ]
+    _T18 = "\n" [ _T18 _T6 ]
+    parm _T18 [ _T6 ]
+    call _PrintString [ _T6 ]
+    call _Halt [ _T6 ]
+END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+  Def     = [ _T8 ]
+  liveUse = [ _T6 ]
+  liveIn  = [ _T6 ]
+  liveOut = [ ]
+    _T8 = _T6 [ ]
+END BY RETURN, void result
+

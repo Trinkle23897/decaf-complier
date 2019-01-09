@@ -1,0 +1,14 @@
+class Main {
+    int foo(int x, int y, int z) {
+        string s;
+        if { x + y == z: return 2 * z;
+         ||| x < 0 || y < 0 && z < 0: s = "negative";
+         ||| x + y != y + x: s = "impossible";
+        }
+        return s;
+    }
+
+    static int main() {
+        return foo(1,2,3);
+    }
+}

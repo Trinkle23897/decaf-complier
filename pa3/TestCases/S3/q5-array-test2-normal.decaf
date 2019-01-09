@@ -1,0 +1,13 @@
+class Main {
+    static void main() {
+    	int[] a;
+        a = 3%%2;
+		int b;
+		b= a[2] default 9;
+		int c;
+		c= a[1] default 1;
+		
+		Print(b);
+		Print(c);
+	}
+}

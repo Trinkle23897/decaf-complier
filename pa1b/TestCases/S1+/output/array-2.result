@@ -1,0 +1,93 @@
+program
+    class Main <empty>
+        static func f inttype
+            formals
+                vardef i inttype
+            stmtblock
+                return
+                    add
+                        mod
+                            varref i
+                            intconst 4
+                        intconst 1
+        static func main voidtype
+            formals
+            stmtblock
+                assign
+                    var arr1
+                    array concat
+                        array const
+                            intconst 1
+                            intconst 2
+                            intconst 3
+                        array concat
+                            array const
+                                <empty>
+                            array const
+                                intconst 4
+                                intconst 5
+                                intconst 6
+                assign
+                    var arr2
+                    array concat
+                        arrref
+                            varref arr1
+                            range
+                                intconst 2
+                                intconst 5
+                        array repeat
+                            mul
+                                intconst 2
+                                intconst 5
+                            mul
+                                intconst 5
+                                intconst 2
+                assign
+                    var arr3
+                    arrref
+                        varref arr2
+                        range
+                            arrref
+                                varref arr1
+                                intconst 0
+                            arrref
+                                varref arr1
+                                intconst 7
+                                default
+                                    intconst 10
+                assign
+                    var arr4
+                    array comp
+                        varbind x
+                        varref arr1
+                        boolconst true
+                        call f
+                            <empty>
+                            varref x
+                foreach
+                    varbind x var
+                    varref arr4
+                    boolconst true
+                    stmtblock
+                        print
+                            varref x
+                assign
+                    var arr5
+                    array comp
+                        varbind x
+                        varref arr2
+                        equ
+                            mod
+                                varref x
+                                intconst 2
+                            intconst 0
+                        varref x
+                foreach
+                    varbind x inttype
+                    varref arr5
+                    les
+                        varref x
+                        intconst 10
+                    stmtblock
+                        print
+                            varref x

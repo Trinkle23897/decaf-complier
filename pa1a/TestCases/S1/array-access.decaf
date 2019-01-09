@@ -1,0 +1,30 @@
+class Main {
+    static void main() {
+        int[] xs;
+        xs = new int[10];
+        
+        int[] sub1;
+        sub1 = xs[2:6];
+
+        int[] sub2;
+        sub2 = xs[1:10-1];
+
+        int[] sub3;
+        int x;
+        x = xs[3] % 2;
+        int y;
+        y = xs[7] % 4;
+        sub3 = xs[y - x:x + y * 2];
+
+        int z1;
+        z1 = xs[11] default 0;
+        int z2;
+        z2 = 1 + xs[x + y - z1] default x % y;
+        int z3;
+        z3 = xs[3] default 2 %% 2 ++ [1];
+        int z4;
+        z4= xs[3] default 2 + 3;
+        int z5;
+        z5 = - xs[3] default 2;
+    }
+}

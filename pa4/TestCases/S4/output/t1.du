@@ -1,0 +1,16 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T0 = 4 [ 2 ]
+2	parm _T0
+3	_T1 =  call _Alloc [ 5 6 ]
+4	_T2 = VTBL <_Main> [ 5 ]
+5	*(_T1 + 0) = _T2
+6	END BY RETURN, result = _T1
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+7	_T3 = "hello world" [ 8 ]
+8	parm _T3
+9	call _PrintString
+10	END BY RETURN, void result
+

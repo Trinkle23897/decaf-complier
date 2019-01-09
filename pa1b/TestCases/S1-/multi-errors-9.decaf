@@ -1,0 +1,16 @@
+class Main {
+    int x;
+
+    static void main() {
+        int i;
+        int N;
+        for (i = 0;) { // error 1: incomplete for-expr
+            Print("main()\n");
+            if (i == N) break // error 2: missing ';'
+        }
+    }; // error 3: extra ';'
+
+    static void set(int v) {
+        x = v;
+    }
+}

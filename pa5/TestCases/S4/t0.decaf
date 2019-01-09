@@ -1,0 +1,32 @@
+class Main {
+    static void main() {
+        f();
+    }
+
+    static void f() {
+        int i;
+        int j;
+        int a;
+        int b;
+        a = 0;
+        b = 1;
+
+        bool flag;
+        flag = false;
+
+        i = 2;
+        j = i + 1;
+        
+        while (flag) {
+            i = 1;
+            if (flag)
+                f();
+
+            j = j + 1;
+            if (flag)
+                j = j - 4;
+            a = i;
+            b = j;
+        }
+    }
+}

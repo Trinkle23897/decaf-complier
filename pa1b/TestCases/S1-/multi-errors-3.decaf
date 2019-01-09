@@ -1,0 +1,7 @@
+class Main {
+    /* This kind of comment is not supported! */
+
+    static void main() {
+        super.Init();
+        string str;
+        str = "not terminate

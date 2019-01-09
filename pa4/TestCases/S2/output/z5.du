@@ -1,0 +1,140 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T4 = 8 [ 2 ]
+2	parm _T4
+3	_T5 =  call _Alloc [ 5 7 8 ]
+4	_T6 = 0 [ 5 ]
+5	*(_T5 + 4) = _T6
+6	_T7 = VTBL <_Main> [ 7 ]
+7	*(_T5 + 0) = _T7
+8	END BY RETURN, result = _T5
+
+FUNCTION _Hoo_New : 
+BASIC BLOCK 0 : 
+9	_T8 = 4 [ 10 ]
+10	parm _T8
+11	_T9 =  call _Alloc [ 13 14 ]
+12	_T10 = VTBL <_Hoo> [ 13 ]
+13	*(_T9 + 0) = _T10
+14	END BY RETURN, result = _T9
+
+FUNCTION _Goo_New : 
+BASIC BLOCK 0 : 
+15	_T11 = 4 [ 16 ]
+16	parm _T11
+17	_T12 =  call _Alloc [ 19 20 ]
+18	_T13 = VTBL <_Goo> [ 19 ]
+19	*(_T12 + 0) = _T13
+20	END BY RETURN, result = _T12
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+21	_T16 =  call _Main_New [ 22 ]
+22	_T15 = _T16 [ 23 25 28 72 ]
+23	_T17 = *(_T15 + 4) [ ]
+24	_T18 = 4 [ 25 ]
+25	*(_T15 + 4) = _T18
+26	_T19 =  call _Goo_New [ 27 ]
+27	_T14 = _T19 [ 29 31 35 46 55 71 ]
+28	_T20 = *(_T15 + 4) [ 30 ]
+29	parm _T14
+30	parm _T20
+31	_T21 = *(_T14 + 0) [ 32 ]
+32	_T22 = *(_T21 + 8) [ 33 ]
+33	_T23 =  call _T22 [ ]
+34	_T25 = VTBL <_Goo> [ 37 ]
+35	_T26 = *(_T14 + 0) [ 37 39 ]
+36	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+37	_T24 = (_T25 == _T26) [ 38 43 ]
+38	END BY BGTZ, if _T24 = 
+	    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+39	_T26 = *(_T26 + 0) [ 37 39 40 ]
+40	END BY BGTZ, if _T26 = 
+	    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+41	_T24 = 0 [ 43 ]
+42	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+43	parm _T24
+44	call _PrintBool
+45	_T29 = VTBL <_Goo> [ 48 ]
+46	_T30 = *(_T14 + 0) [ 48 50 ]
+47	END BY BRANCH, goto 5
+BASIC BLOCK 5 : 
+48	_T28 = (_T29 == _T30) [ 49 ]
+49	END BY BGTZ, if _T28 = 
+	    1 : goto 8; 0 : goto 6
+BASIC BLOCK 6 : 
+50	_T30 = *(_T30 + 0) [ 48 50 51 ]
+51	END BY BGTZ, if _T30 = 
+	    1 : goto 5; 0 : goto 7
+BASIC BLOCK 7 : 
+52	_T31 = "Decaf runtime error: " [ 53 ]
+53	parm _T31
+54	call _PrintString
+55	_T32 = *(_T14 + 0) [ 56 ]
+56	_T33 = *(_T32 + 4) [ 57 ]
+57	parm _T33
+58	call _PrintString
+59	_T34 = " cannot be cast to " [ 60 ]
+60	parm _T34
+61	call _PrintString
+62	_T35 = VTBL <_Goo> [ 63 ]
+63	_T36 = *(_T35 + 4) [ 64 ]
+64	parm _T36
+65	call _PrintString
+66	_T37 = "\n" [ 67 ]
+67	parm _T37
+68	call _PrintString
+69	call _Halt
+70	END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+71	_T27 = _T14 [ 73 75 ]
+72	_T38 = *(_T15 + 4) [ 74 ]
+73	parm _T27
+74	parm _T38
+75	_T39 = *(_T27 + 0) [ 76 ]
+76	_T40 = *(_T39 + 8) [ 77 ]
+77	_T41 =  call _T40 [ ]
+78	END BY RETURN, void result
+
+FUNCTION _Hoo.printNumbers : 
+BASIC BLOCK 0 : 
+79	_T43 = 10 [ 80 ]
+80	_T44 = (_T43 < _T1) [ 81 ]
+81	END BY BEQZ, if _T44 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+82	_T45 = 10 [ 83 ]
+83	_T1 = _T45 [ 88 ]
+84	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+85	_T46 = 0 [ 86 ]
+86	_T42 = _T46 [ 88 90 93 99 ]
+87	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+88	_T47 = (_T42 < _T1) [ 89 ]
+89	END BY BEQZ, if _T47 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+90	parm _T42
+91	call _PrintInt
+92	_T48 = 2 [ 93 ]
+93	_T49 = (_T42 * _T48) [ 94 ]
+94	_T42 = _T49 [ 88 90 93 99 ]
+95	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+96	_T50 = "\n" [ 97 ]
+97	parm _T50
+98	call _PrintString
+99	END BY RETURN, result = _T42
+
+FUNCTION _Goo.printNumbers : 
+BASIC BLOCK 0 : 
+100	parm _T3
+101	call _PrintInt
+102	_T51 = 1 [ 103 ]
+103	END BY RETURN, result = _T51
+

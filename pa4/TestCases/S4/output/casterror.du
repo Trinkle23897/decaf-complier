@@ -1,0 +1,57 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T0 = 4 [ 2 ]
+2	parm _T0
+3	_T1 =  call _Alloc [ 5 6 ]
+4	_T2 = VTBL <_Main> [ 5 ]
+5	*(_T1 + 0) = _T2
+6	END BY RETURN, result = _T1
+
+FUNCTION _A_New : 
+BASIC BLOCK 0 : 
+7	_T3 = 4 [ 8 ]
+8	parm _T3
+9	_T4 =  call _Alloc [ 11 12 ]
+10	_T5 = VTBL <_A> [ 11 ]
+11	*(_T4 + 0) = _T5
+12	END BY RETURN, result = _T4
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+13	_T7 =  call _Main_New [ 14 ]
+14	_T6 = _T7 [ 16 25 41 ]
+15	_T10 = VTBL <_A> [ 18 ]
+16	_T11 = *(_T6 + 0) [ 18 20 ]
+17	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+18	_T9 = (_T10 == _T11) [ 19 ]
+19	END BY BGTZ, if _T9 = 
+	    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+20	_T11 = *(_T11 + 0) [ 18 20 21 ]
+21	END BY BGTZ, if _T11 = 
+	    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+22	_T12 = "Decaf runtime error: " [ 23 ]
+23	parm _T12
+24	call _PrintString
+25	_T13 = *(_T6 + 0) [ 26 ]
+26	_T14 = *(_T13 + 4) [ 27 ]
+27	parm _T14
+28	call _PrintString
+29	_T15 = " cannot be cast to " [ 30 ]
+30	parm _T15
+31	call _PrintString
+32	_T16 = VTBL <_A> [ 33 ]
+33	_T17 = *(_T16 + 4) [ 34 ]
+34	parm _T17
+35	call _PrintString
+36	_T18 = "\n" [ 37 ]
+37	parm _T18
+38	call _PrintString
+39	call _Halt
+40	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+41	_T8 = _T6 [ ]
+42	END BY RETURN, void result
+

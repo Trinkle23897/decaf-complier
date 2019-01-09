@@ -1,0 +1,115 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T4 _T5 _T6 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T4 = 4 [ _T4 ]
+    parm _T4 [ ]
+    _T5 =  call _Alloc [ _T5 ]
+    _T6 = VTBL <_Main> [ _T5 _T6 ]
+    *(_T5 + 0) = _T6 [ _T5 ]
+END BY RETURN, result = _T5
+
+FUNCTION _Main.compareString : 
+BASIC BLOCK 0 : 
+  Def     = [ _T7 ]
+  liveUse = [ _T0 _T1 ]
+  liveIn  = [ _T0 _T1 ]
+  liveOut = [ _T0 _T1 ]
+    parm _T0 [ _T0 _T1 ]
+    parm _T1 [ _T0 _T1 ]
+    _T7 =  call _StringEqual [ _T0 _T1 _T7 ]
+END BY BEQZ, if _T7 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T8 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T8 = "Equal" [ _T8 ]
+END BY RETURN, result = _T8
+BASIC BLOCK 2 : 
+  Def     = [ _T9 _T10 ]
+  liveUse = [ _T0 _T1 ]
+  liveIn  = [ _T0 _T1 ]
+  liveOut = [ ]
+    parm _T0 [ _T1 ]
+    parm _T1 [ ]
+    _T9 =  call _StringEqual [ _T9 ]
+    _T10 = ! _T9 [ _T10 ]
+END BY BEQZ, if _T10 = 
+    0 : goto 4; 1 : goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T11 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T11 = "Unequal" [ _T11 ]
+END BY RETURN, result = _T11
+BASIC BLOCK 4 : 
+  Def     = [ _T12 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T12 = "The impossible happens!" [ _T12 ]
+END BY RETURN, result = _T12
+BASIC BLOCK 5 : 
+  Def     = [ ]
+  liveUse = [ ]
+  liveIn  = [ _T0 _T1 ]
+  liveOut = [ _T0 _T1 ]
+END BY RETURN, void result
+
+FUNCTION _Main.printCompareString : 
+BASIC BLOCK 0 : 
+  Def     = [ _T13 _T14 _T15 _T16 _T17 ]
+  liveUse = [ _T2 _T3 ]
+  liveIn  = [ _T2 _T3 ]
+  liveOut = [ _T2 _T3 ]
+    _T13 = "\"" [ _T2 _T3 _T13 ]
+    parm _T13 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    parm _T2 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    _T14 = "\" and \"" [ _T2 _T3 _T14 ]
+    parm _T14 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    parm _T3 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    _T15 = "\": " [ _T2 _T3 _T15 ]
+    parm _T15 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    parm _T2 [ _T2 _T3 ]
+    parm _T3 [ _T2 _T3 ]
+    _T16 =  call _Main.compareString [ _T16 _T2 _T3 ]
+    parm _T16 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+    _T17 = "\n" [ _T17 _T2 _T3 ]
+    parm _T17 [ _T2 _T3 ]
+    call _PrintString [ _T2 _T3 ]
+END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T18 _T19 _T20 _T21 _T22 _T23 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T18 = "Jobs" [ _T18 ]
+    _T19 = "Gates" [ _T18 _T19 ]
+    parm _T18 [ _T19 ]
+    parm _T19 [ ]
+    call _Main.printCompareString [ ]
+    _T20 = "case sensitive" [ _T20 ]
+    _T21 = "CASE SENSITIVE" [ _T20 _T21 ]
+    parm _T20 [ _T21 ]
+    parm _T21 [ ]
+    call _Main.printCompareString [ ]
+    _T22 = "Hello" [ _T22 ]
+    _T23 = "Hello" [ _T22 _T23 ]
+    parm _T22 [ _T23 ]
+    parm _T23 [ ]
+    call _Main.printCompareString [ ]
+END BY RETURN, void result
+

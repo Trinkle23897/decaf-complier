@@ -1,0 +1,6 @@
+program
+    sealed class A <empty>
+    sealed class A1 A
+    class B <empty>
+    class C B
+    sealed class D B

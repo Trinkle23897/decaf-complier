@@ -1,0 +1,12 @@
+class Main {
+  static void main() {
+	int a;
+  a = 110;
+  if {a>0 : Print("a>0\n");|||
+    a<50 : Print("a<50\n");|||
+    a>100:  Print("a>100\n");|||
+    a<200:  Print("a<200\n");
+  };
+  Print(a);
+  }
+}

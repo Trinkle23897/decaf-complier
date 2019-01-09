@@ -1,0 +1,12 @@
+// Missing `|||` for `if`.
+
+class Main {
+    void foo(int i) {
+        return i + 1;
+    }
+
+    static void main() {
+        int x;
+        if { x == 1: foo(1); x == 2: foo(2); }
+    }
+}

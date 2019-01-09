@@ -1,0 +1,58 @@
+program
+    class Main <empty>
+        static func main voidtype
+            formals
+            stmtblock
+                vardef xs arrtype inttype
+                assign
+                    varref xs
+                    newarray inttype
+                        intconst 10
+                vardef sub1 arrtype inttype
+                assign
+                    varref sub1
+                    arrref
+                        varref xs
+                        range
+                            intconst 2
+                            intconst 6
+                vardef sub2 arrtype inttype
+                assign
+                    varref sub2
+                    arrref
+                        varref xs
+                        range
+                            intconst 1
+                            sub
+                                intconst 10
+                                intconst 1
+                vardef sub3 arrtype inttype
+                vardef x inttype
+                assign
+                    varref x
+                    mod
+                        arrref
+                            varref xs
+                            intconst 3
+                        intconst 2
+                vardef y inttype
+                assign
+                    varref y
+                    mod
+                        arrref
+                            varref xs
+                            intconst 7
+                        intconst 4
+                assign
+                    varref sub3
+                    arrref
+                        varref xs
+                        range
+                            sub
+                                varref y
+                                varref x
+                            add
+                                varref x
+                                mul
+                                    varref y
+                                    intconst 2

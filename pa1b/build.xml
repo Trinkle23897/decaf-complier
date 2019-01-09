@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Ant build file for Decaf Compiler.
+	author: Zhang Duo
+	date:   Aug 23, 2007
+	DCST, Tsinghua University
+	-->
+<project name="decaf" default="3 pack">
+
+	<!-- 设置各种属性 -->
+	<property name="src.dir" value="src" />
+	<property name="result.dir" value="result" />
+	<property name="test.dir"  value="TestCases/S1" />
+	<property name="bin.dir" value="${result.dir}/bin" />
+	<property name="doc.dir" value="${result.dir}/doc" />
+	<property name="pg.jar" value="tools/pg.jar" />
+
+	<target name="prepare" description="Preparing...">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${doc.dir}" />
+	</target>
+
+	<!-- 生成 Table -->
+	<target name="1 table generation" description="Running pg...">
+		<java fork="true" jar="${pg.jar}" dir="${src.dir}/decaf/frontend" failonerror="true">
+			<arg line="Parser.spec Table.java" />
+		</java>
+	</target>
+
+	<!-- 编译 -->
+	<target name="2 compile" depends="prepare, 1 table generation"
+			description="Compiling all...">
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" encoding="UTF8" debug="on" optimize="off" />
+	</target>
+
+	<!-- 打包 -->
+	<target name="3 pack" depends="2 compile" description="Packaging...">
+		<jar destfile="${result.dir}/decaf.jar">
+			<fileset dir="${basedir}" includes="src/**" />
+			<fileset dir="${bin.dir}" />
+			<manifest>
+				<attribute name="Signature-Version" value="3.141592" />
+				<attribute name="Main-Class" value="decaf.Driver" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- 生成JavaDoc -->
+	<target name="4 javadoc" depends="2 compile">
+		<javadoc access="private" encoding="UTF8" author="false" classpath="." destdir="${doc.dir}" doctitle="Decaf Compiler Documentation" nodeprecated="true" nodeprecatedlist="true" packagenames="*" sourcepath="${basedir}/src" use="true" version="false">
+			<link href="." />
+		</javadoc>
+	</target>
+
+	<target name="clean" description="Clean...">
+		<delete dir="${result.dir}" />
+	</target>
+</project>

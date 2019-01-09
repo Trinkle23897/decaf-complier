@@ -1,0 +1,15 @@
+class Main {
+    static int foo() {
+        var cnt = 1;
+        for (var i = 0; i < 100; i = i + 2) {
+            cnt = cnt * i;
+        }
+
+        return cnt;
+    }
+
+    static void main() {
+        var k = foo();
+        Print(k);
+    }
+}

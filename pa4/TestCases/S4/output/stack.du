@@ -1,0 +1,215 @@
+FUNCTION _Stack_New : 
+BASIC BLOCK 0 : 
+1	_T5 = 12 [ 2 ]
+2	parm _T5
+3	_T6 =  call _Alloc [ 5 6 8 9 ]
+4	_T7 = 0 [ 5 6 ]
+5	*(_T6 + 4) = _T7
+6	*(_T6 + 8) = _T7
+7	_T8 = VTBL <_Stack> [ 8 ]
+8	*(_T6 + 0) = _T8
+9	END BY RETURN, result = _T6
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+10	_T9 = 4 [ 11 ]
+11	parm _T9
+12	_T10 =  call _Alloc [ 14 15 ]
+13	_T11 = VTBL <_Main> [ 14 ]
+14	*(_T10 + 0) = _T11
+15	END BY RETURN, result = _T10
+
+FUNCTION _Stack.Init : 
+BASIC BLOCK 0 : 
+16	_T12 = *(_T0 + 8) [ ]
+17	_T13 = 100 [ 19 27 31 ]
+18	_T14 = 0 [ 19 ]
+19	_T15 = (_T13 < _T14) [ 20 ]
+20	END BY BEQZ, if _T15 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+21	_T16 = "Decaf runtime error: Cannot create negative-sized array\n" [ 22 ]
+22	parm _T16
+23	call _PrintString
+24	call _Halt
+25	END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+26	_T17 = 4 [ 27 28 35 37 ]
+27	_T18 = (_T17 * _T13) [ 28 ]
+28	_T19 = (_T17 + _T18) [ 29 33 35 ]
+29	parm _T19
+30	_T20 =  call _Alloc [ 31 33 ]
+31	*(_T20 + 0) = _T13
+32	_T21 = 0 [ 38 ]
+33	_T20 = (_T20 + _T19) [ 37 40 ]
+34	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+35	_T19 = (_T19 - _T17) [ 35 36 ]
+36	END BY BEQZ, if _T19 = 
+	    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+37	_T20 = (_T20 - _T17) [ 37 38 40 ]
+38	*(_T20 + 0) = _T21
+39	END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+40	*(_T0 + 8) = _T20
+41	_T22 = *(_T0 + 4) [ ]
+42	_T23 = 0 [ 43 ]
+43	*(_T0 + 4) = _T23
+44	_T24 = 3 [ 46 ]
+45	parm _T0
+46	parm _T24
+47	_T25 = *(_T0 + 0) [ 48 ]
+48	_T26 = *(_T25 + 12) [ 49 ]
+49	call _T26
+50	END BY RETURN, void result
+
+FUNCTION _Stack.Push : 
+BASIC BLOCK 0 : 
+51	_T27 = *(_T1 + 8) [ 53 66 70 ]
+52	_T28 = *(_T1 + 4) [ 54 57 65 69 ]
+53	_T29 = *(_T27 - 4) [ 54 ]
+54	_T30 = (_T28 < _T29) [ 55 ]
+55	END BY BEQZ, if _T30 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+56	_T31 = 0 [ 57 ]
+57	_T32 = (_T28 < _T31) [ 58 ]
+58	END BY BEQZ, if _T32 = 
+	    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+59	_T33 = "Decaf runtime error: Array subscript out of bounds\n" [ 60 ]
+60	parm _T33
+61	call _PrintString
+62	call _Halt
+63	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+64	_T34 = 4 [ 65 ]
+65	_T35 = (_T28 * _T34) [ 66 ]
+66	_T36 = (_T27 + _T35) [ 67 ]
+67	_T37 = *(_T36 + 0) [ ]
+68	_T38 = 4 [ 69 ]
+69	_T39 = (_T28 * _T38) [ 70 ]
+70	_T40 = (_T27 + _T39) [ 71 ]
+71	*(_T40 + 0) = _T2
+72	_T41 = *(_T1 + 4) [ ]
+73	_T42 = *(_T1 + 4) [ 75 ]
+74	_T43 = 1 [ 75 ]
+75	_T44 = (_T42 + _T43) [ 76 ]
+76	*(_T1 + 4) = _T44
+77	END BY RETURN, void result
+
+FUNCTION _Stack.Pop : 
+BASIC BLOCK 0 : 
+78	_T46 = *(_T3 + 8) [ 82 95 ]
+79	_T47 = *(_T3 + 4) [ 81 ]
+80	_T48 = 1 [ 81 ]
+81	_T49 = (_T47 - _T48) [ 83 86 94 ]
+82	_T50 = *(_T46 - 4) [ 83 ]
+83	_T51 = (_T49 < _T50) [ 84 ]
+84	END BY BEQZ, if _T51 = 
+	    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+85	_T52 = 0 [ 86 ]
+86	_T53 = (_T49 < _T52) [ 87 ]
+87	END BY BEQZ, if _T53 = 
+	    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+88	_T54 = "Decaf runtime error: Array subscript out of bounds\n" [ 89 ]
+89	parm _T54
+90	call _PrintString
+91	call _Halt
+92	END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+93	_T55 = 4 [ 94 ]
+94	_T56 = (_T49 * _T55) [ 95 ]
+95	_T57 = (_T46 + _T56) [ 96 ]
+96	_T58 = *(_T57 + 0) [ 97 ]
+97	_T45 = _T58 [ 103 ]
+98	_T59 = *(_T3 + 4) [ ]
+99	_T60 = *(_T3 + 4) [ 101 ]
+100	_T61 = 1 [ 101 ]
+101	_T62 = (_T60 - _T61) [ 102 ]
+102	*(_T3 + 4) = _T62
+103	END BY RETURN, result = _T45
+
+FUNCTION _Stack.NumElems : 
+BASIC BLOCK 0 : 
+104	_T63 = *(_T4 + 4) [ 105 ]
+105	END BY RETURN, result = _T63
+
+FUNCTION _Stack.main : 
+BASIC BLOCK 0 : 
+106	_T65 =  call _Stack_New [ 107 ]
+107	_T64 = _T65 [ 108 109 113 115 119 121 125 127 130 131 139 140 148 149 157 158 166 167 ]
+108	parm _T64
+109	_T66 = *(_T64 + 0) [ 110 ]
+110	_T67 = *(_T66 + 8) [ 111 ]
+111	call _T67
+112	_T68 = 3 [ 114 ]
+113	parm _T64
+114	parm _T68
+115	_T69 = *(_T64 + 0) [ 116 ]
+116	_T70 = *(_T69 + 12) [ 117 ]
+117	call _T70
+118	_T71 = 7 [ 120 ]
+119	parm _T64
+120	parm _T71
+121	_T72 = *(_T64 + 0) [ 122 ]
+122	_T73 = *(_T72 + 12) [ 123 ]
+123	call _T73
+124	_T74 = 4 [ 126 ]
+125	parm _T64
+126	parm _T74
+127	_T75 = *(_T64 + 0) [ 128 ]
+128	_T76 = *(_T75 + 12) [ 129 ]
+129	call _T76
+130	parm _T64
+131	_T77 = *(_T64 + 0) [ 132 ]
+132	_T78 = *(_T77 + 20) [ 133 ]
+133	_T79 =  call _T78 [ 134 ]
+134	parm _T79
+135	call _PrintInt
+136	_T80 = " " [ 137 ]
+137	parm _T80
+138	call _PrintString
+139	parm _T64
+140	_T81 = *(_T64 + 0) [ 141 ]
+141	_T82 = *(_T81 + 16) [ 142 ]
+142	_T83 =  call _T82 [ 143 ]
+143	parm _T83
+144	call _PrintInt
+145	_T84 = " " [ 146 ]
+146	parm _T84
+147	call _PrintString
+148	parm _T64
+149	_T85 = *(_T64 + 0) [ 150 ]
+150	_T86 = *(_T85 + 16) [ 151 ]
+151	_T87 =  call _T86 [ 152 ]
+152	parm _T87
+153	call _PrintInt
+154	_T88 = " " [ 155 ]
+155	parm _T88
+156	call _PrintString
+157	parm _T64
+158	_T89 = *(_T64 + 0) [ 159 ]
+159	_T90 = *(_T89 + 16) [ 160 ]
+160	_T91 =  call _T90 [ 161 ]
+161	parm _T91
+162	call _PrintInt
+163	_T92 = " " [ 164 ]
+164	parm _T92
+165	call _PrintString
+166	parm _T64
+167	_T93 = *(_T64 + 0) [ 168 ]
+168	_T94 = *(_T93 + 20) [ 169 ]
+169	_T95 =  call _T94 [ 170 ]
+170	parm _T95
+171	call _PrintInt
+172	END BY RETURN, void result
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+173	call _Stack.main
+174	END BY RETURN, void result
+

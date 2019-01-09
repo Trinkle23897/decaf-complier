@@ -1,0 +1,52 @@
+program
+    class Main <empty>
+        func foo voidtype
+            formals
+            stmtblock
+                guarded
+                    guard
+                        boolconst true
+                        guarded
+                            guard
+                                boolconst false
+                                print
+                                    stringconst "unreachable"
+        func bar voidtype
+            formals
+            stmtblock
+                vardef x inttype
+                assign
+                    varref x
+                    readint
+                guarded
+                    guard
+                        boolconst true
+                        if
+                            gtr
+                                varref x
+                                intconst 0
+                            guarded
+                                guard
+                                    equ
+                                        varref x
+                                        intconst 1
+                                    print
+                                        stringconst "x=1"
+                                guard
+                                    equ
+                                        varref x
+                                        intconst 2
+                                    print
+                                        stringconst "x=2"
+                        else
+                            guarded
+                                <empty>
+        static func main voidtype
+            formals
+            stmtblock
+                guarded
+                    <empty>
+                call foo
+                    <empty>
+                call bar
+                    <empty>

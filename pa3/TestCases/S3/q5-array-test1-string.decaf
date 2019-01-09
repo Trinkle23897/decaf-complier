@@ -1,0 +1,11 @@
+class Main {
+    static void main() {
+    	string [] a;
+    	a = "first" %% 3;
+    	a[1] = "second";
+        Print(a[0]);
+        Print("\n");
+        Print(a[1]);
+        Print("\n");
+	}
+}

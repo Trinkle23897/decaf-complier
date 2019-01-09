@@ -1,0 +1,6 @@
+class Main {
+    static void main() {
+        int[] xs;
+        xs = [1,0,-1]; // -1 is an expression, not a constant!
+    }
+}

@@ -1,0 +1,11 @@
+class Main {
+    static void main() {
+        int x;
+        x = 1 * (1 + 2 * (3 + 4 - x); // error 1: first '(' is not balanced
+        int y;
+        y = x ^ 2; // error 2: unrecognized char '^'
+        Obj o; // error 3: missing 'class'
+        o = new Obj();
+        return 0;
+    }
+}

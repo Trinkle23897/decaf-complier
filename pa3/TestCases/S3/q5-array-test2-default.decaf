@@ -1,0 +1,13 @@
+class Main {
+    static void main() {
+    	string[] a;
+        a = "pa1" %%2;
+		string b;
+		b= a[0] default "pa2";
+		string c;
+		c= a[2] default "pa3";
+		
+		Print(b);
+		Print(c);
+	}
+}

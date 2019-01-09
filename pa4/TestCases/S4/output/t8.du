@@ -1,0 +1,108 @@
+FUNCTION _Animal_New : 
+BASIC BLOCK 0 : 
+1	_T10 = 12 [ 2 ]
+2	parm _T10
+3	_T11 =  call _Alloc [ 5 6 8 9 ]
+4	_T12 = 0 [ 5 6 ]
+5	*(_T11 + 4) = _T12
+6	*(_T11 + 8) = _T12
+7	_T13 = VTBL <_Animal> [ 8 ]
+8	*(_T11 + 0) = _T13
+9	END BY RETURN, result = _T11
+
+FUNCTION _Cow_New : 
+BASIC BLOCK 0 : 
+10	_T14 = 16 [ 11 ]
+11	parm _T14
+12	_T15 =  call _Alloc [ 14 15 16 18 19 ]
+13	_T16 = 0 [ 14 15 16 ]
+14	*(_T15 + 4) = _T16
+15	*(_T15 + 8) = _T16
+16	*(_T15 + 12) = _T16
+17	_T17 = VTBL <_Cow> [ 18 ]
+18	*(_T15 + 0) = _T17
+19	END BY RETURN, result = _T15
+
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+20	_T18 = 4 [ 21 ]
+21	parm _T18
+22	_T19 =  call _Alloc [ 24 25 ]
+23	_T20 = VTBL <_Main> [ 24 ]
+24	*(_T19 + 0) = _T20
+25	END BY RETURN, result = _T19
+
+FUNCTION _Animal.InitAnimal : 
+BASIC BLOCK 0 : 
+26	_T21 = *(_T0 + 4) [ ]
+27	*(_T0 + 4) = _T1
+28	_T22 = *(_T0 + 8) [ ]
+29	*(_T0 + 8) = _T2
+30	END BY RETURN, void result
+
+FUNCTION _Animal.GetHeight : 
+BASIC BLOCK 0 : 
+31	_T23 = *(_T3 + 4) [ 32 ]
+32	END BY RETURN, result = _T23
+
+FUNCTION _Animal.GetMom : 
+BASIC BLOCK 0 : 
+33	_T24 = *(_T4 + 8) [ 34 ]
+34	END BY RETURN, result = _T24
+
+FUNCTION _Cow.InitCow : 
+BASIC BLOCK 0 : 
+35	_T25 = *(_T5 + 12) [ ]
+36	*(_T5 + 12) = _T8
+37	parm _T5
+38	parm _T6
+39	parm _T7
+40	_T26 = *(_T5 + 0) [ 41 ]
+41	_T27 = *(_T26 + 8) [ 42 ]
+42	call _T27
+43	END BY RETURN, void result
+
+FUNCTION _Cow.IsSpottedCow : 
+BASIC BLOCK 0 : 
+44	_T28 = *(_T9 + 12) [ 45 ]
+45	END BY RETURN, result = _T28
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+46	_T31 =  call _Cow_New [ 47 ]
+47	_T29 = _T31 [ 51 55 58 66 67 ]
+48	_T32 = 5 [ 52 ]
+49	_T33 = 0 [ 53 ]
+50	_T34 = 1 [ 54 ]
+51	parm _T29
+52	parm _T32
+53	parm _T33
+54	parm _T34
+55	_T35 = *(_T29 + 0) [ 56 ]
+56	_T36 = *(_T35 + 20) [ 57 ]
+57	call _T36
+58	_T30 = _T29 [ 59 60 75 76 ]
+59	parm _T30
+60	_T37 = *(_T30 + 0) [ 61 ]
+61	_T38 = *(_T37 + 16) [ 62 ]
+62	_T39 =  call _T38 [ ]
+63	_T40 = "spots: " [ 64 ]
+64	parm _T40
+65	call _PrintString
+66	parm _T29
+67	_T41 = *(_T29 + 0) [ 68 ]
+68	_T42 = *(_T41 + 24) [ 69 ]
+69	_T43 =  call _T42 [ 70 ]
+70	parm _T43
+71	call _PrintBool
+72	_T44 = "    height: " [ 73 ]
+73	parm _T44
+74	call _PrintString
+75	parm _T30
+76	_T45 = *(_T30 + 0) [ 77 ]
+77	_T46 = *(_T45 + 12) [ 78 ]
+78	_T47 =  call _T46 [ 79 ]
+79	parm _T47
+80	call _PrintInt
+81	END BY RETURN, void result
+

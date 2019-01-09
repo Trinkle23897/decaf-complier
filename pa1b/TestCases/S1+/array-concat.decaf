@@ -1,0 +1,21 @@
+class Main {
+    static int[] empty() {
+        int[] nil;
+        nil = new int[0];
+        return nil;
+    }
+
+    static void main() {
+        int[] ws;
+        int[] xs;
+        bool[] ys;
+        string[] zs;
+
+        int[] arr;
+        arr = ws ++ xs;
+        int[] err;
+        err = ws ++ xs ++ ys;
+        int[] arr1;
+        arr1 = ws ++ xs ++ empty();
+    }
+}

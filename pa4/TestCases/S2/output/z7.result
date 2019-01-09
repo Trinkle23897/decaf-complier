@@ -1,0 +1,9 @@
+SPIM Version 7.3. of August 28, 2006
+Copyright 1990-2004 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: ./exceptions.s
+-1
+Exception occurred at PC=0x00400294
+  Unaligned address in store: 0x00000009
+Attempt to execute non-instruction at 0x80000180

@@ -1,0 +1,4 @@
+*** Error at (77,5): syntax error
+*** Error: undefined function _Stack.Push
+*** Error: undefined function _Stack.Pop
+*** Error: undefined function _Stack.NumElems

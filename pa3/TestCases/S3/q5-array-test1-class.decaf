@@ -1,0 +1,23 @@
+class A {
+    int b;
+	int a;
+    void seta(int a){
+    	this.a = a;
+    }
+    void printA(){
+    	Print(a);
+        Print("\n");
+    }
+}
+class Main {
+    static void main() {
+    	class A [] a;
+    	class A b;
+    	b = new A();
+    	b.seta(10);
+    	a = b %% 6;
+    	a[1].seta(15);
+    	a[0].printA();
+    	a[1].printA();
+	}
+}

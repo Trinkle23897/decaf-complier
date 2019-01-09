@@ -1,0 +1,57 @@
+program
+    class Main <empty>
+        func foo inttype
+            formals
+                vardef x inttype
+                vardef y inttype
+                vardef z inttype
+            stmtblock
+                vardef s stringtype
+                guarded
+                    guard
+                        equ
+                            add
+                                varref x
+                                varref y
+                            varref z
+                        return
+                            mul
+                                intconst 2
+                                varref z
+                    guard
+                        or
+                            les
+                                varref x
+                                intconst 0
+                            and
+                                les
+                                    varref y
+                                    intconst 0
+                                les
+                                    varref z
+                                    intconst 0
+                        assign
+                            varref s
+                            stringconst "negative"
+                    guard
+                        neq
+                            add
+                                varref x
+                                varref y
+                            add
+                                varref y
+                                varref x
+                        assign
+                            varref s
+                            stringconst "impossible"
+                return
+                    varref s
+        static func main inttype
+            formals
+            stmtblock
+                return
+                    call foo
+                        <empty>
+                        intconst 1
+                        intconst 2
+                        intconst 3

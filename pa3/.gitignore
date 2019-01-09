@@ -1,0 +1,7 @@
+bin/*
+TestCases/S3/output/*.tac
+result/*
+decaf_origin
+.classpath
+.project
+/bin/

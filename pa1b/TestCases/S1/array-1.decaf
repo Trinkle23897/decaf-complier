@@ -1,0 +1,23 @@
+class Main {
+    static string[] bar(int opt) {
+        if { 
+            opt == 1:
+                return ["Bye"];
+        ||| opt == 2: {
+                var arr1 = ["Hello"];
+                var arr2 = ["World"];
+                return arr1 %% 2 ++ arr2;
+            }
+        }
+    }
+
+    static void main() {
+        foreach (var s in bar(2)) {
+            Print(s);
+        }
+
+        foreach (var s in bar(1)) {
+            Print(s);
+        }
+    }
+}

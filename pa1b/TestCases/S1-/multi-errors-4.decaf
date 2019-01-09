@@ -1,0 +1,8 @@
+class Main {
+    static void main() {
+        Print("hello\n") // error 1: missing ';'
+        int x // error 2: missing ';'
+        bool y;;;;;
+        return 0 // error 3: missing ';'
+    }
+}

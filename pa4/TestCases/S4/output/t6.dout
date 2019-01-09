@@ -1,0 +1,512 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+  Def     = [ _T3 _T4 _T5 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ ]
+    _T3 = 4 [ _T3 ]
+    parm _T3 [ ]
+    _T4 =  call _Alloc [ _T4 ]
+    _T5 = VTBL <_Main> [ _T4 _T5 ]
+    *(_T4 + 0) = _T5 [ _T4 ]
+END BY RETURN, result = _T4
+
+FUNCTION _Main.Binky : 
+BASIC BLOCK 0 : 
+  Def     = [ _T6 _T7 _T8 ]
+  liveUse = [ _T2 ]
+  liveIn  = [ _T1 _T2 ]
+  liveOut = [ _T1 _T2 _T6 ]
+    _T6 = 0 [ _T1 _T2 _T6 ]
+    _T7 = *(_T2 - 4) [ _T1 _T2 _T6 _T7 ]
+    _T8 = (_T6 < _T7) [ _T1 _T2 _T6 _T8 ]
+END BY BEQZ, if _T8 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T9 _T10 ]
+  liveUse = [ _T6 ]
+  liveIn  = [ _T1 _T2 _T6 ]
+  liveOut = [ _T1 _T2 _T6 ]
+    _T9 = 0 [ _T1 _T2 _T6 _T9 ]
+    _T10 = (_T6 < _T9) [ _T1 _T2 _T6 _T10 ]
+END BY BEQZ, if _T10 = 
+    0 : goto 3; 1 : goto 2
+BASIC BLOCK 2 : 
+  Def     = [ _T11 ]
+  liveUse = [ ]
+  liveIn  = [ _T1 _T2 _T6 ]
+  liveOut = [ _T1 _T2 _T6 ]
+    _T11 = "Decaf runtime error: Array subscript out of bounds\n" [ _T1 _T2 _T6 _T11 ]
+    parm _T11 [ _T1 _T2 _T6 ]
+    call _PrintString [ _T1 _T2 _T6 ]
+    call _Halt [ _T1 _T2 _T6 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+  Def     = [ _T12 _T13 _T14 _T15 _T16 _T17 ]
+  liveUse = [ _T1 _T2 _T6 ]
+  liveIn  = [ _T1 _T2 _T6 ]
+  liveOut = [ _T1 _T15 ]
+    _T12 = 4 [ _T1 _T2 _T6 _T12 ]
+    _T13 = (_T6 * _T12) [ _T1 _T2 _T13 ]
+    _T14 = (_T2 + _T13) [ _T1 _T14 ]
+    _T15 = *(_T14 + 0) [ _T1 _T15 ]
+    _T16 = *(_T1 - 4) [ _T16 _T1 _T15 ]
+    _T17 = (_T15 < _T16) [ _T1 _T17 _T15 ]
+END BY BEQZ, if _T17 = 
+    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+  Def     = [ _T18 _T19 ]
+  liveUse = [ _T15 ]
+  liveIn  = [ _T1 _T15 ]
+  liveOut = [ _T1 _T15 ]
+    _T18 = 0 [ _T1 _T18 _T15 ]
+    _T19 = (_T15 < _T18) [ _T1 _T19 _T15 ]
+END BY BEQZ, if _T19 = 
+    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+  Def     = [ _T20 ]
+  liveUse = [ ]
+  liveIn  = [ _T1 _T15 ]
+  liveOut = [ _T1 _T15 ]
+    _T20 = "Decaf runtime error: Array subscript out of bounds\n" [ _T1 _T20 _T15 ]
+    parm _T20 [ _T1 _T15 ]
+    call _PrintString [ _T1 _T15 ]
+    call _Halt [ _T1 _T15 ]
+END BY BRANCH, goto 6
+BASIC BLOCK 6 : 
+  Def     = [ _T21 _T22 _T23 _T24 ]
+  liveUse = [ _T1 _T15 ]
+  liveIn  = [ _T1 _T15 ]
+  liveOut = [ ]
+    _T21 = 4 [ _T1 _T21 _T15 ]
+    _T22 = (_T15 * _T21) [ _T1 _T22 ]
+    _T23 = (_T1 + _T22) [ _T23 ]
+    _T24 = *(_T23 + 0) [ _T24 ]
+END BY RETURN, result = _T24
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+  Def     = [ _T27 _T28 _T29 ]
+  liveUse = [ ]
+  liveIn  = [ ]
+  liveOut = [ _T27 ]
+    _T27 = 5 [ _T27 ]
+    _T28 = 0 [ _T27 _T28 ]
+    _T29 = (_T27 < _T28) [ _T27 _T29 ]
+END BY BEQZ, if _T29 = 
+    0 : goto 2; 1 : goto 1
+BASIC BLOCK 1 : 
+  Def     = [ _T30 ]
+  liveUse = [ ]
+  liveIn  = [ _T27 ]
+  liveOut = [ _T27 ]
+    _T30 = "Decaf runtime error: Cannot create negative-sized array\n" [ _T27 _T30 ]
+    parm _T30 [ _T27 ]
+    call _PrintString [ _T27 ]
+    call _Halt [ _T27 ]
+END BY BRANCH, goto 2
+BASIC BLOCK 2 : 
+  Def     = [ _T31 _T32 _T33 _T34 _T35 ]
+  liveUse = [ _T27 ]
+  liveIn  = [ _T27 ]
+  liveOut = [ _T31 _T33 _T34 _T35 ]
+    _T31 = 4 [ _T27 _T31 ]
+    _T32 = (_T31 * _T27) [ _T32 _T27 _T31 ]
+    _T33 = (_T31 + _T32) [ _T33 _T27 _T31 ]
+    parm _T33 [ _T33 _T27 _T31 ]
+    _T34 =  call _Alloc [ _T33 _T34 _T27 _T31 ]
+    *(_T34 + 0) = _T27 [ _T33 _T34 _T31 ]
+    _T35 = 0 [ _T33 _T34 _T35 _T31 ]
+    _T34 = (_T34 + _T33) [ _T33 _T34 _T35 _T31 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 3 : 
+  Def     = [ ]
+  liveUse = [ _T31 _T33 ]
+  liveIn  = [ _T31 _T33 _T34 _T35 ]
+  liveOut = [ _T31 _T33 _T34 _T35 ]
+    _T33 = (_T33 - _T31) [ _T33 _T34 _T35 _T31 ]
+END BY BEQZ, if _T33 = 
+    0 : goto 5; 1 : goto 4
+BASIC BLOCK 4 : 
+  Def     = [ ]
+  liveUse = [ _T31 _T34 _T35 ]
+  liveIn  = [ _T31 _T33 _T34 _T35 ]
+  liveOut = [ _T31 _T33 _T34 _T35 ]
+    _T34 = (_T34 - _T31) [ _T33 _T34 _T35 _T31 ]
+    *(_T34 + 0) = _T35 [ _T33 _T34 _T35 _T31 ]
+END BY BRANCH, goto 3
+BASIC BLOCK 5 : 
+  Def     = [ _T26 _T36 _T37 _T38 ]
+  liveUse = [ _T34 ]
+  liveIn  = [ _T34 ]
+  liveOut = [ _T26 _T36 ]
+    _T26 = _T34 [ _T26 ]
+    _T36 = 0 [ _T36 _T26 ]
+    _T37 = *(_T26 - 4) [ _T36 _T37 _T26 ]
+    _T38 = (_T36 < _T37) [ _T36 _T38 _T26 ]
+END BY BEQZ, if _T38 = 
+    0 : goto 7; 1 : goto 6
+BASIC BLOCK 6 : 
+  Def     = [ _T39 _T40 ]
+  liveUse = [ _T36 ]
+  liveIn  = [ _T26 _T36 ]
+  liveOut = [ _T26 _T36 ]
+    _T39 = 0 [ _T36 _T39 _T26 ]
+    _T40 = (_T36 < _T39) [ _T36 _T40 _T26 ]
+END BY BEQZ, if _T40 = 
+    0 : goto 8; 1 : goto 7
+BASIC BLOCK 7 : 
+  Def     = [ _T41 ]
+  liveUse = [ ]
+  liveIn  = [ _T26 _T36 ]
+  liveOut = [ _T26 _T36 ]
+    _T41 = "Decaf runtime error: Array subscript out of bounds\n" [ _T36 _T41 _T26 ]
+    parm _T41 [ _T36 _T26 ]
+    call _PrintString [ _T36 _T26 ]
+    call _Halt [ _T36 _T26 ]
+END BY BRANCH, goto 8
+BASIC BLOCK 8 : 
+  Def     = [ _T42 _T43 _T44 _T45 _T46 _T47 _T48 ]
+  liveUse = [ _T26 _T36 ]
+  liveIn  = [ _T26 _T36 ]
+  liveOut = [ _T26 _T36 _T46 ]
+    _T42 = 4 [ _T36 _T26 _T42 ]
+    _T43 = (_T36 * _T42) [ _T36 _T26 _T43 ]
+    _T44 = (_T26 + _T43) [ _T36 _T26 _T44 ]
+    _T45 = *(_T44 + 0) [ _T36 _T26 ]
+    _T46 = 12 [ _T36 _T26 _T46 ]
+    _T47 = 0 [ _T36 _T26 _T46 _T47 ]
+    _T48 = (_T46 < _T47) [ _T48 _T36 _T26 _T46 ]
+END BY BEQZ, if _T48 = 
+    0 : goto 10; 1 : goto 9
+BASIC BLOCK 9 : 
+  Def     = [ _T49 ]
+  liveUse = [ ]
+  liveIn  = [ _T26 _T36 _T46 ]
+  liveOut = [ _T26 _T36 _T46 ]
+    _T49 = "Decaf runtime error: Cannot create negative-sized array\n" [ _T49 _T36 _T26 _T46 ]
+    parm _T49 [ _T36 _T26 _T46 ]
+    call _PrintString [ _T36 _T26 _T46 ]
+    call _Halt [ _T36 _T26 _T46 ]
+END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+  Def     = [ _T50 _T51 _T52 _T53 _T54 ]
+  liveUse = [ _T46 ]
+  liveIn  = [ _T26 _T36 _T46 ]
+  liveOut = [ _T26 _T36 _T50 _T52 _T53 _T54 ]
+    _T50 = 4 [ _T50 _T36 _T26 _T46 ]
+    _T51 = (_T50 * _T46) [ _T50 _T51 _T36 _T26 _T46 ]
+    _T52 = (_T50 + _T51) [ _T50 _T36 _T52 _T26 _T46 ]
+    parm _T52 [ _T50 _T36 _T52 _T26 _T46 ]
+    _T53 =  call _Alloc [ _T50 _T36 _T52 _T53 _T26 _T46 ]
+    *(_T53 + 0) = _T46 [ _T50 _T36 _T52 _T53 _T26 ]
+    _T54 = 0 [ _T50 _T36 _T52 _T53 _T54 _T26 ]
+    _T53 = (_T53 + _T52) [ _T50 _T36 _T52 _T53 _T54 _T26 ]
+END BY BRANCH, goto 11
+BASIC BLOCK 11 : 
+  Def     = [ ]
+  liveUse = [ _T50 _T52 ]
+  liveIn  = [ _T26 _T36 _T50 _T52 _T53 _T54 ]
+  liveOut = [ _T26 _T36 _T50 _T52 _T53 _T54 ]
+    _T52 = (_T52 - _T50) [ _T50 _T36 _T52 _T53 _T54 _T26 ]
+END BY BEQZ, if _T52 = 
+    0 : goto 13; 1 : goto 12
+BASIC BLOCK 12 : 
+  Def     = [ ]
+  liveUse = [ _T50 _T53 _T54 ]
+  liveIn  = [ _T26 _T36 _T50 _T52 _T53 _T54 ]
+  liveOut = [ _T26 _T36 _T50 _T52 _T53 _T54 ]
+    _T53 = (_T53 - _T50) [ _T50 _T36 _T52 _T53 _T54 _T26 ]
+    *(_T53 + 0) = _T54 [ _T50 _T36 _T52 _T53 _T54 _T26 ]
+END BY BRANCH, goto 11
+BASIC BLOCK 13 : 
+  Def     = [ _T55 _T56 _T57 _T58 _T59 _T60 ]
+  liveUse = [ _T26 _T36 _T53 ]
+  liveIn  = [ _T26 _T36 _T53 ]
+  liveOut = [ _T26 _T58 ]
+    _T55 = 4 [ _T36 _T53 _T55 _T26 ]
+    _T56 = (_T36 * _T55) [ _T53 _T56 _T26 ]
+    _T57 = (_T26 + _T56) [ _T53 _T57 _T26 ]
+    *(_T57 + 0) = _T53 [ _T26 ]
+    _T58 = 10 [ _T26 _T58 ]
+    _T59 = 0 [ _T26 _T58 _T59 ]
+    _T60 = (_T58 < _T59) [ _T26 _T58 _T60 ]
+END BY BEQZ, if _T60 = 
+    0 : goto 15; 1 : goto 14
+BASIC BLOCK 14 : 
+  Def     = [ _T61 ]
+  liveUse = [ ]
+  liveIn  = [ _T26 _T58 ]
+  liveOut = [ _T26 _T58 ]
+    _T61 = "Decaf runtime error: Cannot create negative-sized array\n" [ _T26 _T58 _T61 ]
+    parm _T61 [ _T26 _T58 ]
+    call _PrintString [ _T26 _T58 ]
+    call _Halt [ _T26 _T58 ]
+END BY BRANCH, goto 15
+BASIC BLOCK 15 : 
+  Def     = [ _T62 _T63 _T64 _T65 _T66 ]
+  liveUse = [ _T58 ]
+  liveIn  = [ _T26 _T58 ]
+  liveOut = [ _T26 _T62 _T64 _T65 _T66 ]
+    _T62 = 4 [ _T26 _T58 _T62 ]
+    _T63 = (_T62 * _T58) [ _T26 _T58 _T62 _T63 ]
+    _T64 = (_T62 + _T63) [ _T64 _T26 _T58 _T62 ]
+    parm _T64 [ _T64 _T26 _T58 _T62 ]
+    _T65 =  call _Alloc [ _T64 _T65 _T26 _T58 _T62 ]
+    *(_T65 + 0) = _T58 [ _T64 _T65 _T26 _T62 ]
+    _T66 = 0 [ _T64 _T65 _T66 _T26 _T62 ]
+    _T65 = (_T65 + _T64) [ _T64 _T65 _T66 _T26 _T62 ]
+END BY BRANCH, goto 16
+BASIC BLOCK 16 : 
+  Def     = [ ]
+  liveUse = [ _T62 _T64 ]
+  liveIn  = [ _T26 _T62 _T64 _T65 _T66 ]
+  liveOut = [ _T26 _T62 _T64 _T65 _T66 ]
+    _T64 = (_T64 - _T62) [ _T64 _T65 _T66 _T26 _T62 ]
+END BY BEQZ, if _T64 = 
+    0 : goto 18; 1 : goto 17
+BASIC BLOCK 17 : 
+  Def     = [ ]
+  liveUse = [ _T62 _T65 _T66 ]
+  liveIn  = [ _T26 _T62 _T64 _T65 _T66 ]
+  liveOut = [ _T26 _T62 _T64 _T65 _T66 ]
+    _T65 = (_T65 - _T62) [ _T64 _T65 _T66 _T26 _T62 ]
+    *(_T65 + 0) = _T66 [ _T64 _T65 _T66 _T26 _T62 ]
+END BY BRANCH, goto 16
+BASIC BLOCK 18 : 
+  Def     = [ _T25 _T67 _T68 _T69 ]
+  liveUse = [ _T65 ]
+  liveIn  = [ _T26 _T65 ]
+  liveOut = [ _T25 _T26 _T67 ]
+    _T25 = _T65 [ _T25 _T26 ]
+    _T67 = 0 [ _T67 _T25 _T26 ]
+    _T68 = *(_T25 - 4) [ _T67 _T68 _T25 _T26 ]
+    _T69 = (_T67 < _T68) [ _T67 _T69 _T25 _T26 ]
+END BY BEQZ, if _T69 = 
+    0 : goto 20; 1 : goto 19
+BASIC BLOCK 19 : 
+  Def     = [ _T70 _T71 ]
+  liveUse = [ _T67 ]
+  liveIn  = [ _T25 _T26 _T67 ]
+  liveOut = [ _T25 _T26 _T67 ]
+    _T70 = 0 [ _T67 _T70 _T25 _T26 ]
+    _T71 = (_T67 < _T70) [ _T67 _T71 _T25 _T26 ]
+END BY BEQZ, if _T71 = 
+    0 : goto 21; 1 : goto 20
+BASIC BLOCK 20 : 
+  Def     = [ _T72 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T67 ]
+  liveOut = [ _T25 _T26 _T67 ]
+    _T72 = "Decaf runtime error: Array subscript out of bounds\n" [ _T67 _T72 _T25 _T26 ]
+    parm _T72 [ _T67 _T25 _T26 ]
+    call _PrintString [ _T67 _T25 _T26 ]
+    call _Halt [ _T67 _T25 _T26 ]
+END BY BRANCH, goto 21
+BASIC BLOCK 21 : 
+  Def     = [ _T73 _T74 _T75 _T76 _T77 _T78 _T79 _T80 _T81 _T82 _T83 _T84 _T85 _T86 _T87 _T88 _T89 _T90 _T91 ]
+  liveUse = [ _T25 _T26 _T67 ]
+  liveIn  = [ _T25 _T26 _T67 ]
+  liveOut = [ _T25 _T26 _T89 ]
+    _T73 = 4 [ _T67 _T25 _T73 _T26 ]
+    _T74 = (_T67 * _T73) [ _T67 _T25 _T26 _T74 ]
+    _T75 = (_T25 + _T74) [ _T67 _T25 _T26 _T75 ]
+    _T76 = *(_T75 + 0) [ _T67 _T25 _T26 ]
+    _T77 = 4 [ _T67 _T25 _T26 _T77 ]
+    _T78 = 5 [ _T67 _T25 _T26 _T77 _T78 ]
+    _T79 = 3 [ _T67 _T25 _T26 _T77 _T78 _T79 ]
+    _T80 = (_T78 * _T79) [ _T80 _T67 _T25 _T26 _T77 ]
+    _T81 = 4 [ _T80 _T81 _T67 _T25 _T26 _T77 ]
+    _T82 = (_T80 / _T81) [ _T82 _T67 _T25 _T26 _T77 ]
+    _T83 = 2 [ _T82 _T67 _T83 _T25 _T26 _T77 ]
+    _T84 = (_T82 % _T83) [ _T67 _T84 _T25 _T26 _T77 ]
+    _T85 = (_T77 + _T84) [ _T67 _T85 _T25 _T26 ]
+    _T86 = 4 [ _T67 _T85 _T86 _T25 _T26 ]
+    _T87 = (_T67 * _T86) [ _T85 _T87 _T25 _T26 ]
+    _T88 = (_T25 + _T87) [ _T85 _T88 _T25 _T26 ]
+    *(_T88 + 0) = _T85 [ _T25 _T26 ]
+    _T89 = 0 [ _T25 _T89 _T26 ]
+    _T90 = *(_T26 - 4) [ _T25 _T89 _T26 _T90 ]
+    _T91 = (_T89 < _T90) [ _T25 _T89 _T26 _T91 ]
+END BY BEQZ, if _T91 = 
+    0 : goto 23; 1 : goto 22
+BASIC BLOCK 22 : 
+  Def     = [ _T92 _T93 ]
+  liveUse = [ _T89 ]
+  liveIn  = [ _T25 _T26 _T89 ]
+  liveOut = [ _T25 _T26 _T89 ]
+    _T92 = 0 [ _T25 _T89 _T26 _T92 ]
+    _T93 = (_T89 < _T92) [ _T25 _T89 _T26 _T93 ]
+END BY BEQZ, if _T93 = 
+    0 : goto 24; 1 : goto 23
+BASIC BLOCK 23 : 
+  Def     = [ _T94 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T89 ]
+  liveOut = [ _T25 _T26 _T89 ]
+    _T94 = "Decaf runtime error: Array subscript out of bounds\n" [ _T25 _T89 _T26 _T94 ]
+    parm _T94 [ _T25 _T89 _T26 ]
+    call _PrintString [ _T25 _T89 _T26 ]
+    call _Halt [ _T25 _T89 _T26 ]
+END BY BRANCH, goto 24
+BASIC BLOCK 24 : 
+  Def     = [ _T95 _T96 _T97 _T98 _T99 _T100 _T101 ]
+  liveUse = [ _T25 _T26 _T89 ]
+  liveIn  = [ _T25 _T26 _T89 ]
+  liveOut = [ _T25 _T26 _T98 _T99 ]
+    _T95 = 4 [ _T25 _T89 _T26 _T95 ]
+    _T96 = (_T89 * _T95) [ _T96 _T25 _T26 ]
+    _T97 = (_T26 + _T96) [ _T97 _T25 _T26 ]
+    _T98 = *(_T97 + 0) [ _T98 _T25 _T26 ]
+    _T99 = 0 [ _T98 _T99 _T25 _T26 ]
+    _T100 = *(_T25 - 4) [ _T98 _T99 _T100 _T25 _T26 ]
+    _T101 = (_T99 < _T100) [ _T98 _T99 _T101 _T25 _T26 ]
+END BY BEQZ, if _T101 = 
+    0 : goto 26; 1 : goto 25
+BASIC BLOCK 25 : 
+  Def     = [ _T102 _T103 ]
+  liveUse = [ _T99 ]
+  liveIn  = [ _T25 _T26 _T98 _T99 ]
+  liveOut = [ _T25 _T26 _T98 _T99 ]
+    _T102 = 0 [ _T98 _T99 _T102 _T25 _T26 ]
+    _T103 = (_T99 < _T102) [ _T98 _T99 _T103 _T25 _T26 ]
+END BY BEQZ, if _T103 = 
+    0 : goto 27; 1 : goto 26
+BASIC BLOCK 26 : 
+  Def     = [ _T104 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T98 _T99 ]
+  liveOut = [ _T25 _T26 _T98 _T99 ]
+    _T104 = "Decaf runtime error: Array subscript out of bounds\n" [ _T98 _T99 _T104 _T25 _T26 ]
+    parm _T104 [ _T98 _T99 _T25 _T26 ]
+    call _PrintString [ _T98 _T99 _T25 _T26 ]
+    call _Halt [ _T98 _T99 _T25 _T26 ]
+END BY BRANCH, goto 27
+BASIC BLOCK 27 : 
+  Def     = [ _T105 _T106 _T107 _T108 _T109 _T110 ]
+  liveUse = [ _T25 _T98 _T99 ]
+  liveIn  = [ _T25 _T26 _T98 _T99 ]
+  liveOut = [ _T25 _T26 _T98 _T108 ]
+    _T105 = 4 [ _T98 _T99 _T25 _T105 _T26 ]
+    _T106 = (_T99 * _T105) [ _T98 _T25 _T26 _T106 ]
+    _T107 = (_T25 + _T106) [ _T98 _T25 _T26 _T107 ]
+    _T108 = *(_T107 + 0) [ _T98 _T25 _T26 _T108 ]
+    _T109 = *(_T98 - 4) [ _T98 _T25 _T26 _T108 _T109 ]
+    _T110 = (_T108 < _T109) [ _T98 _T25 _T26 _T108 _T110 ]
+END BY BEQZ, if _T110 = 
+    0 : goto 29; 1 : goto 28
+BASIC BLOCK 28 : 
+  Def     = [ _T111 _T112 ]
+  liveUse = [ _T108 ]
+  liveIn  = [ _T25 _T26 _T98 _T108 ]
+  liveOut = [ _T25 _T26 _T98 _T108 ]
+    _T111 = 0 [ _T98 _T25 _T26 _T108 _T111 ]
+    _T112 = (_T108 < _T111) [ _T112 _T98 _T25 _T26 _T108 ]
+END BY BEQZ, if _T112 = 
+    0 : goto 30; 1 : goto 29
+BASIC BLOCK 29 : 
+  Def     = [ _T113 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T98 _T108 ]
+  liveOut = [ _T25 _T26 _T98 _T108 ]
+    _T113 = "Decaf runtime error: Array subscript out of bounds\n" [ _T113 _T98 _T25 _T26 _T108 ]
+    parm _T113 [ _T98 _T25 _T26 _T108 ]
+    call _PrintString [ _T98 _T25 _T26 _T108 ]
+    call _Halt [ _T98 _T25 _T26 _T108 ]
+END BY BRANCH, goto 30
+BASIC BLOCK 30 : 
+  Def     = [ _T114 _T115 _T116 _T117 _T118 _T119 _T120 _T121 _T122 _T123 _T124 ]
+  liveUse = [ _T25 _T98 _T108 ]
+  liveIn  = [ _T25 _T26 _T98 _T108 ]
+  liveOut = [ _T25 _T26 _T122 ]
+    _T114 = 4 [ _T98 _T114 _T25 _T26 _T108 ]
+    _T115 = (_T108 * _T114) [ _T98 _T115 _T25 _T26 _T108 ]
+    _T116 = (_T98 + _T115) [ _T98 _T116 _T25 _T26 _T108 ]
+    _T117 = *(_T116 + 0) [ _T98 _T25 _T26 _T108 ]
+    _T118 = 55 [ _T98 _T118 _T25 _T26 _T108 ]
+    _T119 = 4 [ _T98 _T118 _T119 _T25 _T26 _T108 ]
+    _T120 = (_T108 * _T119) [ _T98 _T118 _T120 _T25 _T26 ]
+    _T121 = (_T98 + _T120) [ _T118 _T25 _T121 _T26 ]
+    *(_T121 + 0) = _T118 [ _T25 _T26 ]
+    _T122 = 0 [ _T25 _T26 _T122 ]
+    _T123 = *(_T25 - 4) [ _T25 _T26 _T122 _T123 ]
+    _T124 = (_T122 < _T123) [ _T25 _T26 _T122 _T124 ]
+END BY BEQZ, if _T124 = 
+    0 : goto 32; 1 : goto 31
+BASIC BLOCK 31 : 
+  Def     = [ _T125 _T126 ]
+  liveUse = [ _T122 ]
+  liveIn  = [ _T25 _T26 _T122 ]
+  liveOut = [ _T25 _T26 _T122 ]
+    _T125 = 0 [ _T25 _T26 _T122 _T125 ]
+    _T126 = (_T122 < _T125) [ _T25 _T26 _T122 _T126 ]
+END BY BEQZ, if _T126 = 
+    0 : goto 33; 1 : goto 32
+BASIC BLOCK 32 : 
+  Def     = [ _T127 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T122 ]
+  liveOut = [ _T25 _T26 _T122 ]
+    _T127 = "Decaf runtime error: Array subscript out of bounds\n" [ _T25 _T26 _T122 _T127 ]
+    parm _T127 [ _T25 _T26 _T122 ]
+    call _PrintString [ _T25 _T26 _T122 ]
+    call _Halt [ _T25 _T26 _T122 ]
+END BY BRANCH, goto 33
+BASIC BLOCK 33 : 
+  Def     = [ _T128 _T129 _T130 _T131 _T132 _T133 _T134 _T135 _T136 _T137 ]
+  liveUse = [ _T25 _T26 _T122 ]
+  liveIn  = [ _T25 _T26 _T122 ]
+  liveOut = [ _T25 _T26 _T133 _T134 _T135 ]
+    _T128 = 4 [ _T128 _T25 _T26 _T122 ]
+    _T129 = (_T122 * _T128) [ _T129 _T25 _T26 ]
+    _T130 = (_T25 + _T129) [ _T130 _T25 _T26 ]
+    _T131 = *(_T130 + 0) [ _T131 _T25 _T26 ]
+    parm _T131 [ _T25 _T26 ]
+    call _PrintInt [ _T25 _T26 ]
+    _T132 = " " [ _T132 _T25 _T26 ]
+    parm _T132 [ _T25 _T26 ]
+    call _PrintString [ _T25 _T26 ]
+    _T133 = 2 [ _T133 _T25 _T26 ]
+    _T134 = 100 [ _T133 _T134 _T25 _T26 ]
+    _T135 = 0 [ _T133 _T134 _T135 _T25 _T26 ]
+    _T136 = *(_T26 - 4) [ _T133 _T134 _T135 _T136 _T25 _T26 ]
+    _T137 = (_T135 < _T136) [ _T133 _T134 _T135 _T25 _T137 _T26 ]
+END BY BEQZ, if _T137 = 
+    0 : goto 35; 1 : goto 34
+BASIC BLOCK 34 : 
+  Def     = [ _T138 _T139 ]
+  liveUse = [ _T135 ]
+  liveIn  = [ _T25 _T26 _T133 _T134 _T135 ]
+  liveOut = [ _T25 _T26 _T133 _T134 _T135 ]
+    _T138 = 0 [ _T133 _T134 _T135 _T25 _T26 _T138 ]
+    _T139 = (_T135 < _T138) [ _T133 _T134 _T135 _T25 _T26 _T139 ]
+END BY BEQZ, if _T139 = 
+    0 : goto 36; 1 : goto 35
+BASIC BLOCK 35 : 
+  Def     = [ _T140 ]
+  liveUse = [ ]
+  liveIn  = [ _T25 _T26 _T133 _T134 _T135 ]
+  liveOut = [ _T25 _T26 _T133 _T134 _T135 ]
+    _T140 = "Decaf runtime error: Array subscript out of bounds\n" [ _T133 _T134 _T135 _T25 _T26 _T140 ]
+    parm _T140 [ _T133 _T134 _T135 _T25 _T26 ]
+    call _PrintString [ _T133 _T134 _T135 _T25 _T26 ]
+    call _Halt [ _T133 _T134 _T135 _T25 _T26 ]
+END BY BRANCH, goto 36
+BASIC BLOCK 36 : 
+  Def     = [ _T141 _T142 _T143 _T144 _T145 _T146 ]
+  liveUse = [ _T25 _T26 _T133 _T134 _T135 ]
+  liveIn  = [ _T25 _T26 _T133 _T134 _T135 ]
+  liveOut = [ ]
+    _T141 = 4 [ _T133 _T134 _T135 _T25 _T26 _T141 ]
+    _T142 = (_T135 * _T141) [ _T133 _T134 _T25 _T26 _T142 ]
+    _T143 = (_T26 + _T142) [ _T133 _T134 _T25 _T143 ]
+    _T144 = *(_T143 + 0) [ _T144 _T133 _T134 _T25 ]
+    parm _T134 [ _T144 _T133 _T25 ]
+    parm _T144 [ _T133 _T25 ]
+    parm _T25 [ _T133 ]
+    _T145 =  call _Main.Binky [ _T145 _T133 ]
+    _T146 = (_T133 * _T145) [ _T146 ]
+    parm _T146 [ ]
+    call _PrintInt [ ]
+END BY RETURN, void result
+

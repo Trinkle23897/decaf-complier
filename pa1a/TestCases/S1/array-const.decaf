@@ -1,0 +1,17 @@
+class Main {
+    static void main() {
+        int[] xs;
+        xs = [1,2,3];
+        bool[] ys;
+        ys = [true,false,"false"];
+        string[] zs;
+        zs = ["one"];
+        int[] nil;
+        nil = [];
+
+        int[] manyOnes;
+        manyOnes = 1 %% 10;
+        string[][] manyzs;
+        manyzs = zs %% 5 * 6;
+    }
+}

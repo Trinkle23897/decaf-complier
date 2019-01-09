@@ -1,0 +1,16 @@
+*** Error at (145,13): syntax error
+*** Error: undefined function _Matrix.SeedMatrix
+*** Error: undefined function _SparseMatrix.Init
+*** Error: undefined function _SparseMatrix.Set
+*** Error: undefined function _SparseMatrix.Get
+*** Error: undefined function _Matrix.SeedMatrix
+*** Error: undefined function _SparseMatrix.Find
+*** Error: undefined function _SparseItem.Init
+*** Error: undefined function _SparseItem.GetNext
+*** Error: undefined function _SparseItem.GetY
+*** Error: undefined function _SparseItem.GetData
+*** Error: undefined function _SparseItem.SetData
+*** Error: undefined function _DenseMatrix.Init
+*** Error: undefined function _DenseMatrix.Set
+*** Error: undefined function _DenseMatrix.Get
+*** Error: undefined function _Matrix.SeedMatrix

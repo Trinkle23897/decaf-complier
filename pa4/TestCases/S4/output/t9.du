@@ -1,0 +1,235 @@
+FUNCTION _Main_New : 
+BASIC BLOCK 0 : 
+1	_T1 = 4 [ 2 ]
+2	parm _T1
+3	_T2 =  call _Alloc [ 5 6 ]
+4	_T3 = VTBL <_Main> [ 5 ]
+5	*(_T2 + 0) = _T3
+6	END BY RETURN, result = _T2
+
+FUNCTION _Base_New : 
+BASIC BLOCK 0 : 
+7	_T4 = 4 [ 8 ]
+8	parm _T4
+9	_T5 =  call _Alloc [ 11 12 ]
+10	_T6 = VTBL <_Base> [ 11 ]
+11	*(_T5 + 0) = _T6
+12	END BY RETURN, result = _T5
+
+FUNCTION _Sub1_New : 
+BASIC BLOCK 0 : 
+13	_T7 = 4 [ 14 ]
+14	parm _T7
+15	_T8 =  call _Alloc [ 17 18 ]
+16	_T9 = VTBL <_Sub1> [ 17 ]
+17	*(_T8 + 0) = _T9
+18	END BY RETURN, result = _T8
+
+FUNCTION _Sub2_New : 
+BASIC BLOCK 0 : 
+19	_T10 = 4 [ 20 ]
+20	parm _T10
+21	_T11 =  call _Alloc [ 23 24 ]
+22	_T12 = VTBL <_Sub2> [ 23 ]
+23	*(_T11 + 0) = _T12
+24	END BY RETURN, result = _T11
+
+FUNCTION _Sub3_New : 
+BASIC BLOCK 0 : 
+25	_T13 = 4 [ 26 ]
+26	parm _T13
+27	_T14 =  call _Alloc [ 29 30 ]
+28	_T15 = VTBL <_Sub3> [ 29 ]
+29	*(_T14 + 0) = _T15
+30	END BY RETURN, result = _T14
+
+FUNCTION _Sub4_New : 
+BASIC BLOCK 0 : 
+31	_T16 = 4 [ 32 ]
+32	parm _T16
+33	_T17 =  call _Alloc [ 35 36 ]
+34	_T18 = VTBL <_Sub4> [ 35 ]
+35	*(_T17 + 0) = _T18
+36	END BY RETURN, result = _T17
+
+FUNCTION main : 
+BASIC BLOCK 0 : 
+37	_T24 =  call _Base_New [ 38 ]
+38	_T19 = _T24 [ 47 ]
+39	_T25 =  call _Sub1_New [ 40 ]
+40	_T20 = _T25 [ 49 ]
+41	_T26 =  call _Sub2_New [ 42 ]
+42	_T21 = _T26 [ 51 ]
+43	_T27 =  call _Sub3_New [ 44 ]
+44	_T22 = _T27 [ 53 ]
+45	_T28 =  call _Sub4_New [ 46 ]
+46	_T23 = _T28 [ 55 57 ]
+47	parm _T19
+48	call _Main.printType
+49	parm _T20
+50	call _Main.printType
+51	parm _T21
+52	call _Main.printType
+53	parm _T22
+54	call _Main.printType
+55	parm _T23
+56	call _Main.printType
+57	_T19 = _T23 [ 58 61 70 86 ]
+58	parm _T19
+59	call _Main.printType
+60	_T30 = VTBL <_Sub1> [ 63 ]
+61	_T31 = *(_T19 + 0) [ 63 65 ]
+62	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+63	_T29 = (_T30 == _T31) [ 64 ]
+64	END BY BGTZ, if _T29 = 
+	    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+65	_T31 = *(_T31 + 0) [ 63 65 66 ]
+66	END BY BGTZ, if _T31 = 
+	    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+67	_T32 = "Decaf runtime error: " [ 68 ]
+68	parm _T32
+69	call _PrintString
+70	_T33 = *(_T19 + 0) [ 71 ]
+71	_T34 = *(_T33 + 4) [ 72 ]
+72	parm _T34
+73	call _PrintString
+74	_T35 = " cannot be cast to " [ 75 ]
+75	parm _T35
+76	call _PrintString
+77	_T36 = VTBL <_Sub1> [ 78 ]
+78	_T37 = *(_T36 + 4) [ 79 ]
+79	parm _T37
+80	call _PrintString
+81	_T38 = "\n" [ 82 ]
+82	parm _T38
+83	call _PrintString
+84	call _Halt
+85	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+86	_T20 = _T19 [ 87 ]
+87	parm _T20
+88	call _Main.printType
+89	END BY RETURN, void result
+
+FUNCTION _Main.printType : 
+BASIC BLOCK 0 : 
+90	_T40 = VTBL <_Sub4> [ 93 ]
+91	_T41 = *(_T0 + 0) [ 93 95 ]
+92	END BY BRANCH, goto 1
+BASIC BLOCK 1 : 
+93	_T39 = (_T40 == _T41) [ 94 99 ]
+94	END BY BGTZ, if _T39 = 
+	    1 : goto 4; 0 : goto 2
+BASIC BLOCK 2 : 
+95	_T41 = *(_T41 + 0) [ 93 95 96 ]
+96	END BY BGTZ, if _T41 = 
+	    1 : goto 1; 0 : goto 3
+BASIC BLOCK 3 : 
+97	_T39 = 0 [ 99 ]
+98	END BY BRANCH, goto 4
+BASIC BLOCK 4 : 
+99	END BY BEQZ, if _T39 = 
+	    0 : goto 6; 1 : goto 5
+BASIC BLOCK 5 : 
+100	_T42 = "Sub4\n" [ 101 ]
+101	parm _T42
+102	call _PrintString
+103	END BY BRANCH, goto 30
+BASIC BLOCK 6 : 
+104	_T44 = VTBL <_Sub3> [ 107 ]
+105	_T45 = *(_T0 + 0) [ 107 109 ]
+106	END BY BRANCH, goto 7
+BASIC BLOCK 7 : 
+107	_T43 = (_T44 == _T45) [ 108 113 ]
+108	END BY BGTZ, if _T43 = 
+	    1 : goto 10; 0 : goto 8
+BASIC BLOCK 8 : 
+109	_T45 = *(_T45 + 0) [ 107 109 110 ]
+110	END BY BGTZ, if _T45 = 
+	    1 : goto 7; 0 : goto 9
+BASIC BLOCK 9 : 
+111	_T43 = 0 [ 113 ]
+112	END BY BRANCH, goto 10
+BASIC BLOCK 10 : 
+113	END BY BEQZ, if _T43 = 
+	    0 : goto 12; 1 : goto 11
+BASIC BLOCK 11 : 
+114	_T46 = "Sub3\n" [ 115 ]
+115	parm _T46
+116	call _PrintString
+117	END BY BRANCH, goto 30
+BASIC BLOCK 12 : 
+118	_T48 = VTBL <_Sub2> [ 121 ]
+119	_T49 = *(_T0 + 0) [ 121 123 ]
+120	END BY BRANCH, goto 13
+BASIC BLOCK 13 : 
+121	_T47 = (_T48 == _T49) [ 122 127 ]
+122	END BY BGTZ, if _T47 = 
+	    1 : goto 16; 0 : goto 14
+BASIC BLOCK 14 : 
+123	_T49 = *(_T49 + 0) [ 121 123 124 ]
+124	END BY BGTZ, if _T49 = 
+	    1 : goto 13; 0 : goto 15
+BASIC BLOCK 15 : 
+125	_T47 = 0 [ 127 ]
+126	END BY BRANCH, goto 16
+BASIC BLOCK 16 : 
+127	END BY BEQZ, if _T47 = 
+	    0 : goto 18; 1 : goto 17
+BASIC BLOCK 17 : 
+128	_T50 = "Sub2\n" [ 129 ]
+129	parm _T50
+130	call _PrintString
+131	END BY BRANCH, goto 30
+BASIC BLOCK 18 : 
+132	_T52 = VTBL <_Sub1> [ 135 ]
+133	_T53 = *(_T0 + 0) [ 135 137 ]
+134	END BY BRANCH, goto 19
+BASIC BLOCK 19 : 
+135	_T51 = (_T52 == _T53) [ 136 141 ]
+136	END BY BGTZ, if _T51 = 
+	    1 : goto 22; 0 : goto 20
+BASIC BLOCK 20 : 
+137	_T53 = *(_T53 + 0) [ 135 137 138 ]
+138	END BY BGTZ, if _T53 = 
+	    1 : goto 19; 0 : goto 21
+BASIC BLOCK 21 : 
+139	_T51 = 0 [ 141 ]
+140	END BY BRANCH, goto 22
+BASIC BLOCK 22 : 
+141	END BY BEQZ, if _T51 = 
+	    0 : goto 24; 1 : goto 23
+BASIC BLOCK 23 : 
+142	_T54 = "Sub1\n" [ 143 ]
+143	parm _T54
+144	call _PrintString
+145	END BY BRANCH, goto 30
+BASIC BLOCK 24 : 
+146	_T56 = VTBL <_Base> [ 149 ]
+147	_T57 = *(_T0 + 0) [ 149 151 ]
+148	END BY BRANCH, goto 25
+BASIC BLOCK 25 : 
+149	_T55 = (_T56 == _T57) [ 150 155 ]
+150	END BY BGTZ, if _T55 = 
+	    1 : goto 28; 0 : goto 26
+BASIC BLOCK 26 : 
+151	_T57 = *(_T57 + 0) [ 149 151 152 ]
+152	END BY BGTZ, if _T57 = 
+	    1 : goto 25; 0 : goto 27
+BASIC BLOCK 27 : 
+153	_T55 = 0 [ 155 ]
+154	END BY BRANCH, goto 28
+BASIC BLOCK 28 : 
+155	END BY BEQZ, if _T55 = 
+	    0 : goto 30; 1 : goto 29
+BASIC BLOCK 29 : 
+156	_T58 = "Base\n" [ 157 ]
+157	parm _T58
+158	call _PrintString
+159	END BY BRANCH, goto 30
+BASIC BLOCK 30 : 
+160	END BY RETURN, void result
+
