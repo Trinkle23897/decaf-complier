@@ -1,0 +1,23 @@
+class Father {
+    int field;
+
+    int method(int f) {
+        if (f > 0 && f < 10) {
+            f = f - 3;
+            return method(f);
+        }
+		return f;
+    }
+}
+
+class Main {
+	static void main() {
+		class Father a;
+		class Father b;
+		b = new Father();
+		scopy(x,b);
+	}
+	int fun(int b ) {
+		return b;
+	}
+}

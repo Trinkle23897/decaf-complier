@@ -1,0 +1,20 @@
+class Main {
+    static void main() {
+    	int[] a;
+        
+		int b;
+		b = a[3];
+		
+		int c;
+		c = a[b];
+    	
+		int d;
+		d= a[2] default 2 + 3 ;
+		bool z;
+		
+		string e;
+		e= a[z] default 2%%3;
+		e= e[2] default var x;
+		e= a[2] default var x;
+	}
+}

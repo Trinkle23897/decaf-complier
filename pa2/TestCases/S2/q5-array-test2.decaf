@@ -1,0 +1,17 @@
+class Main {
+    static void main() {
+    	int[] a;
+        a = [1,2,3] ++ 3 %% 2;
+        
+		int b;
+		b = a[3];
+		
+		int c;
+		c = a[b];
+    	
+		int d;
+		d= a[2] default 2 + 3 ;
+		
+		int e;
+	}
+}

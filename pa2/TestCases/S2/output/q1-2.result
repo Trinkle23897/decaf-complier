@@ -1,0 +1,1 @@
+*** Error at (18,3): incompatible argument dst: class : Main->int->int given, class expected

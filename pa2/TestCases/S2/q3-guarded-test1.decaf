@@ -1,0 +1,11 @@
+class Main {
+  static void main() {
+	int a;
+  a = ReadInteger();
+  int b;
+  if {a>100 : b=a-100;|||
+    a<50 : b=a+50;|||
+    a<0:  {b=a+200;Print(a);}
+  };
+  }
+}

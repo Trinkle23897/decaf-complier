@@ -1,0 +1,18 @@
+class Main {
+    static void main() {
+    	int [] a;
+    	a = 3 %% 2*3;
+    	bool [] b;
+    	b = true %% 10;
+    	string [] c;
+    	c = "hello" %% 3;
+    	
+    	int [][] d;
+    	d = a %% (2+3);
+    	
+    	string [][] e;
+    	e = c %% 10;
+
+    	e = var d %% 10;
+	}
+}

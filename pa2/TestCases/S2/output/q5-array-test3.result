@@ -1,0 +1,18 @@
+GLOBAL SCOPE:
+    (1,1) -> class Father
+    (7,1) -> class Child : Father
+    (10,1) -> class Main
+    CLASS SCOPE OF 'Father':
+        (2,6) -> variable d : int
+        (3,6) -> function foo : class : Father->int
+        FORMAL SCOPE OF 'foo':
+            (3,6) -> variable @this : class : Father
+            LOCAL SCOPE:
+    CLASS SCOPE OF 'Child':
+        (8,6) -> variable b : int
+    CLASS SCOPE OF 'Main':
+        (11,17) -> static function main : void
+        FORMAL SCOPE OF 'main':
+            LOCAL SCOPE:
+                (13,17) -> variable a : class : Child[]
+                (14,7) -> variable c : int

@@ -1,0 +1,32 @@
+sealed class Father{
+  int age;
+     
+  void setage(int age){
+    this.age=age;
+  }
+     
+  int getage(){
+	  return age;
+  } 
+}
+
+class Child1 extends Father{
+  string name;  
+}
+
+sealed class Child2{
+	string name;  
+  int age;
+}
+
+class Main {
+  static void main(){
+		class Father f;
+		class Child1 c1;
+		class Child2 c2;
+		f=new Father();
+		c1=new Child1();
+		c2=new Child2();
+  }
+}
+

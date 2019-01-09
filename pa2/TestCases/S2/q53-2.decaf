@@ -1,0 +1,22 @@
+class Father {
+	int d;
+	int foo(){
+		return d;
+	}
+}
+class Child extends Father{
+	int b;
+}
+class Main {
+    static void main() {
+
+		class Child[] a;
+		int c;
+			
+		foreach(class Father i in a while c){
+			int i ;
+			x = i.foo();
+		}
+		
+	}
+}
